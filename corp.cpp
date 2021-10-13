@@ -14,27 +14,13 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdio.h>
+#include "vector_util.h"
 #define BEZIER_PRESSISION 20.
 
 char presse;
 int anglex,angley,x,y,xold,yold;
 
 float c = (3.-sqrt(5.))/4.;
-
-typedef struct{
-  float x;
-  float y;
-  float z;
-} point;
-typedef struct{
-  float x;
-  float y;
-  float z;
-} vecteur;
-
-typedef struct{
-  vecteur v[3];
-} matrix_base;
 
 
 /* Prototype des fonctions */
@@ -45,20 +31,9 @@ void idle();
 void mouse(int bouton,int etat,int x,int y);
 void mousemotion(int x,int y);
 
-float Q_rsqrt( float number ){
-	long i;
-	float x2, y;
-	const float threehalfs = 1.5F;
 
-	x2 = number * 0.5F;
-	y  = number;
-	i  = * ( long * ) &y;                       // evil floating point bit level hacking
-	i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
-	y  = * ( float * ) &i;
-	y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
-//	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
-	return (float)y;
-}
+
+
 void bezier1(float t, float *x, float *y){
     if(t<0 || t>1){
       fprintf(stderr, "Error: Bezier1 t must be between 0 and 1\n");
@@ -71,73 +46,8 @@ void bezier1(float t, float *x, float *y){
     *x = coeff1 * 0.2 + coeff2*0.3+coeff3*0.51+ coeff4*0.85;
     *y = coeff1 * 0.2 + coeff2*0.0+coeff3*(-0.16)+ coeff4*(-0.16);
 }
-vecteur produit_vectoriel(vecteur v1, vecteur v2){
-  vecteur ret{
-    (v1.y*v2.z) - (v1.z*v2.y),
-    (v1.z*v2.x) - (v2.z*v1.x),
-    (v1.x*v2.y) - (v1.y*v2.x),
-  };
-  return ret;
-}
-vecteur scale(vecteur v1, float s){
-  vecteur ret{
-    v1.x*s,
-    v1.y*s,
-    v1.z*s,
-  };
-  return ret;
-}
-float produit_scalaire(vecteur v1, vecteur v2){
-  return v1.x*v2.x + v1.y*v2.y + v1.z*v2.z;
-}
 
-//on crée une matisse de changement de base
-// pour faire avoir une base orthogonal en p1
-matrix_base create_base(point p1, point p2){
-  p2.x-=p1.x;
-  p2.y-=p1.y;
-  p2.z-=p1.z;
-  p1.x=0;
-  p1.y=0;
-  p1.z=0;
-  vecteur vecteur_normal = {
-    p2.x-p1.x,
-    p2.y-p1.y,
-    p2.z-p1.z,
-  };
-  vecteur vecteur_plan1 = {
-    (1./vecteur_normal.x),
-    (-1./vecteur_normal.y),
-    0,
-  };
-  //produit vectoriel
-  vecteur vecteur_plan2 = produit_vectoriel(vecteur_normal, vecteur_plan1);
-  // printf("DEBUG1: vecteur_plan1.vecteur_normal = %f\n", produit_scalaire(vecteur_normal,vecteur_plan1));
-  // printf("DEBUG2: vecteur_plan1.vecteur_plan2 = %f\n", produit_scalaire(vecteur_plan2,vecteur_plan1));
-  // printf("DEBUG3: vecteur_normal.vecteur_plan2 = %f\n", produit_scalaire(vecteur_plan2,vecteur_normal));
-  matrix_base ret{
-    vecteur_normal,vecteur_plan1,vecteur_plan2,
-  };
-  return ret;
-}
 
-vecteur add_vect(vecteur v1, vecteur v2){
-  vecteur ret{
-    v1.x+v2.x,
-    v1.y + v2.y,
-    v1.z + v2.z,
-  };
-  return ret;
-}
-
-point change_base(float x, float y, float z, matrix_base math){
-  point ret{
-    math.v[0].x * x + math.v[1].x * y + math.v[2].x * z,
-    math.v[0].y * x + math.v[1].y * y + math.v[2].y * z,
-    math.v[0].z * x + math.v[1].z * y + math.v[2].z * z,
-  };
-  return ret;
-}
 
 int main(int argc,char **argv){
 
@@ -208,24 +118,25 @@ void affichage1(){
     glBegin(GL_LINES);
         glColor3f(1.,0,0);
         glVertex3f(p1.x, p1.y,0.0);
-        glVertex3f(p2.x + tmp.v[0].x, p2.y + tmp.v[0].y,tmp.v[0].z);
+        glVertex3f(p2.x + tmp.v[0].x*0.1, p2.y + tmp.v[0].y*0.1,tmp.v[0].z*0.1);
     glEnd();
     glBegin(GL_LINES);
         glColor3f(0,1.,0);
         glVertex3f(p1.x, p1.y,0.);
-        glVertex3f(p1.x+tmp.v[1].x, p1.y+tmp.v[1].y,tmp.v[1].z);
+        glVertex3f(p1.x+tmp.v[1].x*0.1, p1.y+tmp.v[1].y*0.1,tmp.v[1].z*0.1);
     glEnd();
     glBegin(GL_LINES);
         glColor3f(0.,0,1.);
         glVertex3f(p1.x, p1.y , 0.0);
-        glVertex3f(p2.x+ tmp.v[2].x , p2.y + tmp.v[2].y,tmp.v[2].z);
+        glVertex3f(p2.x+ tmp.v[2].x*0.1 , p2.y + tmp.v[2].y*0.1,tmp.v[2].z*0.1);
     glEnd();
     //test
     glBegin(GL_LINES);
         glColor3f(1.,1.,1.);
         vect_test = add_vect(tmp.v[1], tmp.v[2]);
+
         glVertex3f(p1.x, p1.y , p1.z);
-        glVertex3f(8.649270,45.951659, 5.50);
+        glVertex3f(p1.x + vect_test.x*0.1, p1.y +vect_test.y*0.1, p1.z + vect_test.z*0.1);
     glEnd();
     curr_angle = 0;
     for (size_t j = 1; j < 11; j++) {

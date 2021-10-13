@@ -5,6 +5,6 @@ LDLIBS=-lglut -lGLU -lGL -ljpeg -lm
 all: corp
 
 corp: corp.cpp
-		$(CC) $(CXXFLAGS) $(LDLIBS) corp.cpp -o corp
+		$(CC) $(CXXFLAGS) $(LDLIBS) vector_util.cpp corp.cpp -o corp
 clean:
 	rm corp
