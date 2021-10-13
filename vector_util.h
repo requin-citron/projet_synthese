@@ -16,20 +16,20 @@ typedef struct{
   float x;
   float y;
   float z;
-} vecteur;
+} vector;
 
 //structure matrice
 typedef struct{
-  vecteur v[3];
-} matrix_base;
+  vector v[3];
+} matrix;
 
 //hack 1/sqrt(x)
 float Q_rsqrt( float  );
-void normalize(vecteur* );
-vecteur produit_vectoriel(vecteur , vecteur );
-vecteur scale(vecteur , float );
-float produit_scalaire(vecteur , vecteur );
-matrix_base create_base(point , point );
-vecteur add_vect(vecteur , vecteur );
-point change_base(float , float , float , matrix_base );
+void normalize(vector* );
+vector produit_vectoriel(vector *, vector *);
+vector scale(vector *, float);
+float produit_scalaire(vector *, vector *);
+matrix create_base(point , point );
+vector add_vect(vector *, vector *);
+point change_base(float , float , float , matrix *);
 #endif
