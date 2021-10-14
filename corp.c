@@ -5,34 +5,22 @@
 /********************************************************/
 
 /* inclusion des fichiers d'en-tete freeglut */
-
-#ifdef __APPLE__
-#include <GLUT/glut.h> /* Pour Mac OS X */
-#else
-#include <GL/glut.h>   /* Pour les autres systemes */
-#endif
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include "vector_util.h"
-#define BEZIER_PRESSISION 60.
-#define CIRCULAR_PRESSISION 20.
+#include "corp.h"
 
 char presse;
 int anglex,angley,x,y,xold,yold;
 
 float c = (3.-sqrt(5.))/4.;
-
-
-
 /* Prototype des fonctions */
+void show_spring();
 void affichage1();
 void clavier(unsigned char touche,int x,int y);
 void reshape(int x,int y);
 void idle();
 void mouse(int bouton,int etat,int x,int y);
 void mousemotion(int x,int y);
+int get_angle_x(){return anglex;}
+int get_angle_y(){return angley;}
 
 void bezier1(float t, float *x, float *y){
     if(t<0 || t>1){
@@ -66,7 +54,7 @@ int main(int argc,char **argv){
   glEnable(GL_DEPTH_TEST);
 
   /* enregistrement des fonctions de rappel */
-  glutDisplayFunc(affichage1);
+  glutDisplayFunc(show_spring);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);
@@ -79,7 +67,6 @@ int main(int argc,char **argv){
 
 
 void affichage1(){
-  int i,j;
   /* effacement de l'image avec la couleur de fond */
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glShadeModel(GL_SMOOTH);
@@ -88,15 +75,12 @@ void affichage1(){
   glRotatef(angley,1.0,0.0,0.0);
   glRotatef(anglex,0.0,1.0,0.0);
   point p1={0,0,0};
-  float t;
   point p2={0,0,0};
   float t1;
   matrix tmp, tmp_back;
   point angle,angle1, angle_back,angle1_back;
-  vector vect_test;
+  float t=0;
   //cercle variable
-  float z_c;
-  float y_c;
   float curr_angle = 0;
   float curr_angle_next;
 
@@ -172,15 +156,6 @@ void affichage1(){
     p1.y=p2.y;
     tmp_back = tmp;
   }
-   // Dessin du cube
-  for (i=0;i<6;i++)
-    {
-      glBegin(GL_POLYGON);
-      for (j=0;j<4;j++){
-        //glColor3f(1,1,1);
-      }
-      glEnd();
-    }
 
     //Repère
     //axe x en rouge

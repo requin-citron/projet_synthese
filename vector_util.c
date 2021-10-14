@@ -1,7 +1,7 @@
 #include "vector_util.h"
 
 
-
+//what the fuck fucking fuck
 float Q_rsqrt( float number ){
 	long i;
 	float x2, y;
@@ -93,4 +93,11 @@ point change_base(float x, float y, float z, matrix *math){
     ret.y = math->v[0].y * x + math->v[1].y * y + math->v[2].y * z;
     ret.z = math->v[0].z * x + math->v[1].z * y + math->v[2].z * z;
   return ret;
+}
+void matrix_zero(matrix *m){
+	for(size_t i=0; i < 3; i++){
+		m->v[i].x= 0;
+		m->v[i].y = 0;
+		m->v[i].z = 0;
+	}
 }

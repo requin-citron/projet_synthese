@@ -32,4 +32,5 @@ float produit_scalaire(vector *, vector *);
 matrix create_base(point , point );
 vector add_vect(vector *, vector *);
 point change_base(float , float , float , matrix *);
+void matrix_zero(matrix *);
 #endif
