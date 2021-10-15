@@ -128,6 +128,7 @@ void show_body(){
   bool firstTime = true;
   //retressisement
   float rayon = 0;
+  float rayon_back=0;
   p1.x = 0;
   p1.y = - 0.5;
   p1.z = RAYON;
@@ -152,12 +153,12 @@ void show_body(){
         v2 = change_base(0,rayon*sin(cyl_next),rayon*cos(cyl_next),&base);
         //rebouchage
         if(!(i==1 && d == 1)){
-          v1_b = change_base(0,rayon*sin(cyl),rayon*cos(cyl),&base_back);
-          v2_b = change_base(0,rayon*sin(cyl_next),rayon*cos(cyl_next),&base_back);
+          v1_b = change_base(0,(rayon_back)*sin(cyl),(rayon_back)*cos(cyl),&base_back);
+          v2_b = change_base(0,(rayon_back)*sin(cyl_next),(rayon_back)*cos(cyl_next),&base_back);
           glBegin(GL_POLYGON);
             glColor3f(0.,0.6,0);glVertex3f(p1.x + v1_b.x, p1.y + v1_b.y, p1.z+ v1_b.z);
             glColor3f(0.,0.6,0);glVertex3f(p1.x + v2_b.x, p1.y + v2_b.y, p1.z+ v2_b.z);
-            glColor3f(0.,0.6,0);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
+            glColor3f(0,0.6,0);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
             glColor3f(0.,0.6,0);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
           glEnd();
         }
@@ -172,6 +173,7 @@ void show_body(){
       }
       p1 = p2;
       base_back = base;
+      rayon_back = rayon;
       if(rayon<RAYON_CYLINDER){
         rayon += QUEUE_INCREMENT;
       }
