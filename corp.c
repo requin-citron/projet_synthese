@@ -6,13 +6,13 @@
 
 /* inclusion des fichiers d'en-tete freeglut */
 #include "corp.h"
+#include "spring.h"
 
 char presse;
 int anglex,angley,x,y,xold,yold;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
-void show_spring();
 void affichage1();
 void clavier(unsigned char touche,int x,int y);
 void reshape(int x,int y);
@@ -54,7 +54,7 @@ int main(int argc,char **argv){
   glEnable(GL_DEPTH_TEST);
 
   /* enregistrement des fonctions de rappel */
-  glutDisplayFunc(show_spring);
+  glutDisplayFunc(show_body);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);
