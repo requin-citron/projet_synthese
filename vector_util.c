@@ -61,8 +61,8 @@ matrix create_base(point p1, point p2){
     vector_normal.z = p2.z - p1.z;
 
   vector vector_plan1;
-    vector_plan1.x = (1./vector_normal.x);
-    vector_plan1.y = (-1./vector_normal.y);
+    vector_plan1.x = fabsf(1./vector_normal.x);
+    vector_plan1.y = fabsf(-1./vector_normal.y);
     vector_plan1.z = 0;
   //produit vectoriel
   vector vector_plan2 = produit_vectoriel(&vector_normal, &vector_plan1);
@@ -100,4 +100,10 @@ void matrix_zero(matrix *m){
 		m->v[i].y = 0;
 		m->v[i].z = 0;
 	}
+}
+
+void matrix_debug(matrix *m){
+    for (size_t i = 0; i < 3; i++) {
+      printf("v[%lu] = (%f,%f,%f)\n", i, m->v[i].x, m->v[i].y, m->v[i].z);
+    }
 }

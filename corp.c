@@ -7,6 +7,7 @@
 /* inclusion des fichiers d'en-tete freeglut */
 #include "corp.h"
 #include "spring.h"
+#include "head.h"
 
 char presse;
 int anglex,angley,x,y,xold,yold;
@@ -35,8 +36,6 @@ void bezier1(float t, float *x, float *y){
     *y = coeff1 * 0.2 + coeff2*0.0+coeff3*(-0.16)+ coeff4*(-0.16);
 }
 
-
-
 int main(int argc,char **argv){
 
   /* initialisation de glut et creation
@@ -44,7 +43,7 @@ int main(int argc,char **argv){
   glutInit(&argc,argv);
   glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
   glutInitWindowPosition(200,200);
-  glutInitWindowSize(500,500);
+  glutInitWindowSize(1000,1000);
   glutCreateWindow("corp");
 
   /* Initialisation d'OpenGL */
@@ -54,7 +53,7 @@ int main(int argc,char **argv){
   glEnable(GL_DEPTH_TEST);
 
   /* enregistrement des fonctions de rappel */
-  glutDisplayFunc(show_body);
+  glutDisplayFunc(affichage2);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);
@@ -64,7 +63,6 @@ int main(int argc,char **argv){
   glutMainLoop();
   return 0;
 }
-
 
 void affichage1(){
   /* effacement de l'image avec la couleur de fond */
@@ -79,10 +77,10 @@ void affichage1(){
   float t1;
   matrix tmp, tmp_back;
   point angle,angle1, angle_back,angle1_back;
-  float t=0;
   //cercle variable
   float curr_angle = 0;
   float curr_angle_next;
+  float t=0;
 
   bezier1(0.,&(p1.x),&(p1.y));
   for (size_t i = 1; i < (BEZIER_PRESSISION+1.); i++) {
@@ -183,8 +181,7 @@ void affichage1(){
   glutSwapBuffers();
 }
 
-void clavier(unsigned char touche,int x,int y)
-{
+void clavier(unsigned char touche,int x,int y){
   switch (touche)
     {
     case 'p': /* affichage du carre plein */
@@ -217,16 +214,14 @@ void clavier(unsigned char touche,int x,int y)
     }
 }
 
-void reshape(int x,int y)
-{
+void reshape(int x,int y){
   if (x<y)
     glViewport(0,(y-x)/2,x,x);
   else
     glViewport((x-y)/2,0,y,y);
 }
 
-void mouse(int button, int state,int x,int y)
-{
+void mouse(int button, int state,int x,int y){
   /* si on appuie sur le bouton gauche */
   if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
   {
@@ -239,8 +234,7 @@ void mouse(int button, int state,int x,int y)
     presse=0; /* le booleen presse passe a 0 (faux) */
 }
 
-void mousemotion(int x,int y)
-  {
+void mousemotion(int x,int y){
     if (presse) /* si le bouton gauche est presse */
     {
       /* on modifie les angles de rotation de l'objet

@@ -1,14 +1,3 @@
-#ifdef __APPLE__
-#include <GLUT/glut.h> /* Pour Mac OS X */
-#else
-#include <GL/glut.h>   /* Pour les autres systemes */
-#endif
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "corp.h"
-#include "vector_util.h"
 #include "spring.h"
 
 
@@ -32,7 +21,6 @@ void show_spring(){
   //cylindre
   float cyl = 0;
   float cyl_next;
-  bool firstTime = true;
   p1.x = 0;
   p1.y = - 0.5;
   p1.z = RAYON;
@@ -125,7 +113,6 @@ void show_body(){
   //cylindre
   float cyl = 0;
   float cyl_next;
-  bool firstTime = true;
   //retressisement
   float rayon = 0;
   float rayon_back=0;

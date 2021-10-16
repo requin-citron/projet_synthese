@@ -1,6 +1,18 @@
 #ifndef SPRING_H
 #define SPRING_H
 
+#ifdef __APPLE__
+#include <GLUT/glut.h> /* Pour Mac OS X */
+#else
+#include <GL/glut.h>   /* Pour les autres systemes */
+#endif
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include "corp.h"
+#include "vector_util.h"
+
 #define HAUTEUR 1.
 #define SPINE_NB 4
 //si il manque des polygon il faut incrementé la constante
