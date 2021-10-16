@@ -5,7 +5,7 @@
 /********************************************************/
 
 /* inclusion des fichiers d'en-tete freeglut */
-#include "corp.h"
+#include "main.h"
 #include "spring.h"
 #include "head.h"
 
@@ -53,7 +53,7 @@ int main(int argc,char **argv){
   glEnable(GL_DEPTH_TEST);
 
   /* enregistrement des fonctions de rappel */
-  glutDisplayFunc(affichage2);
+  glutDisplayFunc(show_body);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);

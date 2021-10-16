@@ -10,8 +10,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "corp.h"
+#include <string.h>
+#include <errno.h>
+#include "main.h"
 #include "vector_util.h"
+#include "loadJpeg.h"
 
 #define HAUTEUR 1.
 #define SPINE_NB 4

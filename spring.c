@@ -103,6 +103,45 @@ void show_body(){
   glLoadIdentity();
   glRotatef(get_angle_y(),1.0,0.0,0.0);
   glRotatef(get_angle_x(),0.0,1.0,0.0);
+
+  unsigned char *img = malloc(sizeof(char)*256*256*3);
+  unsigned char texture[256][256][3];
+
+  if(img == NULL){
+    fprintf(stderr, "%s\n", strerror(errno));
+    exit(1);
+  }
+  loadJpegImage("./dragon.jpg", img);
+
+  /* Parametrage du placage de textures */
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+  //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+	//       GL_RGB,GL_UNSIGNED_BYTE,image);
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+	       GL_RGB,GL_UNSIGNED_BYTE,texture);
+  glEnable(GL_TEXTURE_2D);
+
+
+  for (int i=0;i<256;i++){
+    for (int j=0;j<256;j++) {
+    texture[i][j][0]=img[i*256*3+j*3];
+    texture[i][j][1]=img[i*256*3+j*3+1];
+    texture[i][j][2]=img[i*256*3+j*3+2];
+   }
+  }
+  free(img);
+
+
+  /* Parametrage du placage de textures */
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+  //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+	//       GL_RGB,GL_UNSIGNED_BYTE,image);
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+	       GL_RGB,GL_UNSIGNED_BYTE,texture);
+  glEnable(GL_TEXTURE_2D);
+
   float increment = HAUTEUR/SPINE_NB;
   float increment_cercle= increment/CIRCULAR_RESOLUTION;
   matrix base, base_back;
@@ -143,18 +182,22 @@ void show_body(){
           v1_b = change_base(0,(rayon_back)*sin(cyl),(rayon_back)*cos(cyl),&base_back);
           v2_b = change_base(0,(rayon_back)*sin(cyl_next),(rayon_back)*cos(cyl_next),&base_back);
           glBegin(GL_POLYGON);
-            glColor3f(0.,0.6,0);glVertex3f(p1.x + v1_b.x, p1.y + v1_b.y, p1.z+ v1_b.z);
-            glColor3f(0.,0.6,0);glVertex3f(p1.x + v2_b.x, p1.y + v2_b.y, p1.z+ v2_b.z);
-            glColor3f(0,0.6,0);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
-            glColor3f(0.,0.6,0);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
+            glColor3f(40./255., 40./255., 40./255.);glVertex3f(p1.x + v1_b.x, p1.y + v1_b.y, p1.z+ v1_b.z);
+            glColor3f(40./255., 40./255., 40./255.);glVertex3f(p1.x + v2_b.x, p1.y + v2_b.y, p1.z+ v2_b.z);
+            glColor3f(40.0/255., 40.0/255., 40/255.);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
+            glColor3f(40.0/255., 40.0/255., 40/255.);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
           glEnd();
         }
         glBegin(GL_POLYGON);
           glColor3f(1.,1.,increment*m);
-          glColor3f(1,0,0);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
-          glColor3f(0,1,0);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
-          glColor3f(0,0,1);glVertex3f(p2.x + v2.x, p2.y + v2.y, p2.z+ v2.z);
-          glColor3f(0,0,0);glVertex3f(p2.x + v1.x, p2.y + v1.y, p2.z+ v1.z);
+          //glColor3f(1,0,0);
+          glTexCoord2f((m-1)*1.0/PRECISION_CYLINDER,0.0);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
+          //glColor3f(0,1,0);
+          glTexCoord2f(m*1.0/PRECISION_CYLINDER,0.0);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
+          //glColor3f(0,0,1);
+          glTexCoord2f(m*1.0/PRECISION_CYLINDER,0.5);glVertex3f(p2.x + v2.x, p2.y + v2.y, p2.z+ v2.z);
+          //glColor3f(0,0,0);
+          glTexCoord2f((m-1)*1.0/PRECISION_CYLINDER,0.5);glVertex3f(p2.x + v1.x, p2.y + v1.y, p2.z+ v1.z);
         glEnd();
         cyl= cyl_next;
       }

@@ -1,5 +1,6 @@
 #include "head.h"
 
+bool head_first = true;
 
 
 static void bezier(float t, float *x, float *y){
@@ -12,18 +13,67 @@ static void bezier(float t, float *x, float *y){
     float coeff2 = 3.*pow(1-t,2)*t/multi;
     float coeff3 = 3.*pow(1-t,2)*pow(t,2)/multi;
     float coeff4 = pow(t,3)/multi;
-    *x = coeff1 * (-1.20+0.4) + coeff2*(0.55+0.4)+coeff3*(-0.71+0.4)+ coeff4*(0.70+0.4);
+    *x = coeff1 * (-1.20) + coeff2*(0.55)+coeff3*(-0.71)+ coeff4*(0.70);
     *y = coeff1 * 0.9 + coeff2*0.95+coeff3*(0.20)+ coeff4*(0.10);
 }
 
 static float calcule_rayon(float *x){
-
+  //printf("t = %f\n", *x);
+  float ret = 0.;
+  if(*x<0.03){
+    ret = (*x * 30) * (HEAD_RAYON-0.04) ;
+  }else if (*x<0.06){
+    ret = (0.03 * 30)* HEAD_RAYON-0.04;
+  }else if(*x < 0.12){
+    ret = (*x * 18)* HEAD_RAYON;
+  }else if(*x < 0.16){
+    ret = (0.12 * 18) * HEAD_RAYON;
+  }else if (*x < 0.55){
+    ret = (0.12 * 18) * HEAD_RAYON -  ((*x - 0.16) * 3) * HEAD_RAYON;
+  }else{
+    ret = HEAD_RAYON;
+  }
+  return ret;
 }
 
-void affichage2(){
+void head(){
   /* effacement de l'image avec la couleur de fond */
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glShadeModel(GL_SMOOTH);
+
+  glLoadIdentity();
+  glRotatef(get_angle_y(),1.0,0.0,0.0);
+  glRotatef(get_angle_x(),0.0,1.0,0.0);
+
+  unsigned char *img = malloc(sizeof(char)*256*256*3);
+  unsigned char texture[256][256][3];
+
+  if(img == NULL){
+    fprintf(stderr, "%s\n", strerror(errno));
+    exit(1);
+  }
+  loadJpegImage("./dragon.jpg", img);
+  for (int i=0;i<256;i++){
+    for (int j=0;j<256;j++) {
+    texture[i][j][0]=img[i*256*3+j*3];
+    texture[i][j][1]=img[i*256*3+j*3+1];
+    texture[i][j][2]=img[i*256*3+j*3+2];
+   }
+  }
+  free(img);
+
+
+  /* Parametrage du placage de textures */
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+  //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+  //       GL_RGB,GL_UNSIGNED_BYTE,image);
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+         GL_RGB,GL_UNSIGNED_BYTE,texture);
+  glEnable(GL_TEXTURE_2D);
+
+
+  //texture init
   float t;
   float angle_back, angle1;
   point p1, p2, p3, p4,p5, p6;
@@ -57,8 +107,7 @@ void affichage2(){
     }
     angle_back = 0;
     // ici on gère le rayon de la tete
-    rayon = rayon_back + 0.01;
-    if(rayon > HEAD_RAYON) rayon = HEAD_RAYON;
+    rayon = calcule_rayon(&t);
     for(int j=1; j < (HEAD_CIRCULAR_RESOLUTION+1); j++){
       angle1 = (j*2*M_PI)/HEAD_CIRCULAR_RESOLUTION;
       p3 = change_base(0, rayon*sin(angle_back), rayon*cos(angle_back), &base);
@@ -68,10 +117,11 @@ void affichage2(){
 
       //draw cylinder
       glBegin(GL_POLYGON);
-          glColor3f(0,0,1); glVertex3f(p1.x + p5.x, p1.y + p5.y, p1.z + p5.z);
-          glColor3f(0,1,0); glVertex3f(p1.x + p6.x, p1.y + p6.y, p1.z + p6.z);
-          glColor3f(1,0,0); glVertex3f(p2.x + p4.x, p2.y + p4.y, p2.z + p4.z);
-          glColor3f(1,1,0); glVertex3f(p2.x + p3.x, p2.y + p3.y, p2.z + p3.z);
+          glColor3f(1,1,1);
+          glTexCoord2f((j-1)*2.0/HEAD_CIRCULAR_RESOLUTION,0);glVertex3f(p1.x + p6.x, p1.y + p6.y, p1.z + p6.z);
+          glTexCoord2f((j)*2.0/HEAD_CIRCULAR_RESOLUTION,0);glVertex3f(p1.x + p5.x, p1.y + p5.y, p1.z + p5.z);
+          glTexCoord2f((j)*2.0/HEAD_CIRCULAR_RESOLUTION,0.2);glVertex3f(p2.x + p3.x, p2.y + p3.y, p2.z + p3.z);
+          glTexCoord2f((j-1)*2.0/HEAD_CIRCULAR_RESOLUTION,0.2);glVertex3f(p2.x + p4.x, p2.y + p4.y, p2.z + p4.z);
       glEnd();
       angle_back = angle1;
       glEnd();
@@ -81,9 +131,6 @@ void affichage2(){
     base_back = base;
   }
 
-  glLoadIdentity();
-  glRotatef(get_angle_y(),1.0,0.0,0.0);
-  glRotatef(get_angle_x(),0.0,1.0,0.0);
     //Repère
   //axe x en rouge
   glBegin(GL_LINES);

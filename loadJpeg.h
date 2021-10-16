@@ -1,5 +1,5 @@
-#ifndef HEAD_H
-#define HEAD_H
+#ifndef LOADJPEG_H
+#define LOADJPEG_H
 
 #ifdef __APPLE__
 #include <GLUT/glut.h> /* Pour Mac OS X */
@@ -12,17 +12,13 @@
 #include <stdbool.h>
 #include <string.h>
 #include <errno.h>
-#include "main.h"
-#include "vector_util.h"
-#include "loadJpeg.h"
-
-#define HEAD_BEZIER_PRECISION 80
-#define HEAD_CIRCULAR_RESOLUTION 20
-#define HEAD_RAYON 0.1
-#define HEAD_OFFSET 2
+#include <string.h>
 
 
-void head();
+#include <jpeglib.h>
+#include <jerror.h>
 
+
+void loadJpegImage(char *, unsigned char *);
 
 #endif

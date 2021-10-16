@@ -4,7 +4,7 @@ LDLIBS=-lglut -lGLU -lGL -ljpeg -lm
 
 all: corp
 
-corp: corp.c
-		$(CC) $(CXXFLAGS) $(LDLIBS) vector_util.c corp.c spring.c head.c -o corp
+corp: main.c
+		$(CC) $(CXXFLAGS) $(LDLIBS) vector_util.c main.c spring.c head.c loadJpeg.c -o main
 clean:
-	rm corp
+	rm main
