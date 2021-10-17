@@ -106,19 +106,23 @@ void show_body(){
   glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_COLOR_MATERIAL);
-
+  point cam;
+  cam.x = 0;
+  cam.y = 0;
+  cam.z = -1;
   glLoadIdentity();
   glRotatef(get_angle_y(),1.0,0.0,0.0);
   glRotatef(get_angle_x(),0.0,1.0,0.0);
 
   //gluLookAt(0.5,0,0,0,0,0.0,0.,0.,0.5);
+  gluLookAt(0, 0, 0, cam.x, cam.y,cam.z, 0, 1, 0);
+  glTranslatef(get_zoom(),0,0);
   glRotated(0,0,1,0);
   glLightiv(GL_LIGHT0,GL_POSITION,LightPos);
   glRotated(0,0,1,0);
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
   glEnable(GL_DEPTH_TEST);
-
 
 
 
@@ -265,8 +269,8 @@ void show_body(){
       glVertex3f(0, 0,1.0);
     glEnd();
 
-  glFlush();
 
+  glFlush();
   //On echange les buffers
   glutSwapBuffers();
 }

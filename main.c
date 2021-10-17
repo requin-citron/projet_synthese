@@ -11,6 +11,7 @@
 
 char presse;
 int anglex,angley,x,y,xold,yold;
+double zoom=1;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -22,6 +23,7 @@ void mouse(int bouton,int etat,int x,int y);
 void mousemotion(int x,int y);
 int get_angle_x(){return anglex;}
 int get_angle_y(){return angley;}
+double get_zoom(){return zoom;}
 
 void bezier1(float t, float *x, float *y){
     if(t<0 || t>1){
@@ -53,6 +55,7 @@ int main(int argc,char **argv){
   glEnable(GL_DEPTH_TEST);
 
   /* enregistrement des fonctions de rappel */
+
   glutDisplayFunc(show_body);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
@@ -182,6 +185,8 @@ void affichage1(){
 }
 
 void clavier(unsigned char touche,int x,int y){
+  printf("touche : %c\n", touche);
+  printf("zoom: %d\n", zoom);
   switch (touche)
     {
     case 'p': /* affichage du carre plein */
@@ -211,6 +216,30 @@ void clavier(unsigned char touche,int x,int y){
       break;
     case 'q' : /*la touche 'q' permet de quitter le programme */
       exit(0);
+      break;
+    case 'l':
+        angley+= 4;
+        glutPostRedisplay(); /* on demande un rafraichissement de l'affichage */
+        break;
+    case 'm':
+        anglex += 4;
+        glutPostRedisplay();
+       break;
+    case 'k':
+        anglex -= 4 ;
+        glutPostRedisplay();
+        break;
+    case 'o':
+        angley -= 4;
+        glutPostRedisplay();
+    case 'z':
+        zoom *= 1.1;
+      glutPostRedisplay();
+      break;
+    case 'w':
+        zoom /=1.1;
+      glutPostRedisplay();
+      break;
     }
 }
 
@@ -222,6 +251,7 @@ void reshape(int x,int y){
 }
 
 void mouse(int button, int state,int x,int y){
+  printf("x:%d, y:%d\n", x, y);
   /* si on appuie sur le bouton gauche */
   if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
   {
@@ -242,6 +272,7 @@ void mousemotion(int x,int y){
 	 position sauvegardee */
       anglex=anglex+(x-xold);
       angley=angley+(y-yold);
+      printf("anglex:%d\nangley:%d\n", anglex, angley);
       glutPostRedisplay(); /* on demande un rafraichissement de l'affichage */
     }
 
