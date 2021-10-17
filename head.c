@@ -118,10 +118,10 @@ void head(){
       //draw cylinder
       glBegin(GL_POLYGON);
           glColor3f(1,1,1);
-          glTexCoord2f((j-1)*2.0/HEAD_CIRCULAR_RESOLUTION,0);glVertex3f(p1.x + p6.x, p1.y + p6.y, p1.z + p6.z);
-          glTexCoord2f((j)*2.0/HEAD_CIRCULAR_RESOLUTION,0);glVertex3f(p1.x + p5.x, p1.y + p5.y, p1.z + p5.z);
-          glTexCoord2f((j)*2.0/HEAD_CIRCULAR_RESOLUTION,0.2);glVertex3f(p2.x + p3.x, p2.y + p3.y, p2.z + p3.z);
-          glTexCoord2f((j-1)*2.0/HEAD_CIRCULAR_RESOLUTION,0.2);glVertex3f(p2.x + p4.x, p2.y + p4.y, p2.z + p4.z);
+          glTexCoord2f((j-1)*1.7/HEAD_CIRCULAR_RESOLUTION,0);glVertex3f(p1.x + p6.x, p1.y + p6.y, p1.z + p6.z);
+          glTexCoord2f((j)*1.7/HEAD_CIRCULAR_RESOLUTION,0);glVertex3f(p1.x + p5.x, p1.y + p5.y, p1.z + p5.z);
+          glTexCoord2f((j)*1.7/HEAD_CIRCULAR_RESOLUTION,0.072);glVertex3f(p2.x + p3.x, p2.y + p3.y, p2.z + p3.z);
+          glTexCoord2f((j-1)*1.7/HEAD_CIRCULAR_RESOLUTION,0.072);glVertex3f(p2.x + p4.x, p2.y + p4.y, p2.z + p4.z);
       glEnd();
       angle_back = angle1;
       glEnd();

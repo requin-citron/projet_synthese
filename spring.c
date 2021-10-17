@@ -1,6 +1,8 @@
 #include "spring.h"
 
-
+double a=0;
+int LightPos[4] = {0,0,0,1};
+int MatSpec [4] = {1,1,1,1};
 
 
 void show_spring(){
@@ -95,14 +97,30 @@ void show_spring(){
   //On echange les buffers
   glutSwapBuffers();
 }
+
 void show_body(){
   /* effacement de l'image avec la couleur de fond */
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glShadeModel(GL_SMOOTH);
+  glMaterialiv(GL_FRONT_AND_BACK,GL_SPECULAR,MatSpec);
+  glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
+  glMatrixMode(GL_MODELVIEW);
+  glEnable(GL_COLOR_MATERIAL);
 
   glLoadIdentity();
   glRotatef(get_angle_y(),1.0,0.0,0.0);
   glRotatef(get_angle_x(),0.0,1.0,0.0);
+
+  //gluLookAt(0.5,0,0,0,0,0.0,0.,0.,0.5);
+  glRotated(0,0,1,0);
+  glLightiv(GL_LIGHT0,GL_POSITION,LightPos);
+  glRotated(0,0,1,0);
+  glEnable(GL_LIGHTING);
+  glEnable(GL_LIGHT0);
+  glEnable(GL_DEPTH_TEST);
+
+
+
 
   unsigned char *img = malloc(sizeof(char)*256*256*3);
   unsigned char texture[256][256][3];
@@ -189,7 +207,7 @@ void show_body(){
           glEnd();
         }
         glBegin(GL_POLYGON);
-          glColor3f(1.,1.,increment*m);
+          glColor3f(1.,1.,1);
           //glColor3f(1,0,0);
           glTexCoord2f((m-1)*1.0/PRECISION_CYLINDER,0.0);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
           //glColor3f(0,1,0);
@@ -210,6 +228,71 @@ void show_body(){
     }
   }
 
+    // //glEnable(GL_LIGHT0);
+    // //Light
+    // GLfloat lightColor0[] = {1.0f, 1.0f, 1.0f,1.0f};
+    // glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
+    // GLfloat light1_position[] = {0.0, 0.0, 0.0, 0.0};
+    // glLightfv(GL_LIGHT0, GL_POSITION, light1_position);
+    // GLfloat light1_spot_direction[] = {0.0, -1.0, 0, 0};
+    // glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, light1_spot_direction);
+    // //GLfloat gl_specular[] = {0.0f, 0.0f, 0.0f, 1.0f};
+    // //glLightfv(GL_LIGHT0, GL_DIFFUSE, gl_specular);
+
+    // glEnable(GL_LIGHTING);
+    // glEnable(GL_LIGHT1);
+    // glEnable(GL_DEPTH_TEST);
+
+
+
+    //Repère
+    //axe x en rouge
+    glBegin(GL_LINES);
+        glColor3f(1.0,0.0,0.0);
+      glVertex3f(0, 0,0.0);
+      glVertex3f(1, 0,0.0);
+    glEnd();
+    //axe des y en vert
+    glBegin(GL_LINES);
+      glColor3f(0.0,1.0,0.0);
+      glVertex3f(0, 0,0.0);
+      glVertex3f(0, 1,0.0);
+    glEnd();
+    //axe des z en bleu
+    glBegin(GL_LINES);
+      glColor3f(0.0,0.0,1.0);
+      glVertex3f(0, 0,0.0);
+      glVertex3f(0, 0,1.0);
+    glEnd();
+
+  glFlush();
+
+  //On echange les buffers
+  glutSwapBuffers();
+}
+
+void Draw(){
+  /* effacement de l'image avec la couleur de fond */
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glShadeModel(GL_SMOOTH);
+    // glMaterialiv(GL_FRONT_AND_BACK,GL_SPECULAR,MatSpec);
+    // glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
+    // glMatrixMode(GL_MODELVIEW);
+    // glEnable(GL_COLOR_MATERIAL);
+    //
+    // glLoadIdentity();
+    // glRotatef(get_angle_y(),1.0,0.0,0.0);
+    // glRotatef(get_angle_x(),0.0,1.0,0.0);
+    //
+    // gluLookAt(0.5,0,0,0,0,0.0,0.,0.,0.5);
+    // glRotated(a,0,1,0);
+    // glLightiv(GL_LIGHT0,GL_POSITION,LightPos);
+    // glRotated(-a,0,1,0);
+    // glColor3f(1,0,1);glutSolidSphere(0.4,50,50);
+    // a=+1;
+    // glEnable(GL_LIGHTING);
+    // glEnable(GL_LIGHT0);
+    // glEnable(GL_DEPTH_TEST);
 
 
     //Repère

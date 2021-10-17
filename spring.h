@@ -29,5 +29,6 @@
 
 void show_spring();
 void show_body();
+void Draw();
 
 #endif
