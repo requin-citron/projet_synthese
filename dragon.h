@@ -1,5 +1,5 @@
-#ifndef HEAD_H
-#define HEAD_H
+#ifndef DRAGON_H
+#define DRAGON_H
 
 #ifdef __APPLE__
 #include <GLUT/glut.h> /* Pour Mac OS X */
@@ -15,14 +15,8 @@
 #include "main.h"
 #include "vector_util.h"
 #include "loadJpeg.h"
+#include "spring.h"
 
-#define HEAD_BEZIER_PRECISION 80
-#define HEAD_CIRCULAR_RESOLUTION 30
-#define HEAD_RAYON 0.1
-#define HEAD_OFFSET 2
-
-
-void head(point p_back);
-
+void dragon();
 
 #endif

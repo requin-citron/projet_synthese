@@ -8,6 +8,7 @@
 #include "main.h"
 #include "spring.h"
 #include "head.h"
+#include "dragon.h"
 
 char presse;
 int anglex,angley,x,y,xold,yold;
@@ -56,7 +57,7 @@ int main(int argc,char **argv){
 
   /* enregistrement des fonctions de rappel */
 
-  glutDisplayFunc(show_body);
+  glutDisplayFunc(dragon);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);
@@ -186,7 +187,7 @@ void affichage1(){
 
 void clavier(unsigned char touche,int x,int y){
   printf("touche : %c\n", touche);
-  printf("zoom: %d\n", zoom);
+  printf("zoom: %f\n", zoom);
   switch (touche)
     {
     case 'p': /* affichage du carre plein */
@@ -233,11 +234,11 @@ void clavier(unsigned char touche,int x,int y){
         angley -= 4;
         glutPostRedisplay();
     case 'z':
-        zoom *= 1.1;
+        zoom += 0.1;
       glutPostRedisplay();
       break;
     case 'w':
-        zoom /=1.1;
+        zoom -= 0.1;
       glutPostRedisplay();
       break;
     }

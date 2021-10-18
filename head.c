@@ -22,13 +22,13 @@ static float calcule_rayon(float *x){
   float ret = 0.;
   if(*x<0.03){
     ret = (*x * 30) * (HEAD_RAYON-0.04) ;
-  }else if (*x<0.06){
+  }else if (*x<(0.06)){
     ret = (0.03 * 30)* HEAD_RAYON-0.04;
-  }else if(*x < 0.12){
+  }else if(*x < (0.12)){
     ret = (*x * 18)* HEAD_RAYON;
-  }else if(*x < 0.16){
+  }else if(*x < (0.16)){
     ret = (0.12 * 18) * HEAD_RAYON;
-  }else if (*x < 0.55){
+  }else if (*x < (0.55)){
     ret = (0.12 * 18) * HEAD_RAYON -  ((*x - 0.16) * 3) * HEAD_RAYON;
   }else{
     ret = HEAD_RAYON;
@@ -36,15 +36,8 @@ static float calcule_rayon(float *x){
   return ret;
 }
 
-void head(){
+void head(point p_back){
   /* effacement de l'image avec la couleur de fond */
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glShadeModel(GL_SMOOTH);
-
-  glLoadIdentity();
-  glRotatef(get_angle_y(),1.0,0.0,0.0);
-  glRotatef(get_angle_x(),0.0,1.0,0.0);
-
   unsigned char *img = malloc(sizeof(char)*256*256*3);
   unsigned char texture[256][256][3];
 
@@ -88,7 +81,7 @@ void head(){
   p1.y = y;
   p1.z = 0;
   for (size_t i = 1; i < (HEAD_BEZIER_PRECISION+1); i++) {
-    t=(float)i/HEAD_BEZIER_PRECISION;
+    t= ((float)i/HEAD_BEZIER_PRECISION);
     bezier(t, &x, &y);
     p2.x = x;
     p2.y = y;
@@ -124,7 +117,6 @@ void head(){
           glTexCoord2f((j-1)*1.7/HEAD_CIRCULAR_RESOLUTION,0.072);glVertex3f(p2.x + p4.x, p2.y + p4.y, p2.z + p4.z);
       glEnd();
       angle_back = angle1;
-      glEnd();
     }
     p1 = p2;
     rayon_back = rayon;
@@ -150,8 +142,4 @@ void head(){
   	glVertex3f(0, 0,0.0);
   	glVertex3f(0, 0,1.0);
   glEnd();
-  glFlush();
-
-  //On echange les buffers
-  glutSwapBuffers();
 }

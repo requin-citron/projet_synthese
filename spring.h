@@ -23,12 +23,12 @@
 #define CIRCULAR_RESOLUTION 31.
 #define RAYON 0.6
 #define RAYON_CYLINDER 0.1
-#define PRECISION_CYLINDER 10.
+#define PRECISION_CYLINDER 30.
 #define QUEUE_INCREMENT 0.005
 
 
 void show_spring();
-void show_body();
+point show_body();
 void Draw();
 
 #endif
