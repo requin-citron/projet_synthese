@@ -22,7 +22,7 @@
 #define HEAD_OFFSET 2
 
 
-void head(point p_back);
+void head(point *, matrix *);
 
 
 #endif

@@ -94,6 +94,7 @@ point change_base(float x, float y, float z, matrix *math){
     ret.z = math->v[0].z * x + math->v[1].z * y + math->v[2].z * z;
   return ret;
 }
+
 void matrix_zero(matrix *m){
 	for(size_t i=0; i < 3; i++){
 		m->v[i].x= 0;
@@ -106,4 +107,14 @@ void matrix_debug(matrix *m){
     for (size_t i = 0; i < 3; i++) {
       printf("v[%lu] = (%f,%f,%f)\n", i, m->v[i].x, m->v[i].y, m->v[i].z);
     }
+}
+
+void inverse_z(matrix *m){
+  vector z = m->v[2];
+  z.x *= -1;
+  z.y *= -1;
+  z.z *= -1;
+  m->v[2] = z;
+  vector  y = produit_vectoriel(&m->v[0],&m->v[2]);
+  m->v[1] = y;
 }

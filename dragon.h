@@ -16,6 +16,10 @@
 #include "vector_util.h"
 #include "loadJpeg.h"
 #include "spring.h"
+#include "head.h"
+
+#define HEAD_RAYON 0.1
+#define HEAD_CIRCULAR_RESOLUTION 30
 
 void dragon();
 

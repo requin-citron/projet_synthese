@@ -40,7 +40,7 @@ void bezier1(float t, float *x, float *y){
 }
 
 int main(int argc,char **argv){
-
+  loadJpegImage("./dragon.jpg");
   /* initialisation de glut et creation
      de la fenetre */
   glutInit(&argc,argv);
@@ -233,12 +233,13 @@ void clavier(unsigned char touche,int x,int y){
     case 'o':
         angley -= 4;
         glutPostRedisplay();
+        break;
     case 'z':
-        zoom += 0.1;
+        zoom /= 1.1;
       glutPostRedisplay();
       break;
     case 'w':
-        zoom -= 0.1;
+        zoom *= 1.1;
       glutPostRedisplay();
       break;
     }

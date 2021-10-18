@@ -97,21 +97,9 @@ void show_spring(){
 
 
 
-point show_body(){
-
-
-
-
-  unsigned char *img = malloc(sizeof(char)*256*256*3);
-  unsigned char texture[256][256][3];
-
-  if(img == NULL){
-    fprintf(stderr, "%s\n", strerror(errno));
-    exit(1);
-  }
-  loadJpegImage("./dragon.jpg", img);
-
+void show_body(point *p_back, matrix *m){
   /* Parametrage du placage de textures */
+  unsigned char *texture = get_texture();
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
   //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
@@ -121,14 +109,7 @@ point show_body(){
   glEnable(GL_TEXTURE_2D);
 
 
-  for (int i=0;i<256;i++){
-    for (int j=0;j<256;j++) {
-    texture[i][j][0]=img[i*256*3+j*3];
-    texture[i][j][1]=img[i*256*3+j*3+1];
-    texture[i][j][2]=img[i*256*3+j*3+2];
-   }
-  }
-  free(img);
+
 
 
   /* Parametrage du placage de textures */
@@ -189,13 +170,13 @@ point show_body(){
         glBegin(GL_POLYGON);
           glColor3f(1.,1.,1);
           //glColor3f(1,0,0);
-          glTexCoord2f((m-1)*1.0/PRECISION_CYLINDER,0.0);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
+          glTexCoord2f((m-1)*1.7/PRECISION_CYLINDER,0.0);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
           //glColor3f(0,1,0);
-          glTexCoord2f(m*1.0/PRECISION_CYLINDER,0.0);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
+          glTexCoord2f(m*1.7/PRECISION_CYLINDER,0.0);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
           //glColor3f(0,0,1);
-          glTexCoord2f(m*1.0/PRECISION_CYLINDER,0.5);glVertex3f(p2.x + v2.x, p2.y + v2.y, p2.z+ v2.z);
+          glTexCoord2f(m*1.7/PRECISION_CYLINDER,0.5);glVertex3f(p2.x + v2.x, p2.y + v2.y, p2.z+ v2.z);
           //glColor3f(0,0,0);
-          glTexCoord2f((m-1)*1.0/PRECISION_CYLINDER,0.5);glVertex3f(p2.x + v1.x, p2.y + v1.y, p2.z+ v1.z);
+          glTexCoord2f((m-1)*1.7/PRECISION_CYLINDER,0.5);glVertex3f(p2.x + v1.x, p2.y + v1.y, p2.z+ v1.z);
         glEnd();
         cyl= cyl_next;
       }
@@ -207,23 +188,6 @@ point show_body(){
       }
     }
   }
-
-    // //glEnable(GL_LIGHT0);
-    // //Light
-    // GLfloat lightColor0[] = {1.0f, 1.0f, 1.0f,1.0f};
-    // glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
-    // GLfloat light1_position[] = {0.0, 0.0, 0.0, 0.0};
-    // glLightfv(GL_LIGHT0, GL_POSITION, light1_position);
-    // GLfloat light1_spot_direction[] = {0.0, -1.0, 0, 0};
-    // glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, light1_spot_direction);
-    // //GLfloat gl_specular[] = {0.0f, 0.0f, 0.0f, 1.0f};
-    // //glLightfv(GL_LIGHT0, GL_DIFFUSE, gl_specular);
-
-    // glEnable(GL_LIGHTING);
-    // glEnable(GL_LIGHT1);
-    // glEnable(GL_DEPTH_TEST);
-
-
 
     //Repère
     //axe x en rouge
@@ -244,7 +208,8 @@ point show_body(){
       glVertex3f(0, 0,0.0);
       glVertex3f(0, 0,1.0);
     glEnd();
-    return p2;
+    *p_back=p1;
+    *m = base_back;
 }
 
 void Draw(){

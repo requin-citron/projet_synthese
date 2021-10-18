@@ -25,35 +25,20 @@ static float calcule_rayon(float *x){
   }else if (*x<(0.06)){
     ret = (0.03 * 30)* HEAD_RAYON-0.04;
   }else if(*x < (0.12)){
-    ret = (*x * 18)* HEAD_RAYON;
+    ret = (*x * 18)* (HEAD_RAYON-0.02);
   }else if(*x < (0.16)){
-    ret = (0.12 * 18) * HEAD_RAYON;
+    ret = (0.12 * 18) * (HEAD_RAYON-0.02);
   }else if (*x < (0.55)){
-    ret = (0.12 * 18) * HEAD_RAYON -  ((*x - 0.16) * 3) * HEAD_RAYON;
+    ret = (0.12 * 18) * (HEAD_RAYON) -  ((*x - 0.16) * 3) * (HEAD_RAYON);
   }else{
     ret = HEAD_RAYON;
   }
   return ret;
 }
 
-void head(point p_back){
+void head(point *p_back, matrix *m){
   /* effacement de l'image avec la couleur de fond */
-  unsigned char *img = malloc(sizeof(char)*256*256*3);
-  unsigned char texture[256][256][3];
-
-  if(img == NULL){
-    fprintf(stderr, "%s\n", strerror(errno));
-    exit(1);
-  }
-  loadJpegImage("./dragon.jpg", img);
-  for (int i=0;i<256;i++){
-    for (int j=0;j<256;j++) {
-    texture[i][j][0]=img[i*256*3+j*3];
-    texture[i][j][1]=img[i*256*3+j*3+1];
-    texture[i][j][2]=img[i*256*3+j*3+2];
-   }
-  }
-  free(img);
+  unsigned char *texture = get_texture();
 
 
   /* Parametrage du placage de textures */
@@ -123,6 +108,7 @@ void head(point p_back){
     base_back = base;
   }
 
+
     //Repère
   //axe x en rouge
   glBegin(GL_LINES);
@@ -142,4 +128,6 @@ void head(point p_back){
   	glVertex3f(0, 0,0.0);
   	glVertex3f(0, 0,1.0);
   glEnd();
+  *m = base;
+  *p_back = p1;
 }

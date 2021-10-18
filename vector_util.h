@@ -34,4 +34,5 @@ vector add_vect(vector *, vector *);
 point change_base(float , float , float , matrix *);
 void matrix_zero(matrix *);
 void matrix_debug(matrix *);
+void inverse_z(matrix *);
 #endif

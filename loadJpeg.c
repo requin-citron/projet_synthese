@@ -1,6 +1,10 @@
 #include "loadJpeg.h"
 
-void loadJpegImage(char *fichier, unsigned char *image){
+
+unsigned char texture[256][256][3];
+
+void loadJpegImage(char *fichier){
+  unsigned char image[256*256*3];
   struct jpeg_decompress_struct cinfo;
   struct jpeg_error_mgr jerr;
   FILE *file;
@@ -43,4 +47,15 @@ void loadJpegImage(char *fichier, unsigned char *image){
   jpeg_finish_decompress(&cinfo);
   jpeg_destroy_decompress(&cinfo);
   fclose(file);
+  for (int i=0;i<256;i++){
+    for (int j=0;j<256;j++) {
+    texture[i][j][0]=image[i*256*3+j*3];
+    texture[i][j][1]=image[i*256*3+j*3+1];
+    texture[i][j][2]=image[i*256*3+j*3+2];
+   }
+  }
+}
+
+unsigned char *get_texture(){
+  return texture;
 }

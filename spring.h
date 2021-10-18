@@ -28,7 +28,7 @@
 
 
 void show_spring();
-point show_body();
+void show_body(point *, matrix *);
 void Draw();
 
 #endif
