@@ -15,6 +15,7 @@
 #include "main.h"
 #include "vector_util.h"
 #include "loadJpeg.h"
+#include "oeil.h"
 
 #define HEAD_BEZIER_PRECISION 80
 #define HEAD_CIRCULAR_RESOLUTION 30

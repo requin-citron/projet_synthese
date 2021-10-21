@@ -1,6 +1,7 @@
 #include "oeil.h"
 
 void oeil(float rayon){
+    glDisable(GL_TEXTURE_2D);
     point p1, p2;
     point p3, p4;
     float angle1= 0;
@@ -63,4 +64,5 @@ void oeil(float rayon){
         p3= p4;
       }
     }
+  glEnable(GL_TEXTURE_2D);
 }

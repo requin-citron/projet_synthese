@@ -109,25 +109,43 @@ void head(point *p_back, matrix *m){
   }
 
 
-    //Repère
-  //axe x en rouge
-  glBegin(GL_LINES);
-      glColor3f(1.0,0.0,0.0);
-  	glVertex3f(0, 0,0.0);
-  	glVertex3f(1, 0,0.0);
-  glEnd();
-  //axe des y en vert
-  glBegin(GL_LINES);
-  	glColor3f(0.0,1.0,0.0);
-  	glVertex3f(0, 0,0.0);
-  	glVertex3f(0, 1,0.0);
-  glEnd();
-  //axe des z en bleu
-  glBegin(GL_LINES);
-  	glColor3f(0.0,0.0,1.0);
-  	glVertex3f(0, 0,0.0);
-  	glVertex3f(0, 0,1.0);
-  glEnd();
+  // //Repère DEBUG
+  // //axe x en rouge
+  // glBegin(GL_LINES);
+  //     glColor3f(1.0,0.0,0.0);
+  // 	glVertex3f(0, 0,0.0);
+  // 	glVertex3f(1, 0,0.0);
+  // glEnd();
+  // //axe des y en vert
+  // glBegin(GL_LINES);
+  // 	glColor3f(0.0,1.0,0.0);
+  // 	glVertex3f(0, 0,0.0);
+  // 	glVertex3f(0, 1,0.0);
+  // glEnd();
+  // //axe des z en bleu
+  // glBegin(GL_LINES);
+  // 	glColor3f(0.0,0.0,1.0);
+  // 	glVertex3f(0, 0,0.0);
+  // 	glVertex3f(0, 0,1.0);
+  // glEnd();
+
+  //oeil gauche
+  glPushMatrix();
+  glTranslatef(-0.60,1,0.12);
+  glRotatef(40,1,0,0);
+  glRotatef(20,0,1,0);
+  glRotatef(20,0,0,1);
+  oeil(0.05);
+  glPopMatrix();
+  //oeil droite
+  glPushMatrix();
+  glTranslatef(-0.60,1,-0.12);
+  glRotatef(-40,1,0,0);
+  glRotatef(20,0,1,0);
+  glRotatef(20,0,0,1);
+  oeil(0.05);
+  glPopMatrix();
+
   *m = base;
   *p_back = p1;
 }

@@ -103,8 +103,22 @@ void tete_magie(){
   point p2_back;
   matrix m2;
   head(&p2_back, &m2);
-  oeil(0.5);
-  //oeil(0.5);
+  //oeil gauche
+  glPushMatrix();
+  glTranslatef(-0.60,1,0.12);
+  glRotatef(40,1,0,0);
+  glRotatef(20,0,1,0);
+  glRotatef(20,0,0,1);
+  oeil(0.05);
+  glPopMatrix();
+  //oeil droite
+  glPushMatrix();
+  glTranslatef(-0.60,1,-0.12);
+  glRotatef(-40,1,0,0);
+  glRotatef(20,0,1,0);
+  glRotatef(20,0,0,1);
+  oeil(0.05);
+  glPopMatrix();
   glFlush();
   //On echange les buffers
   glutSwapBuffers();
