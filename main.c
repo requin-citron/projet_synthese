@@ -57,7 +57,7 @@ int main(int argc,char **argv){
 
   /* enregistrement des fonctions de rappel */
 
-  glutDisplayFunc(dragon);
+  glutDisplayFunc(tete_magie);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);
@@ -186,8 +186,8 @@ void affichage1(){
 }
 
 void clavier(unsigned char touche,int x,int y){
-  printf("touche : %c\n", touche);
-  printf("zoom: %f\n", zoom);
+  //printf("touche : %c\n", touche);
+  //printf("zoom: %f\n", zoom);
   switch (touche)
     {
     case 'p': /* affichage du carre plein */
@@ -253,7 +253,7 @@ void reshape(int x,int y){
 }
 
 void mouse(int button, int state,int x,int y){
-  printf("x:%d, y:%d\n", x, y);
+  //printf("x:%d, y:%d\n", x, y);
   /* si on appuie sur le bouton gauche */
   if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
   {
@@ -274,7 +274,7 @@ void mousemotion(int x,int y){
 	 position sauvegardee */
       anglex=anglex+(x-xold);
       angley=angley+(y-yold);
-      printf("anglex:%d\nangley:%d\n", anglex, angley);
+      //printf("anglex:%d\nangley:%d\n", anglex, angley);
       glutPostRedisplay(); /* on demande un rafraichissement de l'affichage */
     }
 

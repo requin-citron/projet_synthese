@@ -79,3 +79,33 @@ void dragon(){
   //On echange les buffers
   glutSwapBuffers();
 }
+
+void tete_magie(){
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glShadeModel(GL_SMOOTH);
+  glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
+  glMatrixMode(GL_MODELVIEW);
+  glEnable(GL_COLOR_MATERIAL);
+  vector cam;
+  cam.x = 0;
+  cam.y = 0;
+  cam.z = -1;
+  glLoadIdentity();
+  glRotatef(get_angle_y(),1.0,0.0,0.0);
+  glRotatef(get_angle_x(),0.0,1.0,0.0);
+
+  //gluLookAt(0.5,0,0,0,0,0.0,0.,0.,0.5);
+  glOrtho(get_zoom(), -1*get_zoom(), get_zoom(), -1*get_zoom(), get_zoom(), -1*get_zoom());
+  gluLookAt(0, 0, 0, cam.x, cam.y,cam.z, 0, -1, 0);
+  glRotated(0,0,1,0);
+  glRotated(0,0,1,0);
+  glEnable(GL_DEPTH_TEST);
+  point p2_back;
+  matrix m2;
+  head(&p2_back, &m2);
+  oeil(0.5);
+  //oeil(0.5);
+  glFlush();
+  //On echange les buffers
+  glutSwapBuffers();
+}

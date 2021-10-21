@@ -17,10 +17,12 @@
 #include "loadJpeg.h"
 #include "spring.h"
 #include "head.h"
+#include "oeil.h"
 
 #define HEAD_RAYON 0.1
 #define HEAD_CIRCULAR_RESOLUTION 30
 
 void dragon();
+void tete_magie();
 
 #endif
