@@ -13,8 +13,10 @@ static void bezier(float t, float *x, float *y){
     float coeff2 = 3.*pow(1-t,2)*t/multi;
     float coeff3 = 3.*pow(1-t,2)*pow(t,2)/multi;
     float coeff4 = pow(t,3)/multi;
-    *x = coeff1 * (-1.20) + coeff2*(0.55)+coeff3*(-0.71)+ coeff4*(0.70);
-    *y = coeff1 * 0.9 + coeff2*0.95+coeff3*(0.20)+ coeff4*(0.10);
+    float x3 = -0.71;
+    float y3 = 0.20;
+    *x = coeff1 * (-1.20) + coeff2*(0.55)+coeff3*x3+ coeff4*(0.70);
+    *y = coeff1 * 0.9 + coeff2*0.95+coeff3*y3+ coeff4*(0.10);
 }
 
 static float calcule_rayon(float *x){

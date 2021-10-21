@@ -13,6 +13,7 @@
 char presse;
 int anglex,angley,x,y,xold,yold;
 double zoom=1;
+float animation1=0;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -242,6 +243,14 @@ void clavier(unsigned char touche,int x,int y){
         zoom *= 1.1;
       glutPostRedisplay();
       break;
+    case 't':
+        animation1 +=1;
+        glutPostRedisplay();
+        break;
+    case 'g':
+        animation1 -= 1;
+        glutPostRedisplay();
+        break;
     }
 }
 
