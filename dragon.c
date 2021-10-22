@@ -1,6 +1,13 @@
 #include "dragon.h"
 
 
+//! medelisation du dragon
+/*!
+  on crée le corp
+  et la tete on fais une rotation a la tete et une translation
+  on inverse l'axe z de sa matrice de changement de base
+  puis on fais un cylindre qui relis les deux morceau
+*/
 void dragon(){
   /* effacement de l'image avec la couleur de fond */
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

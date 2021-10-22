@@ -1,7 +1,10 @@
 #include "spring.h"
 
 
-
+//!fonction de test pour le corp
+/*!
+  permet de bien sélectioner les paramétre des header avant de les tester avec tout le body
+*/
 void show_spring(){
   /* effacement de l'image avec la couleur de fond */
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -95,8 +98,12 @@ void show_spring(){
   glutSwapBuffers();
 }
 
-
-
+//! affiche le corp
+/*!
+  \param[out] p_back pointeur du point d'extremité du corp
+  \param[out] m pointeur de la matrice de changement de base du corp
+  affiche le corp et renvois le dernier point avec sa matrice
+*/
 void show_body(point *p_back, matrix *m){
   /* Parametrage du placage de textures */
   unsigned char *texture = get_texture();
@@ -210,54 +217,4 @@ void show_body(point *p_back, matrix *m){
     glEnd();
     *p_back=p1;
     *m = base_back;
-}
-
-void Draw(){
-  /* effacement de l'image avec la couleur de fond */
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glShadeModel(GL_SMOOTH);
-    // glMaterialiv(GL_FRONT_AND_BACK,GL_SPECULAR,MatSpec);
-    // glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
-    // glMatrixMode(GL_MODELVIEW);
-    // glEnable(GL_COLOR_MATERIAL);
-    //
-    // glLoadIdentity();
-    // glRotatef(get_angle_y(),1.0,0.0,0.0);
-    // glRotatef(get_angle_x(),0.0,1.0,0.0);
-    //
-    // gluLookAt(0.5,0,0,0,0,0.0,0.,0.,0.5);
-    // glRotated(a,0,1,0);
-    // glLightiv(GL_LIGHT0,GL_POSITION,LightPos);
-    // glRotated(-a,0,1,0);
-    // glColor3f(1,0,1);glutSolidSphere(0.4,50,50);
-    // a=+1;
-    // glEnable(GL_LIGHTING);
-    // glEnable(GL_LIGHT0);
-    // glEnable(GL_DEPTH_TEST);
-
-
-    //Repère
-    //axe x en rouge
-    glBegin(GL_LINES);
-        glColor3f(1.0,0.0,0.0);
-      glVertex3f(0, 0,0.0);
-      glVertex3f(1, 0,0.0);
-    glEnd();
-    //axe des y en vert
-    glBegin(GL_LINES);
-      glColor3f(0.0,1.0,0.0);
-      glVertex3f(0, 0,0.0);
-      glVertex3f(0, 1,0.0);
-    glEnd();
-    //axe des z en bleu
-    glBegin(GL_LINES);
-      glColor3f(0.0,0.0,1.0);
-      glVertex3f(0, 0,0.0);
-      glVertex3f(0, 0,1.0);
-    glEnd();
-
-  glFlush();
-
-  //On echange les buffers
-  glutSwapBuffers();
 }

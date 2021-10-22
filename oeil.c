@@ -1,5 +1,10 @@
 #include "oeil.h"
 
+//!génére l'heure
+/*!
+  \param rayon rayon de l'oeil
+  crée une sphere blanche avec un cercle noir pour faire l'oeil
+*/
 void oeil(float rayon){
     glDisable(GL_TEXTURE_2D);
     point p1, p2;

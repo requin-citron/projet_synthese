@@ -11,7 +11,9 @@
 #include <stdlib.h>
 #include "vector_util.h"
 
+//! nombre de segment du cercle
 #define OEIL_CIRCULAR_RESOLUTION 50
+//! nombre de segment vertical de la demi sphere
 #define OEIL_VERTICAL_RESOLUTION 50
 void oeil(float);
 #endif

@@ -16,10 +16,12 @@
 #include "vector_util.h"
 #include "loadJpeg.h"
 #include "oeil.h"
-
-#define HEAD_BEZIER_PRECISION 80 //!nombre de segment de la courbe de bezier
-#define HEAD_CIRCULAR_RESOLUTION 30//!nombre de segment de chaque cercle
-#define HEAD_RAYON 0.1 //! rayon de base de la tete
+//! nombre de segment de la courbe de bezier
+#define HEAD_BEZIER_PRECISION 80
+//! nombre de segment de chaque cercle
+#define HEAD_CIRCULAR_RESOLUTION 30
+//! rayon de base de la tete
+#define HEAD_RAYON 0.1
 
 void head(point *, matrix *);
 

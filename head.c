@@ -57,10 +57,14 @@ static float calcule_rayon(float *x){
 
 //! construit la tete
 /*!
-  \param[in] p_back pointeur sur le point avant la tete
-  \param[in] m base de l'ancien point
+  \param[out] p_back pointeur sur le dernier point
+  \param[out] m pointeur sur la base du dernier point
   crée la tete du dragon et le relie a l'encien point
   avec un cylindre
+  de plus on met les yeux sur la tete
+  pour que les yeux suive l'annimation on les place
+  grace a la courbe de bezier avec une rotation pour qu'il regarde
+  devant
 */
 void head(point *p_back, matrix *m){
   /* effacement de l'image avec la couleur de fond */

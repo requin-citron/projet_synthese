@@ -3,6 +3,12 @@
 
 unsigned char texture[256][256][3];
 
+//!fonction d'ouverture de la texture
+/*!
+  \param[in] fichier nom du fichier
+  initialise la variable globale texture
+  avec la texture de la peau de dragon
+*/
 void loadJpegImage(char *fichier){
   unsigned char image[256*256*3];
   struct jpeg_decompress_struct cinfo;
@@ -56,6 +62,7 @@ void loadJpegImage(char *fichier){
   }
 }
 
+//!renvois la variable texture
 unsigned char *get_texture(){
   return texture;
 }
