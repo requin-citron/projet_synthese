@@ -23,6 +23,10 @@ vector_util.o:vector_util.c vector_util.h
 laser.o:laser.c laser.h
 		$(CC) $(CFLAGS) $(LDLIBS) -c $<
 clean:clean_objet
-	$(RM) main
+		$(RM) main
 clean_objet:
-	$(RM) *.o
+		$(RM) *.o
+doc:
+		doxygen 
+clean_doc:
+		$(RM) -rf ./html

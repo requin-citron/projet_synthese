@@ -5,6 +5,11 @@
 
 
 //structure de point
+//! structure point
+/*!
+  structure de point ayant trois composantes x y et z
+  les trois composante sont des float
+*/
 typedef struct{
   float x;
   float y;
@@ -12,6 +17,11 @@ typedef struct{
 } point;
 
 //structure vector
+//! structure  vecteur
+/*!
+  structure de vecteur qui prend trois composantes x y et z
+  les trois composantes sont des float
+*/
 typedef struct{
   float x;
   float y;
@@ -19,6 +29,11 @@ typedef struct{
 } vector;
 
 //structure matrice
+//!structure de matrice
+/*!
+  la mtrice  a un seule membre qui est un tableau de 3 vecteur
+  donc la matrice est représenté avec ses trois vecteur **colonnes**
+*/
 typedef struct{
   vector v[3];
 } matrix;

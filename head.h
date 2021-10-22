@@ -17,11 +17,9 @@
 #include "loadJpeg.h"
 #include "oeil.h"
 
-#define HEAD_BEZIER_PRECISION 80
-#define HEAD_CIRCULAR_RESOLUTION 30
-#define HEAD_RAYON 0.1
-#define HEAD_OFFSET 2
-
+#define HEAD_BEZIER_PRECISION 80 //!nombre de segment de la courbe de bezier
+#define HEAD_CIRCULAR_RESOLUTION 30//!nombre de segment de chaque cercle
+#define HEAD_RAYON 0.1 //! rayon de base de la tete
 
 void head(point *, matrix *);
 

@@ -2,7 +2,15 @@
 
 bool head_first = true;
 
-
+//! fonction de bezier avec coefficien variable
+/*!
+  \param t valeur de t entre 0 et 1
+  \param[out] x valeur x retour de la fonction de bezier
+  \param[out] y valeur y retour de la fonction de bezier
+  calcule une courbe de bezier en 4 point en sachant que les
+  coefficients peuvent change pour les animation
+  aka la tete ce baisse ou ce lève
+*/
 static void bezier(float t, float *x, float *y){
     if(t<0 || t>1){
       fprintf(stderr, "Error: Bezier1 t must be between 0 and 1\n");
@@ -21,6 +29,13 @@ static void bezier(float t, float *x, float *y){
     *y = coeff1 * y1 + coeff2*y2+coeff3*(0.20)+ coeff4*(0.10);
 }
 
+//!calcule le rayon en fontion de t(besizer)
+/*!
+  \return float rayon
+  \param x pointeur sur t entre 0 et 1 (bezier)
+  calcule le rayon en fonction de t pour donner
+  la forme de la tete
+*/
 static float calcule_rayon(float *x){
   //printf("t = %f\n", *x);
   float ret = 0.;
@@ -40,6 +55,13 @@ static float calcule_rayon(float *x){
   return ret;
 }
 
+//! construit la tete
+/*!
+  \param[in] p_back pointeur sur le point avant la tete
+  \param[in] m base de l'ancien point
+  crée la tete du dragon et le relie a l'encien point
+  avec un cylindre
+*/
 void head(point *p_back, matrix *m){
   /* effacement de l'image avec la couleur de fond */
   unsigned char *texture = get_texture();
