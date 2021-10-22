@@ -6,6 +6,7 @@ unsigned char texture[256][256][3];
 //!fonction d'ouverture de la texture
 /*!
   \param[in] fichier nom du fichier
+  
   initialise la variable globale texture
   avec la texture de la peau de dragon
 */

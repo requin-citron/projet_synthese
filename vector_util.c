@@ -5,6 +5,7 @@
 //! 1/sqrt(x)
 /*!
 	\param[in] number x
+	
 	on utilise une astuce pour augmenter le traitement de 1/sqrt(x)
 	qui est trés long a calculer normalement ce **hack** viens de quake
 	qui utilisé ca pour normaliser ses vecteur ce que nous allons faire ici

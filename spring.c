@@ -102,6 +102,7 @@ void show_spring(){
 /*!
   \param[out] p_back pointeur du point d'extremité du corp
   \param[out] m pointeur de la matrice de changement de base du corp
+  
   affiche le corp et renvois le dernier point avec sa matrice
 */
 void show_body(point *p_back, matrix *m){
