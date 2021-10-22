@@ -14,6 +14,7 @@ char presse;
 int anglex,angley,x,y,xold,yold;
 double zoom=1;
 float animation1=0;
+float animation2=0;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -26,6 +27,8 @@ void mousemotion(int x,int y);
 int get_angle_x(){return anglex;}
 int get_angle_y(){return angley;}
 double get_zoom(){return zoom;}
+float get_animation1(){return animation1;}
+float get_animation2(){return animation2;}
 
 void bezier1(float t, float *x, float *y){
     if(t<0 || t>1){
@@ -244,11 +247,19 @@ void clavier(unsigned char touche,int x,int y){
       glutPostRedisplay();
       break;
     case 't':
-        animation1 +=1;
+        if(animation1 < 100)animation1 +=1;
         glutPostRedisplay();
         break;
     case 'g':
-        animation1 -= 1;
+        if(animation1 > 0)animation1 -= 1;
+        glutPostRedisplay();
+        break;
+    case 'y':
+        if(animation2 < 75)animation2 +=1;
+        glutPostRedisplay();
+        break;
+    case 'h':
+        if(animation2 > 0)animation2 -= 1;
         glutPostRedisplay();
         break;
     }

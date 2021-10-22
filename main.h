@@ -17,5 +17,7 @@
 double get_zoom();
 int get_angle_y();
 int get_angle_x();
+float get_animation1();
+float get_animation2();
 
 #endif

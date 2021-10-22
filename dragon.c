@@ -35,9 +35,10 @@ void dragon(){
   point p2_back;
   matrix m2;
   float angle, angle_back;
+  float offset= (get_animation2()/100.)*3*2*M_PI*(RAYON*RAYON);
   angle_back = 0;
   glPushMatrix();
-  glTranslatef(0.75,0.4,0.6);
+  glTranslatef(0.75+offset,0.4,0.6);
   glRotatef(180,0,1,0);
   head(&p2_back, &m2);
   glPopMatrix();
@@ -45,7 +46,7 @@ void dragon(){
   p2_back.z *= -1;
 
   //on prend en compte la translation
-  p2_back.x += 0.75;
+  p2_back.x += 0.75+offset;
   p2_back.y += 0.4;
   p2_back.z += 0.6;
 
@@ -68,8 +69,8 @@ void dragon(){
       glColor3f(1,1,1);
       glTexCoord2f((i-1)*1.7/HEAD_CIRCULAR_RESOLUTION,0);glVertex3f(p1_back.x + p1.x, p1_back.y + p1.y, p1_back.z +p1.z);
       glTexCoord2f((i)*1.7/HEAD_CIRCULAR_RESOLUTION,0);glVertex3f(p1_back.x + p2.x, p1_back.y + p2.y, p1_back.z + p2.z);
-      glTexCoord2f((i)*1.7/HEAD_CIRCULAR_RESOLUTION,0.15);glVertex3f(p2_back.x + p4.x, p2_back.y + p4.y, p2_back.z + p4.z);
-      glTexCoord2f((i-1)*1.7/HEAD_CIRCULAR_RESOLUTION,0.15);glVertex3f(p2_back.x + p3.x, p2_back.y + p3.y, p2_back.z + p3.z);
+      glTexCoord2f((i)*1.7/HEAD_CIRCULAR_RESOLUTION,0.15+offset*3);glVertex3f(p2_back.x + p4.x, p2_back.y + p4.y, p2_back.z + p4.z);
+      glTexCoord2f((i-1)*1.7/HEAD_CIRCULAR_RESOLUTION,0.15+offset*3);glVertex3f(p2_back.x + p3.x, p2_back.y + p3.y, p2_back.z + p3.z);
     glEnd();
     angle_back = angle;
 

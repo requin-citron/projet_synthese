@@ -13,10 +13,12 @@ static void bezier(float t, float *x, float *y){
     float coeff2 = 3.*pow(1-t,2)*t/multi;
     float coeff3 = 3.*pow(1-t,2)*pow(t,2)/multi;
     float coeff4 = pow(t,3)/multi;
-    float x3 = -0.71;
-    float y3 = 0.20;
-    *x = coeff1 * (-1.20) + coeff2*(0.55)+coeff3*x3+ coeff4*(0.70);
-    *y = coeff1 * 0.9 + coeff2*0.95+coeff3*y3+ coeff4*(0.10);
+    float x2 = 0.55 - ((get_animation1()/100.)*1.06);
+    float y2 = 0.95 - ((get_animation1()/100.)*0.5);
+    float x1 = (-1.20) - ((get_animation1()/100.)*(0.2));
+    float y1 = (0.9) - ((get_animation1()/100.)*(0.5));
+    *x = coeff1 * x1 + coeff2*x2+coeff3*(-0.71)+ coeff4*(0.70);
+    *y = coeff1 * y1 + coeff2*y2+coeff3*(0.20)+ coeff4*(0.10);
 }
 
 static float calcule_rayon(float *x){
@@ -130,10 +132,12 @@ void head(point *p_back, matrix *m){
   // 	glVertex3f(0, 0,0.0);
   // 	glVertex3f(0, 0,1.0);
   // glEnd();
-
+  float x_o;
+  float y_o;
+  bezier(0.14,&x_o, &y_o);
   //oeil gauche
   glPushMatrix();
-  glTranslatef(-0.60,1,0.12);
+  glTranslatef(x_o,y_o+HEAD_RAYON-0.02,0.12);
   glRotatef(40,1,0,0);
   glRotatef(20,0,1,0);
   glRotatef(20,0,0,1);
@@ -141,7 +145,7 @@ void head(point *p_back, matrix *m){
   glPopMatrix();
   //oeil droite
   glPushMatrix();
-  glTranslatef(-0.60,1,-0.12);
+  glTranslatef(x_o,y_o+HEAD_RAYON-0.02,-0.12);
   glRotatef(-40,1,0,0);
   glRotatef(20,0,1,0);
   glRotatef(20,0,0,1);
