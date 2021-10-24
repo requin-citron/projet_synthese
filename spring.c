@@ -167,7 +167,7 @@ void show_body(point *p_back, matrix *m){
         if(!(i==1 && d == 1)){
           v1_b = change_base(0,(rayon_back)*sin(cyl),(rayon_back)*cos(cyl),&base_back);
           v2_b = change_base(0,(rayon_back)*sin(cyl_next),(rayon_back)*cos(cyl_next),&base_back);
-          glDisable(GL_TEXTURE_2D);
+          //glDisable(GL_TEXTURE_2D);
           glBegin(GL_POLYGON);
             if((CIRCULAR_RESOLUTION+1)*(SPINE_NB+1)*(get_animation2()/100.) > i*(CIRCULAR_RESOLUTION)+d){
               glColor3f(0,0,1);
@@ -179,7 +179,7 @@ void show_body(point *p_back, matrix *m){
             glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
             glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
           glEnd();
-          glEnable(GL_TEXTURE_2D);
+          //glEnable(GL_TEXTURE_2D);
         }
         glBegin(GL_POLYGON);
           glColor3f(1.,1.,1);
