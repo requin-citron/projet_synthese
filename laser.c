@@ -13,10 +13,16 @@ void draw_laser(){
   for (size_t i = 1; i < (LASER_RESOLUTION+1); i++) {
     angle = (2*i*M_PI)/(LASER_RESOLUTION);
     glBegin(GL_POLYGON);
-    glVertex3f(0, LASER_RAYON*sin(angle_back), LASER_RAYON*cos(angle_back));
-    glVertex3f(0, LASER_RAYON*sin(angle), LASER_RAYON*cos(angle));
-    glVertex3f(-1*size, LASER_RAYON*sin(angle), LASER_RAYON*cos(angle));
-    glVertex3f(-1*size, LASER_RAYON*sin(angle_back), LASER_RAYON*cos(angle_back));
+      glVertex3f(0, LASER_RAYON*sin(angle_back), LASER_RAYON*cos(angle_back));
+      glVertex3f(0, LASER_RAYON*sin(angle), LASER_RAYON*cos(angle));
+      glVertex3f(-1*size, LASER_RAYON*sin(angle), LASER_RAYON*cos(angle));
+      glVertex3f(-1*size, LASER_RAYON*sin(angle_back), LASER_RAYON*cos(angle_back));
+    glEnd();
+    //rebouchage extremité
+    glBegin(GL_POLYGON);
+      glVertex3f(-1*size, LASER_RAYON*sin(angle), LASER_RAYON*cos(angle));
+      glVertex3f(-1, 0, 0);
+      glVertex3f(-1*size, LASER_RAYON*sin(angle_back), LASER_RAYON*cos(angle_back));
     glEnd();
     angle_back = angle;
   }
