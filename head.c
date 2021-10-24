@@ -10,7 +10,7 @@
   \param[out] x valeur x retour de la fonction de bezier;
   \param[out] y valeur y retour de la fonction de bezier;
 */
-static void bezier(float t, float *x, float *y){
+void bezier(float t, float *x, float *y){
     if(t<0 || t>1){
       fprintf(stderr, "Error: Bezier1 t must be between 0 and 1\n");
       exit(0);
@@ -58,7 +58,7 @@ static float calcule_rayon(float *x){
 /*!
   \param[out] p_back pointeur sur le dernier point
   \param[out] m pointeur sur la base du dernier point
-  
+
   crée la tete du dragon et le relie a l'encien point
   avec un cylindre
   de plus on met les yeux sur la tete

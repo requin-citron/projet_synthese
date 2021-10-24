@@ -1,6 +1,12 @@
 #include "laser.h"
 
-void draw_laser(){
+//! crée un cylindre
+/*!
+  \param rayon rayon du cylindre
+  crée un cylindre bleu de rayon du parametre
+  la longeur du cylindre dépend de animation2
+*/
+void draw_laser(float rayon){
   glDisable(GL_TEXTURE_2D);
   float angle_back = 0;
   float angle;
@@ -13,16 +19,21 @@ void draw_laser(){
   for (size_t i = 1; i < (LASER_RESOLUTION+1); i++) {
     angle = (2*i*M_PI)/(LASER_RESOLUTION);
     glBegin(GL_POLYGON);
-      glVertex3f(0, LASER_RAYON*sin(angle_back), LASER_RAYON*cos(angle_back));
-      glVertex3f(0, LASER_RAYON*sin(angle), LASER_RAYON*cos(angle));
-      glVertex3f(-1*size, LASER_RAYON*sin(angle), LASER_RAYON*cos(angle));
-      glVertex3f(-1*size, LASER_RAYON*sin(angle_back), LASER_RAYON*cos(angle_back));
+      glVertex3f(0, rayon*sin(angle_back), rayon*cos(angle_back));
+      glVertex3f(0, rayon*sin(angle), rayon*cos(angle));
+      glVertex3f(size, rayon*sin(angle), rayon*cos(angle));
+      glVertex3f(size, rayon*sin(angle_back), rayon*cos(angle_back));
     glEnd();
     //rebouchage extremité
     glBegin(GL_POLYGON);
-      glVertex3f(-1*size, LASER_RAYON*sin(angle), LASER_RAYON*cos(angle));
-      glVertex3f(-1, 0, 0);
-      glVertex3f(-1*size, LASER_RAYON*sin(angle_back), LASER_RAYON*cos(angle_back));
+      glVertex3f(size, rayon*sin(angle), rayon*cos(angle));
+      glVertex3f(size, 0, 0);
+      glVertex3f(size, rayon*sin(angle_back), rayon*cos(angle_back));
+    glEnd();
+    glBegin(GL_POLYGON);
+      glVertex3f(0, rayon*sin(angle), rayon*cos(angle));
+      glVertex3f(0, rayon*sin(angle_back), rayon*cos(angle_back));
+      glVertex3f(0, 0, 0);
     glEnd();
     angle_back = angle;
   }

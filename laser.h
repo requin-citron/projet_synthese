@@ -14,8 +14,9 @@
 #include <errno.h>
 #include "main.h"
 
-#define LASER_RAYON 0.2
 #define LASER_RESOLUTION 20
 #define LASER_MAX_SIZE 4
+
+void draw_laser(float);
 
 #endif

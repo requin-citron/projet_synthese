@@ -18,6 +18,7 @@
 #include "spring.h"
 #include "head.h"
 #include "oeil.h"
+#include "laser.h"
 
 void dragon();
 void tete_magie();

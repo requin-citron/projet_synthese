@@ -45,9 +45,9 @@ void dragon(){
   float offset= 0;//(get_animation2()/100.)*3*2*M_PI*(RAYON*RAYON);
   angle_back = 0;
   glPushMatrix();
-  glTranslatef(0.75+offset,0.4,0.6);
-  glRotatef(180,0,1,0);
-  head(&p2_back, &m2);
+    glTranslatef(0.75+offset,0.4,0.6);
+    glRotatef(180,0,1,0);
+    head(&p2_back, &m2);
   glPopMatrix();
   p2_back.x *= -1;
   p2_back.z *= -1;
@@ -81,6 +81,16 @@ void dragon(){
     glEnd();
     angle_back = angle;
 
+  }
+  //laser
+  float x_b;
+  float y_b;
+  bezier(0.03,&x_b, &y_b);
+  if(get_animation2()>140){
+    glPushMatrix();
+      glTranslatef(0.75+offset-x_b,0.4+y_b,0.6);
+      draw_laser((0.03 * 30)* HEAD_RAYON-0.04);
+    glPopMatrix();
   }
 
   glFlush();

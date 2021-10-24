@@ -24,6 +24,6 @@
 #define HEAD_RAYON 0.1
 
 void head(point *, matrix *);
-
+void bezier(float , float *, float *);
 
 #endif
