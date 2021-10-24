@@ -10,6 +10,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <time.h>
 #include "vector_util.h"
 
 double get_zoom();
@@ -17,5 +18,6 @@ int get_angle_y();
 int get_angle_x();
 float get_animation1();
 float get_animation2();
+bool get_swich_anim();
 
 #endif

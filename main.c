@@ -15,6 +15,7 @@ int anglex,angley,x,y,xold,yold;
 double zoom=1;
 float animation1=0;
 float animation2=0;
+bool switch_anim = true;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -34,8 +35,11 @@ double get_zoom(){return zoom;}
 float get_animation1(){return animation1;}
 //! fonction d'acces a la variable de l'animation2
 float get_animation2(){return animation2;}
+//! fonction pour le changement feu laser
+bool get_swich_anim(){return switch_anim;}
 
 int main(int argc,char **argv){
+  srand(time(NULL));
   loadJpegImage("./dragon.jpg");
   /* initialisation de glut et creation
      de la fenetre */
@@ -144,6 +148,12 @@ void clavier(unsigned char touche,int x,int y){
         if(animation2 > 0)animation2 -= 1;
         glutPostRedisplay();
         break;
+    case '!':
+        if(switch_anim == true){
+          switch_anim = false;
+        }else{
+          switch_anim = true;
+        }
     }
 }
 

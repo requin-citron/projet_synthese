@@ -4,7 +4,7 @@ LDLIBS=-lglut -lGLU -lGL -ljpeg -lm
 RM=rm
 
 
-all: vector_util.o spring.o head.o loadJpeg.o dragon.o main.o oeil.o laser.o
+all: vector_util.o spring.o head.o loadJpeg.o dragon.o main.o oeil.o laser.o fire.o
 		$(CC) $(CFLAGS) $(LDLIBS) $^ -o main
 main.o: main.c main.h
 		$(CC) $(CFLAGS) $(LDLIBS) -c $<
@@ -22,11 +22,13 @@ vector_util.o:vector_util.c vector_util.h
 		$(CC) $(CFLAGS) $(LDLIBS) -c $<
 laser.o:laser.c laser.h
 		$(CC) $(CFLAGS) $(LDLIBS) -c $<
+fire.o:fire.c fire.h
+		$(CC) $(CFLAGS) $(LDLIBS) -c $<
 clean:clean_objet
 		$(RM) main
 clean_objet:
 		$(RM) *.o
 doc:
-		doxygen 
+		doxygen
 clean_doc:
 		$(RM) -rf ./html

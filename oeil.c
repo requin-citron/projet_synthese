@@ -52,7 +52,10 @@ void oeil(float rayon){
         //dessin couleurs oeil
         if(d <(OEIL_VERTICAL_RESOLUTION/2)/3 || d > (OEIL_VERTICAL_RESOLUTION/2)/1.2){
           if(get_animation2()<110)glColor3f(1,1,1);
-          else glColor3f(0,0,1);
+          else{
+            if(get_swich_anim()) glColor3f(0,0,1);
+            else glColor3f(1,0,0);
+          }
         }else{
           glColor3f(0,0,0);
         }

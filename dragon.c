@@ -89,9 +89,46 @@ void dragon(){
   if(get_animation2()>140){
     glPushMatrix();
       glTranslatef(0.75+offset-x_b,0.4+y_b,0.6);
-      draw_laser((0.03 * 30.0)*HEAD_RAYON-0.04);
+      if(get_swich_anim() == true){
+        draw_laser((0.03 * 30.0)*HEAD_RAYON-0.04);
+      }else{
+        draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
+      }
     glPopMatrix();
   }
+
+  glFlush();
+  //On echange les buffers
+  glutSwapBuffers();
+}
+
+void affiche_test(){
+  /* effacement de l'image avec la couleur de fond */
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glShadeModel(GL_SMOOTH);
+  glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
+  glMatrixMode(GL_MODELVIEW);
+  glEnable(GL_COLOR_MATERIAL);
+  vector cam;
+  cam.x = 0;
+  cam.y = 0;
+  cam.z = -1;
+  glLoadIdentity();
+  glRotatef(get_angle_y(),1.0,0.0,0.0);
+  glRotatef(get_angle_x(),0.0,1.0,0.0);
+
+  //gluLookAt(0.5,0,0,0,0,0.0,0.,0.,0.5);
+  glOrtho(get_zoom(), -1*get_zoom(), get_zoom(), -1*get_zoom(), get_zoom(), -1*get_zoom());
+  gluLookAt(0, 0, 0, cam.x, cam.y,cam.z, 0, -1, 0);
+  glRotated(0,0,1,0);
+  glRotated(0,0,1,0);
+
+  //glLightiv(GL_LIGHT0,GL_POSITION,LightPos);
+  // glEnable(GL_LIGHTING);
+  // glEnable(GL_LIGHT0);
+  glEnable(GL_DEPTH_TEST);
+
+  draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
 
   glFlush();
   //On echange les buffers

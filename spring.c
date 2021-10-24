@@ -170,7 +170,8 @@ void show_body(point *p_back, matrix *m){
           //glDisable(GL_TEXTURE_2D);
           glBegin(GL_POLYGON);
             if((CIRCULAR_RESOLUTION+1)*(SPINE_NB+1)*(get_animation2()/100.) > i*(CIRCULAR_RESOLUTION)+d){
-              glColor3f(0,0,1);
+              if(get_swich_anim() == true)glColor3f(0,0,1);
+              else glColor3f(1,0,0);
             }else{
               glColor3f(40./255., 40./255., 40./255.);
             }
