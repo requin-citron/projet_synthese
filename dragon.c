@@ -89,7 +89,7 @@ void dragon(){
   if(get_animation2()>140){
     glPushMatrix();
       glTranslatef(0.75+offset-x_b,0.4+y_b,0.6);
-      draw_laser((0.03 * 30)* HEAD_RAYON-0.04);
+      draw_laser((0.03 * 30.0)*HEAD_RAYON-0.04);
     glPopMatrix();
   }
 

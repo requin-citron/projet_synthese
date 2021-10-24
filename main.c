@@ -138,7 +138,6 @@ void clavier(unsigned char touche,int x,int y){
         break;
     case 'y':
         if(animation2 < 200)animation2 +=1;
-        fprintf(stderr, "anim2:%f\n", animation2);
         glutPostRedisplay();
         break;
     case 'h':
