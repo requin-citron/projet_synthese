@@ -1,6 +1,7 @@
 #include "laser.h"
 
 void draw_laser(){
+  glDisable(GL_TEXTURE_2D);
   float angle_back = 0;
   float angle;
   float size = 0;
@@ -8,6 +9,7 @@ void draw_laser(){
     size = (get_animation2()-140)/60.;
     size *= LASER_MAX_SIZE;
   }
+  glColor3f(0,0,1);
   for (size_t i = 1; i < (LASER_RESOLUTION+1); i++) {
     angle = (2*i*M_PI)/(LASER_RESOLUTION);
     glBegin(GL_POLYGON);
@@ -18,4 +20,5 @@ void draw_laser(){
     glEnd();
     angle_back = angle;
   }
+  glEnable(GL_TEXTURE_2D);
 }
