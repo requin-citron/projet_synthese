@@ -12,9 +12,10 @@
 #include <stdbool.h>
 #include <string.h>
 #include <errno.h>
+#include "main.h"
 
 #define LASER_RAYON 0.2
 #define LASER_RESOLUTION 20
-#define LASER_SIZE 1
+#define LASER_MAX_SIZE 4
 
 #endif

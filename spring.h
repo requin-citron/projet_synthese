@@ -23,7 +23,7 @@
 //si il manque des polygon il faut incrementé la constante
 // associer de 1 le pb viens des arondie fais pas les division en c
 //! nombre de segment du cercle
-#define CIRCULAR_RESOLUTION 31.
+#define CIRCULAR_RESOLUTION 32.
 //! rayon du corp
 #define RAYON 0.6
 //! rayon du tube qui suis la spirale

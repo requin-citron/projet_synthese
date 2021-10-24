@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "vector_util.h"
+#include "main.h"
 
 //! nombre de segment du cercle
 #define OEIL_CIRCULAR_RESOLUTION 50

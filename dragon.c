@@ -42,7 +42,7 @@ void dragon(){
   point p2_back;
   matrix m2;
   float angle, angle_back;
-  float offset= (get_animation2()/100.)*3*2*M_PI*(RAYON*RAYON);
+  float offset= 0;//(get_animation2()/100.)*3*2*M_PI*(RAYON*RAYON);
   angle_back = 0;
   glPushMatrix();
   glTranslatef(0.75+offset,0.4,0.6);

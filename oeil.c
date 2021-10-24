@@ -3,7 +3,7 @@
 //!génére l'heure
 /*!
   \param rayon rayon de l'oeil
-  
+
   crée une sphere blanche avec un cercle noir pour faire l'oeil
 */
 void oeil(float rayon){
@@ -51,7 +51,8 @@ void oeil(float rayon){
         glBegin(GL_POLYGON);
         //dessin couleurs oeil
         if(d <(OEIL_VERTICAL_RESOLUTION/2)/3 || d > (OEIL_VERTICAL_RESOLUTION/2)/1.2){
-          glColor3f(1,1,1);
+          if(get_animation2()<110)glColor3f(1,1,1);
+          else glColor3f(0,0,1);
         }else{
           glColor3f(0,0,0);
         }

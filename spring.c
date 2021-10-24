@@ -57,7 +57,6 @@ void show_spring(){
           glEnd();
         }
         glBegin(GL_POLYGON);
-          glColor3f(1.,1.,increment*m);
           glColor3f(1,0,0);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
           glColor3f(0,1,0);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
           glColor3f(0,0,1);glVertex3f(p2.x + v2.x, p2.y + v2.y, p2.z+ v2.z);
@@ -102,7 +101,7 @@ void show_spring(){
 /*!
   \param[out] p_back pointeur du point d'extremité du corp
   \param[out] m pointeur de la matrice de changement de base du corp
-  
+
   affiche le corp et renvois le dernier point avec sa matrice
 */
 void show_body(point *p_back, matrix *m){
@@ -169,10 +168,15 @@ void show_body(point *p_back, matrix *m){
           v1_b = change_base(0,(rayon_back)*sin(cyl),(rayon_back)*cos(cyl),&base_back);
           v2_b = change_base(0,(rayon_back)*sin(cyl_next),(rayon_back)*cos(cyl_next),&base_back);
           glBegin(GL_POLYGON);
-            glColor3f(40./255., 40./255., 40./255.);glVertex3f(p1.x + v1_b.x, p1.y + v1_b.y, p1.z+ v1_b.z);
-            glColor3f(40./255., 40./255., 40./255.);glVertex3f(p1.x + v2_b.x, p1.y + v2_b.y, p1.z+ v2_b.z);
-            glColor3f(40.0/255., 40.0/255., 40/255.);glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
-            glColor3f(40.0/255., 40.0/255., 40/255.);glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
+            if((CIRCULAR_RESOLUTION+1)*(SPINE_NB+1)*(get_animation2()/100.) > i*(CIRCULAR_RESOLUTION)+d){
+              glColor3f(0,0,1);
+            }else{
+              glColor3f(40./255., 40./255., 40./255.);
+            }
+            glVertex3f(p1.x + v1_b.x, p1.y + v1_b.y, p1.z+ v1_b.z);
+            glVertex3f(p1.x + v2_b.x, p1.y + v2_b.y, p1.z+ v2_b.z);
+            glVertex3f(p1.x + v2.x, p1.y + v2.y, p1.z+ v2.z);
+            glVertex3f(p1.x + v1.x, p1.y + v1.y, p1.z+ v1.z);
           glEnd();
         }
         glBegin(GL_POLYGON);

@@ -35,7 +35,6 @@ float get_animation1(){return animation1;}
 //! fonction d'acces a la variable de l'animation2
 float get_animation2(){return animation2;}
 
-
 int main(int argc,char **argv){
   loadJpegImage("./dragon.jpg");
   /* initialisation de glut et creation
@@ -138,7 +137,8 @@ void clavier(unsigned char touche,int x,int y){
         glutPostRedisplay();
         break;
     case 'y':
-        if(animation2 < 75)animation2 +=1;
+        if(animation2 < 200)animation2 +=1;
+        fprintf(stderr, "anim2:%f\n", animation2);
         glutPostRedisplay();
         break;
     case 'h':
