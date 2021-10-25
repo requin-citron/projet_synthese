@@ -19,5 +19,6 @@ int get_angle_x();
 float get_animation1();
 float get_animation2();
 bool get_swich_anim();
+void anim();
 
 #endif

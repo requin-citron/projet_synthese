@@ -62,10 +62,15 @@ int main(int argc,char **argv){
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);
   glutMotionFunc(mousemotion);
+  glutIdleFunc(anim);
 
   /* Entree dans la boucle principale glut */
   glutMainLoop();
   return 0;
+}
+//!fonction appellé quand il ne ce passe rien
+void anim(){
+  glutPostRedisplay();
 }
 
 //!fonction de gestion du clavier

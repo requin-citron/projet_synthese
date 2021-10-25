@@ -37,5 +37,23 @@ void draw_laser(float rayon){
     glEnd();
     angle_back = angle;
   }
+
+  //cercle
+  float r;
+  float s;
+  angle_back = 0;
+  for (size_t d = 0; d < NB_CERCLE; d++) {
+    for (size_t i = 1; i < (LASER_RESOLUTION+1); i++) {
+      angle = (2*i*M_PI)/(LASER_RESOLUTION);
+      r = rayon+0.05 + 0.3*rayon*(rand()/(float)RAND_MAX);
+      s = (float)size*(rand()/(float)RAND_MAX);
+      glBegin(GL_LINES);
+      glVertex3f(s, r*sin(angle_back), r*cos(angle_back));
+      glVertex3f(s, r*sin(angle), r*cos(angle));
+      glEnd();
+      angle_back = angle;
+    }
+  }
+
   glEnable(GL_TEXTURE_2D);
 }

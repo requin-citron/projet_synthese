@@ -16,6 +16,7 @@
 
 #define LASER_RESOLUTION 20
 #define LASER_MAX_SIZE 4
+#define NB_CERCLE 5
 
 void draw_laser(float);
 
