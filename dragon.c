@@ -128,7 +128,8 @@ void affiche_test(){
   // glEnable(GL_LIGHT0);
   glEnable(GL_DEPTH_TEST);
 
-  draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
+  //draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
+  draw_corne();
 
   glFlush();
   //On echange les buffers

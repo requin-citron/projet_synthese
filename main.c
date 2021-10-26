@@ -57,7 +57,7 @@ int main(int argc,char **argv){
 
   /* enregistrement des fonctions de rappel */
 
-  glutDisplayFunc(dragon);
+  glutDisplayFunc(affiche_test);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);

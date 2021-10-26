@@ -1,5 +1,5 @@
-#ifndef DRAGON_H
-#define DRAGON_H
+#ifndef CORNE_H
+#define CORNE_H
 
 #ifdef __APPLE__
 #include <GLUT/glut.h> /* Pour Mac OS X */
@@ -12,17 +12,10 @@
 #include <stdbool.h>
 #include <string.h>
 #include <errno.h>
-#include "main.h"
-#include "vector_util.h"
 #include "loadJpeg.h"
-#include "spring.h"
-#include "head.h"
-#include "oeil.h"
-#include "laser.h"
-#include "fire.h"
-#include "corne.h"
+#include "main.h"
 
-void dragon();
-void affiche_test();
+
+void draw_corne();
 
 #endif
