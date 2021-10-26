@@ -178,6 +178,28 @@ void head(point *p_back, matrix *m){
   oeil(0.05);
   glPopMatrix();
 
+  float x_c;
+  float y_c;
+  long angle_c = (long)get_angle_magie();
+  bezier(0.20, &x_c, &y_c);
+  //corne gauche
+  glPushMatrix();
+    glTranslatef(x_c,y_c+(0.12 * 18) * (HEAD_RAYON-0.02),-0.12);
+    glRotatef(-30,1,0,0);
+    if(get_animation2() < 140 && get_animation2()>10) glRotatef(angle_c,0,1,0);
+    glScalef(0.1,0.1,0.1);
+    draw_corne(5);
+  glPopMatrix();
+  //corne droite
+  glPushMatrix();
+    glTranslatef(x_c,y_c+(0.12 * 18) * (HEAD_RAYON-0.02),+0.12);
+    glRotatef(30,1,0,0);
+    if(get_animation2() < 140 && get_animation2()>10) glRotatef(-1*angle_c,0,1,0);
+    glScalef(0.1,0.1,0.1);
+    draw_corne(5);
+  glPopMatrix();
+
+
   *m = base;
   *p_back = p1;
 }

@@ -16,6 +16,7 @@ double zoom=1;
 float animation1=0;
 float animation2=0;
 bool switch_anim = true;
+size_t angle_magie = 0;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -37,6 +38,8 @@ float get_animation1(){return animation1;}
 float get_animation2(){return animation2;}
 //! fonction pour le changement feu laser
 bool get_swich_anim(){return switch_anim;}
+//! fonction pour la rotation des cornes
+size_t get_angle_magie(){return angle_magie;}
 
 int main(int argc,char **argv){
   srand(time(NULL));
@@ -57,7 +60,7 @@ int main(int argc,char **argv){
 
   /* enregistrement des fonctions de rappel */
 
-  glutDisplayFunc(affiche_test);
+  glutDisplayFunc(dragon);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);
@@ -70,6 +73,7 @@ int main(int argc,char **argv){
 }
 //!fonction appellé quand il ne ce passe rien
 void anim(){
+  angle_magie = (angle_magie +CORNE_RAPIDE) %360;
   glutPostRedisplay();
 }
 

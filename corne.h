@@ -16,6 +16,7 @@
 #include "main.h"
 
 
-void draw_corne();
+void draw_corne(size_t);
+void draw_corne_as_chevalo(float,float, size_t, float);
 
 #endif

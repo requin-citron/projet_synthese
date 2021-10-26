@@ -20,5 +20,6 @@ float get_animation1();
 float get_animation2();
 bool get_swich_anim();
 void anim();
+size_t get_angle_magie();
 
 #endif

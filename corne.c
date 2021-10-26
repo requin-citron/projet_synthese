@@ -46,89 +46,56 @@ static void draw_cube(float x, float y, float z){
   glEnd();
 }
 
-static void draw_corne_as_chevalo(float x,float y, size_t prof, float size_midle){
-  if(prof==0) return;
+//!fonction recursive pour les cornes
+/*!
+  \param x[in] centre en x
+  \param y[in] centre en y
+  \param deep[in] nb de parternes empilé
+  \param size_midle[in] taille de la brique initiale horizontal
+
+*/
+void draw_corne_as_chevalo(float x,float y, size_t deep, float size_midle){
+  if(deep==0) return;
   glPushMatrix();
-    //glScalef(size,size,size);
+    //translation en x et y;
     glTranslatef(x,y,0);
+    //pave horizontal
     draw_cube(size_midle,0.1,0.1);
     glPushMatrix();
+    //translation pour les espacer en x et les faire monter de y
       glTranslatef((size_midle/2.)-0.05,(size_midle/2.)/2 + 0.05,0);
-      draw_cube(0.1,(size_midle/2.),0.1);
+      //pave vertical
+      draw_cube(0.1,(size_midle/2),0.1);
     glPopMatrix();
     glPushMatrix();
+    //translation pour les espacer en x et les faire monter de y
       glTranslatef(-1*(size_midle/2.)+0.05,(size_midle/2.)/2 + 0.05,0);
-      draw_cube(0.1,(size_midle/2.),0.1);
+      //pave vertical
+      draw_cube(0.1,(size_midle/2),0.1);
     glPopMatrix();
   glPopMatrix();
-  draw_corne_as_chevalo(x - (size_midle/2.)+0.05,y +(size_midle/2.) + 0.05*2, prof-1, size_midle/1.5);
-  draw_corne_as_chevalo(x + (size_midle/2.)-0.05,y + (size_midle/2.) + 0.05*2, prof-1, size_midle/1.5);
+  //on dessine la corne
+  draw_corne_as_chevalo(x - (size_midle/2.)+0.05,y +(size_midle/2.) + 0.05*2, deep-1, size_midle/1.3);
+  //on dessine la deuxieme corne
+  draw_corne_as_chevalo(x + (size_midle/2.)-0.05,y + (size_midle/2.) + 0.05*2, deep-1, size_midle/1.3);
   return;
 }
 
-void draw_corne(){
-  /* effacement de l'image avec la couleur de fond */
-  unsigned char *texture = get_texture();
-
-
-  /* Parametrage du placage de textures */
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-  //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-  //       GL_RGB,GL_UNSIGNED_BYTE,image);
-  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-         GL_RGB,GL_UNSIGNED_BYTE,texture);
-  glEnable(GL_TEXTURE_2D);
-
-
-  draw_corne_as_chevalo(0,0,10,2);
-
-  // glPushMatrix();
-  //     glTranslatef(0.5,0.6/2 + 0.05 +2*0.1,0);
-  //     draw_cube(0.6,0.1,0.1);
-  //     glPushMatrix();
-  //       glTranslatef(0.3-0.05,0.3/2 + 0.05,0);
-  //       draw_cube(0.1,0.3,0.1);
-  //     glPopMatrix();
-  //     glPushMatrix();
-  //       glTranslatef(-0.3+0.05,0.3/2 + 0.05,0);
-  //       draw_cube(0.1,0.3,0.1);
-  //     glPopMatrix();
-  // glPopMatrix();
-  //
-  //
-  // glPushMatrix();
-  //     glTranslatef(-0.5,0.5,0);
-  //     draw_cube(0.6,0.1,0.1);
-  //     glPushMatrix();
-  //       glTranslatef(0.3-0.05,0.3/2 + 0.05,0);
-  //       draw_cube(0.1,0.3,0.1);
-  //     glPopMatrix();
-  //     glPushMatrix();
-  //       glTranslatef(-0.3+0.05,0.3/2 + 0.05,0);
-  //       draw_cube(0.1,0.3,0.1);
-  //     glPopMatrix();
-  // glPopMatrix();
-
-
-
-  //Repère
-  //axe x en rouge
-  glBegin(GL_LINES);
-      glColor3f(1.0,0.0,0.0);
-    glVertex3f(0, 0,0.0);
-    glVertex3f(1, 0,0.0);
-  glEnd();
-  //axe des y en vert
-  glBegin(GL_LINES);
-    glColor3f(0.0,1.0,0.0);
-    glVertex3f(0, 0,0.0);
-    glVertex3f(0, 1,0.0);
-  glEnd();
-  //axe des z en bleu
-  glBegin(GL_LINES);
-    glColor3f(0.0,0.0,1.0);
-    glVertex3f(0, 0,0.0);
-    glVertex3f(0, 0,1.0);
-  glEnd();
+//!dessine une corne avec nb iteraction
+/*!
+  \param nb[in] nombre d'iterations
+  permet de dessioner une corne avec des valeurs hardcoder de la fonction recursive
+*/
+void draw_corne(size_t nb){
+  float angle = 360/nb;
+  for (size_t i = 0; i < nb; i++) {
+    glPushMatrix();
+      glRotatef(angle*i,0,1,0);
+      draw_corne_as_chevalo(0,0,3,2);
+    glPopMatrix();
+  }
+  glPushMatrix();
+    glTranslatef(0,-0.25,0);
+    draw_cube(0.1,0.5,0.1);
+  glPopMatrix();
 }
