@@ -8,12 +8,13 @@
         <a href="#math">Les Maths</a>
     </li>
     <li>
-        <a href="">Modélisation</a>
+        <a href="#modelisation">Modélisation</a>
         <ul>
-          <li><a href="">Corps</a></li>
-          <li><a href="">Tête</a></li>
+          <li><a href="#corp">Corps</a></li>
+          <li><a href="#head">Tête</a></li>
           <li><a href="">Yeux</a></li>
           <li><a href="">Cornes</a></li>
+          <li><a href="">Assemblage</a></li>
         </ul>
     </li>
     <li><a href="">Animation</a></li>
@@ -87,3 +88,72 @@ $$B\ =\ \begin{pmatrix} Nx & V1x & V2x \\\ Ny & V1y & V2y \\\ Nz & V1z & V2z \en
 Maintenant que nous avons la matrice qui décrit notre base nous pouvons traduire des points de notre base X,Y,Z
 dans notre nouvelle base B
 $$\begin{pmatrix} P'x \\\ P'y \\\ P'z \end{pmatrix}\ =\ \begin{pmatrix} Nx & V1x & V2x \\\ Ny & V1y & V2y \\\ Nz & V1z & V2z \end{pmatrix}\cdot\begin{pmatrix} Px \\\ Py \\\ Pz \end{pmatrix}$$
+
+Nous pouvons maintenant tracer tout ce qu'on veut qui suit une courbe de bézier par example:
+![normalize](../images/normalise_exemple1.png)\ \ ![normalize](../images/normalise_exemple2.png)
+
+Maintenant que nos outils sont prés nous allons pouvoir commencer la modélisation.
+
+### Modélisation {#modelisation}
+
+#### Le Corps {#corp}
+
+Nous Somme partie sur un dragon en spirale. Nous avons donc commencé par faire une spirale en lignes.
+Pour ensuite utiliser ce les maths vue plus haut pour crée un cylindre qui suis la ligne.
+##### La spirale
+
+Pour faire un cercle il suffit de décomposer le cercle en petit segment. Puis il ne reste plus qu'a incrementer la hauteur a chaque iteration et de faire plusieur cercles pour obtenir une spirale.
+
+`Toutes les constantes pour jouer avec la spirale sont dans spring.h`
+![spirale1](../images/spirale1.png) ![spirale2](../images/spirale2.png)
+
+Il ne reste plus qu'a remplacer la ligne par un cylindre pour obtenir **un corp imparfait**
+effectivement a cause du changement de base entre chaque cylindre apparait un vide.
+
+![probleme1](../images/probleme1.png)
+
+Nous avons deux facon de résoudre ce problème
+##### Solution 1
+
+Nous pouvons reboucher l'ecart entre deux sections en créant un autre cylindre.
+
+##### Solution 2
+
+Nous pouvons également relier le nouveau cylindre a l'encien directement.
+
+##### Solution retenue
+
+Nous avons utilisé les deux solutions l'une permet de donner un aspect avec des cassure (utiliser pour le corp) et une permet de donner un aspect uniforme
+
+![spirale3](../images/spirale3.png)       ![head1](../images/head1.png)
+
+En jouant avec les paramétre il est possible d'obtenir des resultats sympas
+
+![spirale4](../images/spirale4.png)
+
+##### Texture
+
+Pour la peau de dragon nous utiliserons une image trouvé sur google image.
+il suffit aprés de l'enrouler autout du cylindre pour ca on découpe la texture en largeur en autant de morceaux que d'iteration pour faire le cylindre.Il suffit de coller chaque moceau a chaque face du cylindre.
+
+![dragon](../images/dragon.jpg)       ![spirale5](../images/spirale5.png)
+
+#### La Tête {#head}
+
+Pour la tete nous avons opté pour une courbe de bézier qui permet de faire des forme plus "naturelle"
+ainsi que de pouvoir l'animer facilement.
+Nous utiliserons une courbe de bezier en 4 points
+
+![kig1](../images/kig1.png)
+
+Nous avons implementé une animation en modifiant les deux premier point de controle de la courbe de bezier.
+Le dragon sera capable de baisser la tete. La transition des deux images ce fais de manière linaire pour un résultat optimal.
+
+![kig2](../images/kig2.png)
+
+Il ne reste plus qu'a tracer un cylindre de rayon variable.
+En utilisant la deuxieme technique de rebouchage pour donner un aspect lisse a la tete.
+Puis on colle les textures sur la tête comme pour le corp.
+Nous avons donc toutes les grosses pièce.
+
+![head2](../images/head2.png)

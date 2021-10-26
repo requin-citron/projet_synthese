@@ -5,7 +5,7 @@
 //! 1/sqrt(x)
 /*!
 	\param[in] number x
-	
+
 	on utilise une astuce pour augmenter le traitement de 1/sqrt(x)
 	qui est trés long a calculer normalement ce **hack** viens de quake
 	qui utilisé ca pour normaliser ses vecteur ce que nous allons faire ici
@@ -115,8 +115,10 @@ matrix create_base(point p1, point p2){
     vector_normal.x = p2.x - p1.x;
     vector_normal.y = p2.y - p1.y;
     vector_normal.z = p2.z - p1.z;
-
   vector vector_plan1;
+		//aproxymation
+		//matematiquement fausse mais assez proche pour
+		//etre utiliser et optimiser notre programme
     vector_plan1.x = fabsf(1./vector_normal.x);
     vector_plan1.y = fabsf(-1./vector_normal.y);
     vector_plan1.z = 0;
