@@ -17,6 +17,7 @@ float animation1=0;
 float animation2=0;
 bool switch_anim = true;
 size_t angle_magie = 0;
+bool switch_laser_fire = false;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -74,6 +75,11 @@ int main(int argc,char **argv){
 //!fonction appellé quand il ne ce passe rien
 void anim(){
   angle_magie = (angle_magie +CORNE_RAPIDE) %360;
+  if(switch_laser_fire==true){
+    if(animation2<200) animation2 += 0.5;
+  }else{
+    if(animation2>0) animation2 -= 0.5;
+  }
   glutPostRedisplay();
 }
 
@@ -150,11 +156,8 @@ void clavier(unsigned char touche,int x,int y){
         glutPostRedisplay();
         break;
     case 'y':
-        if(animation2 < 200)animation2 +=1;
-        glutPostRedisplay();
-        break;
-    case 'h':
-        if(animation2 > 0)animation2 -= 1;
+        if(switch_laser_fire == true)switch_laser_fire = false;
+        else switch_laser_fire = true;
         glutPostRedisplay();
         break;
     case '!':
