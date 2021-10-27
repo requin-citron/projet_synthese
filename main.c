@@ -15,9 +15,12 @@ int anglex,angley,x,y,xold,yold;
 double zoom=1;
 float animation1=0;
 float animation2=0;
+float animation3=0;
 bool switch_anim = true;
 size_t angle_magie = 0;
 bool switch_laser_fire = false;
+float angle_ailes = 0;
+float angle_ailes_base=0.;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -37,10 +40,14 @@ double get_zoom(){return zoom;}
 float get_animation1(){return animation1;}
 //! fonction d'acces a la variable de l'animation2
 float get_animation2(){return animation2;}
+//! fonction d'acces a la variable de l'animation3
+float get_animation3(){return animation3;}
 //! fonction pour le changement feu laser
 bool get_swich_anim(){return switch_anim;}
 //! fonction pour la rotation des cornes
 size_t get_angle_magie(){return angle_magie;}
+//! fonction pour la rotation des ailes
+float get_angle_ailes(){return angle_ailes;}
 
 int main(int argc,char **argv){
   srand(time(NULL));
@@ -61,7 +68,7 @@ int main(int argc,char **argv){
 
   /* enregistrement des fonctions de rappel */
 
-  glutDisplayFunc(affiche_test);
+  glutDisplayFunc(dragon);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
   glutMouseFunc(mouse);
@@ -79,6 +86,11 @@ void anim(){
     if(animation2<200) animation2 += 0.5;
   }else{
     if(animation2>0) animation2 -= 0.5;
+  }
+  //! si les ailes sont déployé elle fonts fap fap
+  if(get_animation3() == 200){
+    angle_ailes = sin(angle_ailes_base)*90.;
+    angle_ailes_base+=0.1;
   }
   glutPostRedisplay();
 }
@@ -158,6 +170,14 @@ void clavier(unsigned char touche,int x,int y){
     case 'y':
         if(switch_laser_fire == true)switch_laser_fire = false;
         else switch_laser_fire = true;
+        glutPostRedisplay();
+        break;
+    case 'b':
+        if(animation3 <200)animation3+=1;
+        glutPostRedisplay();
+        break;
+    case 'n':
+        if(animation3>0)animation3-=1;
         glutPostRedisplay();
         break;
     case '!':

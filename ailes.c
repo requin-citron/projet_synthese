@@ -36,5 +36,24 @@ void draw_ailes(){
       }
     glPopMatrix();
   }
+
+  // glBegin(GL_LINES);
+  //     glColor3f(1.0,0.0,0.0);
+  //   glVertex3f(0, 0,0.0);
+  //   glVertex3f(0.3, 0,0.0);
+  // glEnd();
+  // //axe des y en vert
+  // glBegin(GL_LINES);
+  //   glColor3f(0.0,1.0,0.0);
+  //   glVertex3f(0, 0,0.0);
+  //   glVertex3f(0, 0.3,0.0);
+  // glEnd();
+  // //axe des z en bleu
+  // glBegin(GL_LINES);
+  //   glColor3f(0.0,0.0,1.0);
+  //   glVertex3f(0, 0,0.0);
+  //   glVertex3f(0, 0,0.3);
+  // glEnd();
+
   glEnable(GL_TEXTURE_2D);
 }

@@ -141,6 +141,7 @@ void show_body(point *p_back, matrix *m){
   //retressisement
   float rayon = 0;
   float rayon_back=0;
+
   p1.x = 0;
   p1.y = - 0.5;
   p1.z = RAYON;
@@ -158,7 +159,6 @@ void show_body(point *p_back, matrix *m){
       // 	glVertex3f(p2.x, p2.y, p2.z);
       // glEnd();
       //draw cylinder
-
       for (size_t m = 1; m < (PRECISION_CYLINDER+1); m++) {
         cyl_next = (m*M_PI*2)/PRECISION_CYLINDER;
         v1 = change_base(0,rayon*sin(cyl),rayon*cos(cyl),&base);
@@ -194,6 +194,26 @@ void show_body(point *p_back, matrix *m){
           glTexCoord2f((m-1)*1.7/PRECISION_CYLINDER,0.5);glVertex3f(p2.x + v1.x, p2.y + v1.y, p2.z+ v1.z);
         glEnd();
         cyl= cyl_next;
+      }
+      //ailes
+
+      if(i>2 && (d%4) == 0){
+        glPushMatrix();
+          glTranslatef(p1.x,p1.y,p1.z);
+          glRotatef((angle*180.)/M_PI  -90,0,1,0);
+          glTranslatef(RAYON_CYLINDER,0,0);
+          if(get_animation3() < 100.0){
+            glScalef(0.005+get_animation3()/100.,0.005+get_animation3()/100.,0.005+get_animation3()/100.);
+          }else{
+            glScalef(1,1,1);
+            glRotatef(((get_animation3()-100)/100.)*90,1,0,0);
+            if(get_animation3() == 200){
+              glRotatef(get_angle_ailes(),0,1,0);
+            }
+          }
+
+          draw_ailes();
+        glPopMatrix();
       }
       p1 = p2;
       base_back = base;
