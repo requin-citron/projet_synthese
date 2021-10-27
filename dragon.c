@@ -129,8 +129,8 @@ void affiche_test(){
   glEnable(GL_DEPTH_TEST);
 
   //draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
-  //draw_corne(5);
-  draw_ailes();
+  draw_corne(1);
+  //draw_ailes();
 
   //Repère
   //axe x en rouge
@@ -151,7 +151,7 @@ void affiche_test(){
     glVertex3f(0, 0,0.0);
     glVertex3f(0, 0,1.0);
   glEnd();
-  
+
   glFlush();
   //On echange les buffers
   glutSwapBuffers();

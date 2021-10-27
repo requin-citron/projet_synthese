@@ -32,7 +32,6 @@ Set up du projet
   `make`
 6. Générer la doc (Optional)
   `make doc`
-<!-- ```make``` -->
 
 <!-- USAGE EXAMPLES -->
 ## Utilisation
@@ -55,4 +54,4 @@ affiche un dragon avec des animation
 - [-] Création Ails
 - [-] Création Animation Ails
 - [-] Création Lumières
-- [-] Possiblement ajout de lumière dans le feu et le laser 
+- [-] Possiblement ajout de lumière dans le feu et le laser

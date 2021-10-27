@@ -87,11 +87,13 @@ void draw_corne_as_chevalo(float x,float y, size_t deep, float size_midle){
   permet de dessioner une corne avec des valeurs hardcoder de la fonction recursive
 */
 void draw_corne(size_t nb){
+  //float deep=3;
+  float deep=3;
   float angle = 360/nb;
   for (size_t i = 0; i < nb; i++) {
     glPushMatrix();
       glRotatef(angle*i,0,1,0);
-      draw_corne_as_chevalo(0,0,3,2);
+      draw_corne_as_chevalo(0,0,deep,2);
     glPopMatrix();
   }
   glPushMatrix();

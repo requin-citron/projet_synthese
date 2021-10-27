@@ -12,8 +12,8 @@
         <ul>
           <li><a href="#corp">Corps</a></li>
           <li><a href="#head">Tête</a></li>
-          <li><a href="">Yeux</a></li>
-          <li><a href="">Cornes</a></li>
+          <li><a href="#yeux">Yeux</a></li>
+          <li><a href="#cornes">Cornes</a></li>
           <li><a href="">Assemblage</a></li>
         </ul>
     </li>
@@ -157,3 +157,32 @@ Puis on colle les textures sur la tête comme pour le corp.
 Nous avons donc toutes les grosses pièce.
 
 ![head2](../images/head2.png)
+
+#### Les Yeux {#yeux}
+
+Nous yeux sont représenté par une sphere. Pour cela nous avons codé notre propre sphére.<br/>
+Nous avons expliquer aux dessus comment dessiner un cercle.
+On peut donc faire un conne facilement en augmentant la hauteur et en diminuant le rayon.
+
+![chepito](../images/chapito.png)
+
+Maintenant nous voulons une shpere pour cela nous allons utiliser pythagore.<br/>
+Nous allons utiliser cette propriétée pour obtenir la hauteur en fontion du rayon.
+$$Avec\ \ R\ \ le\ \ Rayon$$
+$$sin(\alpha)^2 + cos(\alpha)^2 = 1$$
+$$(R\cdot sin(\alpha))^2 + (R\cdot cos(\alpha))^2 = R^2$$
+$$Y^2 + X^2 = R^2$$
+$$Y = \sqrt{R^2 - X^2}$$
+
+![demi_sphere](../images/demi_sphere.png)
+
+Ils ne reste plus qu'a faire le symétrique.<br/>
+Pour la texture il suffit de mettre en noir un intervalede polygon.<br/>
+Tout le reste en blanc.
+
+![yeux](../images/yeux.png)
+
+#### Les Cornes {#cornes}
+
+Nous voulions partir sur un disigne type corail ou chandelié.<br/>
+Pour cela nous avons utilisé un empilement de pavé drois la encore codé par nos soins.
