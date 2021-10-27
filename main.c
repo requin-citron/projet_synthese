@@ -21,6 +21,7 @@ size_t angle_magie = 0;
 bool switch_laser_fire = false;
 float angle_ailes = 0;
 float angle_ailes_base=0.;
+bool switch_ailes=false;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -87,7 +88,13 @@ void anim(){
   }else{
     if(animation2>0) animation2 -= 0.5;
   }
-  //! si les ailes sont déployé elle fonts fap fap
+  //switch_ailes
+  if(switch_ailes==true){
+    if(animation3 <200)animation3+=1;
+  }else{
+    if(animation3>0)animation3-=1;
+  }
+  // si les ailes sont déployé elle fonts fap fap
   if(get_animation3() == 200){
     angle_ailes = sin(angle_ailes_base)*90.;
     angle_ailes_base+=0.1;
@@ -173,11 +180,8 @@ void clavier(unsigned char touche,int x,int y){
         glutPostRedisplay();
         break;
     case 'b':
-        if(animation3 <200)animation3+=1;
-        glutPostRedisplay();
-        break;
-    case 'n':
-        if(animation3>0)animation3-=1;
+        if(switch_ailes == true) switch_ailes=false;
+        else switch_ailes = true;
         glutPostRedisplay();
         break;
     case '!':
