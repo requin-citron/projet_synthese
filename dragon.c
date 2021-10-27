@@ -129,8 +129,29 @@ void affiche_test(){
   glEnable(GL_DEPTH_TEST);
 
   //draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
-  draw_corne(5);
+  //draw_corne(5);
+  draw_ailes();
 
+  //Repère
+  //axe x en rouge
+  glBegin(GL_LINES);
+      glColor3f(1.0,0.0,0.0);
+    glVertex3f(0, 0,0.0);
+    glVertex3f(1, 0,0.0);
+  glEnd();
+  //axe des y en vert
+  glBegin(GL_LINES);
+    glColor3f(0.0,1.0,0.0);
+    glVertex3f(0, 0,0.0);
+    glVertex3f(0, 1,0.0);
+  glEnd();
+  //axe des z en bleu
+  glBegin(GL_LINES);
+    glColor3f(0.0,0.0,1.0);
+    glVertex3f(0, 0,0.0);
+    glVertex3f(0, 0,1.0);
+  glEnd();
+  
   glFlush();
   //On echange les buffers
   glutSwapBuffers();

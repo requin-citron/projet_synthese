@@ -1,5 +1,5 @@
-#ifndef DRAGON_H
-#define DRAGON_H
+#ifndef AILES_H
+#define AILES_H
 
 #ifdef __APPLE__
 #include <GLUT/glut.h> /* Pour Mac OS X */
@@ -12,18 +12,12 @@
 #include <stdbool.h>
 #include <string.h>
 #include <errno.h>
-#include "main.h"
-#include "vector_util.h"
 #include "loadJpeg.h"
-#include "spring.h"
-#include "head.h"
-#include "oeil.h"
-#include "laser.h"
-#include "fire.h"
-#include "corne.h"
-#include "ailes.h"
+#include "main.h"
 
-void dragon();
-void affiche_test();
+#define AILES_RESOLUTION 100
+#define AILES_OCURRENCES 15
+
+void draw_ailes();
 
 #endif

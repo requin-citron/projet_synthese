@@ -4,7 +4,7 @@ LDLIBS=-lglut -lGLU -lGL -ljpeg -lm
 RM=rm
 
 
-all: vector_util.o spring.o head.o loadJpeg.o dragon.o main.o oeil.o laser.o fire.o corne.o
+all: vector_util.o spring.o head.o loadJpeg.o dragon.o main.o oeil.o laser.o fire.o corne.o ailes.o
 		$(CC) $(CFLAGS) $(LDLIBS) $^ -o main
 main.o: main.c main.h
 		$(CC) $(CFLAGS) $(LDLIBS) -c $<
@@ -25,6 +25,8 @@ laser.o:laser.c laser.h
 fire.o:fire.c fire.h
 		$(CC) $(CFLAGS) $(LDLIBS) -c $<
 corne.o:corne.c corne.h
+		$(CC) $(CFLAGS) $(LDLIBS) -c $<
+ailes.o: ailes.c ailes.h
 		$(CC) $(CFLAGS) $(LDLIBS) -c $<
 clean:clean_objet
 		$(RM) main

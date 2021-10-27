@@ -15,6 +15,7 @@
 #include "main.h"
 #include "vector_util.h"
 #include "loadJpeg.h"
+#include "ailes.h"
 
 //! hauteur du corp
 #define HAUTEUR 1.
