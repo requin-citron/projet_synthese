@@ -129,9 +129,12 @@ void affiche_test(){
   glEnable(GL_DEPTH_TEST);
 
   //draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
-  draw_corne(1);
+  draw_laser(0.2);
+  //draw_corne(1);
   //draw_ailes();
-
+  //point p2_back;
+  //matrix m2;
+  //head(&p2_back, &m2);
   //Repère
   //axe x en rouge
   glBegin(GL_LINES);
