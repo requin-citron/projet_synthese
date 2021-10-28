@@ -22,6 +22,7 @@
 #include "fire.h"
 #include "corne.h"
 #include "ailes.h"
+#include "sun.h"
 
 void dragon();
 void affiche_test();
