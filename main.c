@@ -21,7 +21,7 @@ size_t angle_magie = 0;
 bool switch_laser_fire = false;
 float angle_ailes = 0;
 float angle_ailes_base=0.;
-bool switch_ailes=false;
+bool switch_ailes=true;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */

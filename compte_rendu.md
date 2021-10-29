@@ -23,10 +23,10 @@
         <li><a href="#mouvement_tete">Mouvement Tête</a></li>
         <li><a href="#feu">Feu</a></li>
         <li><a href="#laser">Laser</a></li>
-        <li><a href="#mouvement_corp">corp</a></li>
+        <li><a href="#mouvement_corp">Animation corp</a></li>
         <li><a href="#mouvement_cornes">Mouvement Cornes</a></li>
         <li><a href="#mouvement_yeux">Mouvement Yeux</a></li>
-        <li><a href="#mouvement_ailes">Ailes</a></li>
+        <li><a href="#mouvement_ailes">Mouvement Ailes</a></li>
         <li><a href="#camera">Camera</a></li>
     </ul>
     <li><a href="">Lumières</a></li>
@@ -323,3 +323,58 @@ Pour cela nous avons desinner des cercle bleu autour du laser puis nous avons re
 ce qui signifie que tout les segment qui compose un cercle sont décalé ce qui donne un impression de particule.
 
 ![laser](../images/laser.png)
+
+#### Animation Corp {#mouvement_corp}
+
+Nous avons décidé de faire une animation de chargement du laser et du feu qui serais visible sur le corps.<br/>
+Pour cela nous allons utilisé les striurre entre les cylindre du corp, en les faisant changer de couleur de facon progressive.<br/>
+On chane la couleur des entre cylindre de facon progressive de la queue a la tete.
+
+![laser_action](../images/laser_action.png)
+
+![feu_action](../images/feu_action.png)
+
+#### Mouvement Cornes {#mouvement_cornes}
+
+De la même manière nous avons voulue donner une annimation aux cornes lors du chargement du laser ou du feu.<br/>
+Pour cela nous avons décidé de faire tourner les cornes sur elles même lors du chargement.<br/>
+
+#### Mouvement Yeux {#mouvement_yeux}
+
+De la même manière nous avons décidé de rajouter une animation lors du chargement pour les yeux.<br/>
+Nous avons donc changer la couleur des yeux avec respectivement bleu pour le laser et rouge pour le feu.
+
+![yeux_anim1](../images/yeux_anim1.png)  ![yeux_anim2](../images/yeux_anim2.png)
+
+#### Mouvement Ailes {#mouvement_ailes}
+
+L'Animation des ailes ce suffit a elle même, elle ce décompose en trois phases:
+* déploiment
+* rotation
+* batement
+
+Le déploiment consiste a augement la taille par un scaling, une fois à la bonne taille les ailes sont vertical.<br/>
+Nous faison donc une rotation de 90° pour les rendre horizontal.<br/>
+La dernière étape est de la faire le batement d'ailles, nous avons pensé a faire notre propre fonction mais pourquoi faire compliquer quand on peut faire simple.<br/>
+Nous utiliserons donc la fonction sinus qui.L'aile doit battre entre -90° et 90°.
+
+$$90 \cdot sin(var)$$
+
+Nous utilisons cette fonction dans la fonction appellé de façon passive par openGL.<br/>
+Nous incrémentons var de 0.1 en partant de 0, l'incrément de 0.1 est obtenue de facon empirique.<br/>
+de facon plus mathématique il est possible de calculer la période et la frequence du batement.
+
+$$sin(t \cdot T)$$
+
+$$La\ \ période\ \ =\ \ \frac{T}{2\pi}$$
+
+$$La\ \ Fréquence\ \ =\ \ \frac{1}{La\ \ période}\ \ =\ \ \frac{2\pi}{T}$$
+
+![ailes_animation](../images/ailes_animation.png)
+
+#### Camera {#camera}
+
+Les annimations de caméra sont celle demandé par le sujet, c'est a dire:
+* rotation autour de l'objet
+* zoom avant
+* room arrière
