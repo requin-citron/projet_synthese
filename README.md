@@ -38,7 +38,17 @@ Set up du projet
 
 affiche un dragon avec des animation
 
->TODO mettre un tuto avec les touche
+| Touche  | Action          |
+| :--------------- |:---------------:|
+| B  |   Active/Désactive les ailes  |
+| Y  | Active/Désactive Laser/Feu             |
+| !  | Change le mode de tire Laser/Feu          |
+| Z  | Zoom avant          |
+| W  | Zoom arrière          |
+| M  | Rotation a droite          |
+| K  | Rotation a Gauche          |
+| O  | Rotation en Haut           |
+| L  | Rotation en Bas          |
 
 <!-- ROADMAP -->
 ## Roadmap
