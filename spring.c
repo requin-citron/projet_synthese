@@ -224,25 +224,25 @@ void show_body(point *p_back, matrix *m){
     }
   }
 
-    //Repère
-    //axe x en rouge
-    glBegin(GL_LINES);
-        glColor3f(1.0,0.0,0.0);
-      glVertex3f(0, 0,0.0);
-      glVertex3f(1, 0,0.0);
-    glEnd();
-    //axe des y en vert
-    glBegin(GL_LINES);
-      glColor3f(0.0,1.0,0.0);
-      glVertex3f(0, 0,0.0);
-      glVertex3f(0, 1,0.0);
-    glEnd();
-    //axe des z en bleu
-    glBegin(GL_LINES);
-      glColor3f(0.0,0.0,1.0);
-      glVertex3f(0, 0,0.0);
-      glVertex3f(0, 0,1.0);
-    glEnd();
+    // //Repère
+    // //axe x en rouge
+    // glBegin(GL_LINES);
+    //     glColor3f(1.0,0.0,0.0);
+    //   glVertex3f(0, 0,0.0);
+    //   glVertex3f(1, 0,0.0);
+    // glEnd();
+    // //axe des y en vert
+    // glBegin(GL_LINES);
+    //   glColor3f(0.0,1.0,0.0);
+    //   glVertex3f(0, 0,0.0);
+    //   glVertex3f(0, 1,0.0);
+    // glEnd();
+    // //axe des z en bleu
+    // glBegin(GL_LINES);
+    //   glColor3f(0.0,0.0,1.0);
+    //   glVertex3f(0, 0,0.0);
+    //   glVertex3f(0, 0,1.0);
+    // glEnd();
     *p_back=p1;
     *m = base_back;
 }
