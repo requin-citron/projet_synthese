@@ -36,7 +36,7 @@ Set up du projet
 <!-- USAGE EXAMPLES -->
 ## Utilisation
 
-affiche un dragon avec des animation
+affiche un dragon avec des animations
 
 | Touche  | Action          |
 | :--------------- |:---------------:|
