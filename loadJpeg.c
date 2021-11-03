@@ -2,15 +2,16 @@
 
 
 unsigned char texture[256][256][3];
+unsigned char texture1[256][256][3];
 
 //!fonction d'ouverture de la texture
 /*!
   \param[in] fichier nom du fichier
-  
+  \param[in] buffer cible
   initialise la variable globale texture
   avec la texture de la peau de dragon
 */
-void loadJpegImage(char *fichier){
+void loadJpegImage(char *fichier, unsigned char curr[][256][3]){
   unsigned char image[256*256*3];
   struct jpeg_decompress_struct cinfo;
   struct jpeg_error_mgr jerr;
@@ -56,14 +57,18 @@ void loadJpegImage(char *fichier){
   fclose(file);
   for (int i=0;i<256;i++){
     for (int j=0;j<256;j++) {
-    texture[i][j][0]=image[i*256*3+j*3];
-    texture[i][j][1]=image[i*256*3+j*3+1];
-    texture[i][j][2]=image[i*256*3+j*3+2];
+      curr[i][j][0]=image[i*256*3+j*3];
+      curr[i][j][1]=image[i*256*3+j*3+1];
+      curr[i][j][2]=image[i*256*3+j*3+2];
    }
   }
 }
 
 //!renvois la variable texture
-unsigned char *get_texture(){
+unsigned char ***get_texture(){
   return texture;
+}
+//!renvois la variable texture1
+unsigned char ***get_texture1(){
+  return texture1;
 }

@@ -105,28 +105,7 @@ void show_spring(){
   affiche le corp et renvois le dernier point avec sa matrice
 */
 void show_body(point *p_back, matrix *m){
-  /* Parametrage du placage de textures */
-  unsigned char *texture = get_texture();
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-  //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-	//       GL_RGB,GL_UNSIGNED_BYTE,image);
-  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-	       GL_RGB,GL_UNSIGNED_BYTE,texture);
-  glEnable(GL_TEXTURE_2D);
-
-
-
-
-
-  /* Parametrage du placage de textures */
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-  //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-	//       GL_RGB,GL_UNSIGNED_BYTE,image);
-  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-	       GL_RGB,GL_UNSIGNED_BYTE,texture);
-  glEnable(GL_TEXTURE_2D);
+  
 
   float increment = HAUTEUR/SPINE_NB;
   float increment_cercle= increment/CIRCULAR_RESOLUTION;

@@ -15,6 +15,19 @@ void dragon(){
   glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_COLOR_MATERIAL);
+
+
+  /* Parametrage du placage de textures */
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+  //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+	//       GL_RGB,GL_UNSIGNED_BYTE,image);
+  unsigned char ***texture = get_texture();
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+         GL_RGB,GL_UNSIGNED_BYTE,texture);
+  glEnable(GL_TEXTURE_2D);
+
+
   vector cam;
   cam.x = 0;
   cam.y = 0;
@@ -34,7 +47,7 @@ void dragon(){
   // glEnable(GL_LIGHT0);
   glEnable(GL_DEPTH_TEST);
 
-  sun();
+  //sun();
 
   point p1,p2,p3,p4;
   point p1_back;
@@ -57,7 +70,8 @@ void dragon(){
   p2_back.x += 0.75+offset;
   p2_back.y += 0.4;
   p2_back.z += 0.6;
-
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+         GL_RGB,GL_UNSIGNED_BYTE,texture);
   //patch pb de rotation pour la matrice cahngement de base
   //et surtout on regénére y aprés l'inversion de Z
   //car j'ai passé 1h en mode WTF ca marche po
@@ -110,6 +124,15 @@ void affiche_test(){
   glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_COLOR_MATERIAL);
+
+
+  /* Parametrage du placage de textures */
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+  unsigned char ***texture = get_texture();
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+         GL_RGB,GL_UNSIGNED_BYTE,texture);
+  glEnable(GL_TEXTURE_2D);
   vector cam;
   cam.x = 0;
   cam.y = 0;
@@ -130,8 +153,8 @@ void affiche_test(){
   glEnable(GL_DEPTH_TEST);
 
   //draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
-  draw_laser(0.2);
-  //draw_corne(1);
+  //draw_laser(0.2);
+  draw_corne(5);
   //draw_ailes();
   //point p2_back;
   //matrix m2;

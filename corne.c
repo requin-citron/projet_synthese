@@ -2,47 +2,48 @@
 
 
 static void draw_cube(float x, float y, float z){
+  glColor3f(1,1,1);
   glBegin(GL_POLYGON);
-    glColor3f(1,0,0);glVertex3f((x/2.), -1*(y/2.), (z/2.));
-    glColor3f(0,0,1);glVertex3f((x/2.), -1*(y/2.), -1*(z/2.));
-    glColor3f(0,1,0);glVertex3f(-1*(x/2.), -1*(y/2.), -1*(z/2.));
-    glColor3f(1,1,1);glVertex3f(-1*(x/2.), -1*(y/2.), (z/2.));
+    glTexCoord2f(0,0.0);glVertex3f((x/2.), -1*(y/2.), (z/2.));
+    glTexCoord2f(0.2,0.0);glVertex3f((x/2.), -1*(y/2.), -1*(z/2.));
+    glTexCoord2f(0.2,4);glVertex3f(-1*(x/2.), -1*(y/2.), -1*(z/2.));
+    glTexCoord2f(0,4);glVertex3f(-1*(x/2.), -1*(y/2.), (z/2.));
   glEnd();
   glBegin(GL_POLYGON);
-    glColor3f(0,0,1);glVertex3f((x/2.), -1*(y/2.), -1*(z/2.));
-    glColor3f(1,0,0);glVertex3f((x/2.), -1*(y/2.), (z/2.));
-    glColor3f(1,0,0);glVertex3f((x/2.), y/2., (z/2.));
-    glColor3f(0,0,1);glVertex3f((x/2.), y/2., -1*(z/2.));
+    glTexCoord2f(0,0.0);glVertex3f((x/2.), -1*(y/2.), -1*(z/2.));
+    glTexCoord2f(0.2,0.0);glVertex3f((x/2.), -1*(y/2.), (z/2.));
+    glTexCoord2f(0.2,1);glVertex3f((x/2.), y/2., (z/2.));
+    glTexCoord2f(0,1);glVertex3f((x/2.), y/2., -1*(z/2.));
   glEnd();
   glBegin(GL_POLYGON);
-    glColor3f(0,0,1);glVertex3f((x/2.), -1*(y/2.), -1*(z/2.));
-    glColor3f(1,0,0);glVertex3f((x/2.), -1*(y/2.), (z/2.));
-    glColor3f(1,0,0);glVertex3f((x/2.), y/2., (z/2.));
-    glColor3f(0,0,1);glVertex3f((x/2.), y/2., -1*(z/2.));
+    glTexCoord2f(0,0.0);glVertex3f((x/2.), -1*(y/2.), -1*(z/2.));
+    glTexCoord2f(0.2,0.0);glVertex3f((x/2.), -1*(y/2.), (z/2.));
+    glTexCoord2f(0.2,1);glVertex3f((x/2.), y/2., (z/2.));
+    glTexCoord2f(0,1);glVertex3f((x/2.), y/2., -1*(z/2.));
   glEnd();
   glBegin(GL_POLYGON);
-    glColor3f(1,0,0);glVertex3f((x/2.), -1*(y/2.), (z/2.));
-    glColor3f(0,0,1);glVertex3f(-1*(x/2.), -1*(y/2.), (z/2.));
-    glColor3f(0,0,1);glVertex3f(-1*(x/2.), y/2., (z/2.));
-    glColor3f(1,0,0);glVertex3f((x/2.), y/2., (z/2.));
+    glTexCoord2f(0,0.0);glVertex3f((x/2.), -1*(y/2.), (z/2.));
+    glTexCoord2f(0.2,0.0);glVertex3f(-1*(x/2.), -1*(y/2.), (z/2.));
+    glTexCoord2f(0.2,1);glVertex3f(-1*(x/2.), y/2., (z/2.));
+    glTexCoord2f(0,1);glVertex3f((x/2.), y/2., (z/2.));
   glEnd();
   glBegin(GL_POLYGON);
-    glColor3f(0,0,1);glVertex3f(-1*(x/2.), -1*(y/2.), -1*(z/2.));
-    glColor3f(1,0,0);glVertex3f((x/2.), -1*(y/2.), -1*(z/2.));
-    glColor3f(1,0,0);glVertex3f((x/2.), y/2., -1*(z/2.));
-    glColor3f(0,0,1);glVertex3f(-1*(x/2.), y/2., -1*(z/2.));
+    glTexCoord2f(0,0.0);glVertex3f(-1*(x/2.), -1*(y/2.), -1*(z/2.));
+    glTexCoord2f(0.2,0.0);glVertex3f((x/2.), -1*(y/2.), -1*(z/2.));
+    glTexCoord2f(0.2,1);glVertex3f((x/2.), y/2., -1*(z/2.));
+    glTexCoord2f(0,1);glVertex3f(-1*(x/2.), y/2., -1*(z/2.));
   glEnd();
   glBegin(GL_POLYGON);
-    glColor3f(0,0,1);glVertex3f(-1*(x/2.), -1*(y/2.), (z/2.));
-    glColor3f(1,0,0);glVertex3f(-1*(x/2.), -1*(y/2.), -1*(z/2.));
-    glColor3f(1,0,0);glVertex3f(-1*(x/2.), y/2., -1*(z/2.));
-    glColor3f(0,0,1);glVertex3f(-1*(x/2.), y/2., (z/2.));
+    glTexCoord2f(0,0.0);glVertex3f(-1*(x/2.), -1*(y/2.), (z/2.));
+    glTexCoord2f(0.2,0.0);glVertex3f(-1*(x/2.), -1*(y/2.), -1*(z/2.));
+    glTexCoord2f(0.2,1);glVertex3f(-1*(x/2.), y/2., -1*(z/2.));
+    glTexCoord2f(0,1);glVertex3f(-1*(x/2.), y/2., (z/2.));
   glEnd();
   glBegin(GL_POLYGON);
-    glColor3f(1,0,0);glVertex3f((x/2.), (y/2.), (z/2.));
-    glColor3f(0,0,1);glVertex3f((x/2.), (y/2.), -1*(z/2.));
-    glColor3f(0,1,0);glVertex3f(-1*(x/2.), (y/2.), -1*(z/2.));
-    glColor3f(1,1,1);glVertex3f(-1*(x/2.), (y/2.), (z/2.));
+    glTexCoord2f(0,0.0);glVertex3f((x/2.), (y/2.), (z/2.));
+    glTexCoord2f(0.2,0.0);glVertex3f((x/2.), (y/2.), -1*(z/2.));
+    glTexCoord2f(0.2,4);glVertex3f(-1*(x/2.), (y/2.), -1*(z/2.));
+    glTexCoord2f(0,4);glVertex3f(-1*(x/2.), (y/2.), (z/2.));
   glEnd();
 }
 
@@ -87,6 +88,10 @@ void draw_corne_as_chevalo(float x,float y, size_t deep, float size_midle){
   permet de dessioner une corne avec des valeurs hardcoder de la fonction recursive
 */
 void draw_corne(size_t nb){
+  unsigned char ***texture1 = get_texture1();
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+         GL_RGB,GL_UNSIGNED_BYTE,texture1);
+  glEnable(GL_TEXTURE_2D);
   //float deep=3;
   float deep=3;
   float angle = 360/nb;
