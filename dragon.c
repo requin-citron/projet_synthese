@@ -126,6 +126,9 @@ void dragon(){
       glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 10.0);
       glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 2.0);
       glLightfv(GL_LIGHT1,GL_SPOT_DIRECTION, dirSpot);
+  }else{
+    glDisable(GL_LIGHTING);
+    glDisable(GL_LIGHT1);
   }
   glFlush();
   //On echange les buffers

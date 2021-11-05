@@ -110,7 +110,7 @@ void anim(){
   modification du zoom
 */
 void clavier(unsigned char touche,int x,int y){
-  //printf("touche : %c\n", touche);
+  //printf("touche : %d\n", (int)touche);
   //printf("zoom: %f\n", zoom);
   switch (touche)
     {
