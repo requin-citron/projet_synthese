@@ -12,7 +12,7 @@
 
 char presse;
 int anglex,angley,x,y,xold,yold;
-double zoom=1;
+double zoom=3;
 float animation1=0;
 float animation2=0;
 float animation3=0;
@@ -21,7 +21,7 @@ size_t angle_magie = 0;
 bool switch_laser_fire = false;
 float angle_ailes = 0;
 float angle_ailes_base=0.;
-bool switch_ailes=true;
+bool switch_ailes=false;
 
 float c = (3.-sqrt(5.))/4.;
 /* Prototype des fonctions */
@@ -69,7 +69,6 @@ int main(int argc,char **argv){
   glEnable(GL_DEPTH_TEST);
 
   /* enregistrement des fonctions de rappel */
-
   glutDisplayFunc(dragon);
   glutKeyboardFunc(clavier);
   glutReshapeFunc(reshape);
