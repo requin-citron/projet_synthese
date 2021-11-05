@@ -21,7 +21,7 @@ void printSquare(GLfloat* mid, GLfloat s) {
 
 void sun() {
     glColor4f(0.0,0.1,1.0,1);
-    glutSolidCube(0.5);
+    //glutSolidCube(0.5);
 
     GLfloat ambient[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -36,16 +36,16 @@ void sun() {
 
     GLfloat posLight[] = { 1.0, 0.0, 0.0, 0.0 };
     GLfloat posSpot[] = { 1.0, 0.0, 0.0, 1.0 };
-    GLfloat dirSpot[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat dirSpot[] = { -1.0, 0.0, 0.0, 1.0 };
 
-    glEnable(GL_LIGHTING);
-    //glEnable(GL_LIGHT0);
-    glLightfv(GL_LIGHT0, GL_POSITION, posLight);
-    glEnable(GL_LIGHT1);
-    glLightfv(GL_LIGHT1, GL_POSITION, posSpot);
-    glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 10.0);
-    glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 2.0);
-    glLightfv(GL_LIGHT1,GL_SPOT_DIRECTION, dirSpot);
+    // glEnable(GL_LIGHTING);
+    // //glEnable(GL_LIGHT0);
+    // glLightfv(GL_LIGHT0, GL_POSITION, posLight);
+    // glEnable(GL_LIGHT1);
+    // glLightfv(GL_LIGHT1, GL_POSITION, posSpot);
+    // glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 10.0);
+    // glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 2.0);
+    // glLightfv(GL_LIGHT1,GL_SPOT_DIRECTION, dirSpot);
 
 
 /*_light_position[0] =  0.0;

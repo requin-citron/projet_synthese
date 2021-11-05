@@ -66,9 +66,9 @@ void loadJpegImage(char *fichier, unsigned char curr[][256][3]){
 
 //!renvois la variable texture
 unsigned char ***get_texture(){
-  return texture;
+  return (unsigned char ***)texture;
 }
 //!renvois la variable texture1
 unsigned char ***get_texture1(){
-  return texture1;
+  return (unsigned char ***)texture1;
 }

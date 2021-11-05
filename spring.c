@@ -105,7 +105,7 @@ void show_spring(){
   affiche le corp et renvois le dernier point avec sa matrice
 */
 void show_body(point *p_back, matrix *m){
-  
+
 
   float increment = HAUTEUR/SPINE_NB;
   float increment_cercle= increment/CIRCULAR_RESOLUTION;
@@ -203,25 +203,25 @@ void show_body(point *p_back, matrix *m){
     }
   }
 
-    // //Repère
-    // //axe x en rouge
-    // glBegin(GL_LINES);
-    //     glColor3f(1.0,0.0,0.0);
-    //   glVertex3f(0, 0,0.0);
-    //   glVertex3f(1, 0,0.0);
-    // glEnd();
-    // //axe des y en vert
-    // glBegin(GL_LINES);
-    //   glColor3f(0.0,1.0,0.0);
-    //   glVertex3f(0, 0,0.0);
-    //   glVertex3f(0, 1,0.0);
-    // glEnd();
-    // //axe des z en bleu
-    // glBegin(GL_LINES);
-    //   glColor3f(0.0,0.0,1.0);
-    //   glVertex3f(0, 0,0.0);
-    //   glVertex3f(0, 0,1.0);
-    // glEnd();
+    //Repère
+    //axe x en rouge
+    glBegin(GL_LINES);
+        glColor3f(1.0,0.0,0.0);
+      glVertex3f(0, 0,0.0);
+      glVertex3f(1, 0,0.0);
+    glEnd();
+    //axe des y en vert
+    glBegin(GL_LINES);
+      glColor3f(0.0,1.0,0.0);
+      glVertex3f(0, 0,0.0);
+      glVertex3f(0, 1,0.0);
+    glEnd();
+    //axe des z en bleu
+    glBegin(GL_LINES);
+      glColor3f(0.0,0.0,1.0);
+      glVertex3f(0, 0,0.0);
+      glVertex3f(0, 0,1.0);
+    glEnd();
     *p_back=p1;
     *m = base_back;
 }
