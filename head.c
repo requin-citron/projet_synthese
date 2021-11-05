@@ -68,7 +68,7 @@ static float calcule_rayon(float *x){
 */
 void head(point *p_back, matrix *m){
   /* effacement de l'image avec la couleur de fond */
-  unsigned char *texture = get_texture();
+  unsigned char ***texture = get_texture();
 
 
   /* Parametrage du placage de textures */
