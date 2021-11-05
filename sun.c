@@ -24,8 +24,8 @@ void sun() {
     glutSolidCube(0.5);
 
     GLfloat ambient[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat diffuse[] = { 0.0, .0, 1.0, 1.0 };
-    GLfloat specular[] = { 0.0, .0, 1.0, 1.0 };
+    GLfloat diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat specular[] = { 1.0, 1.0, 1.0, 1.0 };
 
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
@@ -38,8 +38,8 @@ void sun() {
     GLfloat posSpot[] = { 1.0, 0.0, 0.0, 1.0 };
     GLfloat dirSpot[] = { 1.0, 1.0, 1.0, 1.0 };
 
-    //glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHTING);
+    //glEnable(GL_LIGHT0);
     glLightfv(GL_LIGHT0, GL_POSITION, posLight);
     glEnable(GL_LIGHT1);
     glLightfv(GL_LIGHT1, GL_POSITION, posSpot);

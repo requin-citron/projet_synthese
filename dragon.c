@@ -111,7 +111,6 @@ void dragon(){
       }
     glPopMatrix();
   }
-
   glFlush();
   //On echange les buffers
   glutSwapBuffers();
