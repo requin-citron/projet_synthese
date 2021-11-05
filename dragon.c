@@ -47,7 +47,7 @@ void dragon(){
   // glEnable(GL_LIGHT0);
   glEnable(GL_DEPTH_TEST);
 
-  //sun();
+  sun();
 
   point p1,p2,p3,p4;
   point p1_back;
