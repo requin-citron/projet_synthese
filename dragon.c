@@ -127,6 +127,7 @@ void dragon(){
       }
     glPopMatrix();
       //glEnable(GL_LIGHTING);
+      glDisable(GL_LIGHT0);
       glEnable(GL_LIGHT1);
       glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
       glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
@@ -138,6 +139,7 @@ void dragon(){
   }else{
     //glDisable(GL_LIGHTING);
     glDisable(GL_LIGHT1);
+    glEnable(GL_LIGHT0);
   }
   glFlush();
   //On echange les buffers
