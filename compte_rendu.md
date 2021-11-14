@@ -29,7 +29,7 @@
         <li><a href="#mouvement_ailes">Mouvement Ailes</a></li>
         <li><a href="#camera">Camera</a></li>
     </ul>
-    <li><a href="">Lumières</a></li>
+    <li><a href="#lumiere">Lumières</a></li>
   </ol>
 
 
@@ -46,7 +46,7 @@ Trois structures dans le code sont intéressantes
 2. [vector](structvector.html)
 3. [matrix](structmatrix.html)
 
-les structures de point et vector sont identiques. Cela permet de bien differencier dans les fonctions qui fait quoi.
+les structures de point et vector sont identiques. Cela permet de bien différencier dans les fonctions qui fait quoi.
 Le code permet de faire des changements de base de façon transparente.
 
 #### Problèmatique
@@ -60,7 +60,7 @@ Il faut donc utiliser le vecteur tangent pour dessiner le patern sur le plan dé
 ##### Calcul de la tangente
 
 Avec OpenGL, si nous voulons utiliser des formules parametriques, nous avons besoin de les discrétiser.
-Par exemple pour un cercle nous sommes obligé de le transformer en plusieurs segments.Avec beaucoup de segments nous formons un cercle.
+Par exemple pour un cercle nous sommes obligé de le transformer en plusieurs segments. Avec beaucoup de segments nous formons un cercle.
 
 Dans notre cas, nous n'avons pas besoin de calculer la dérivé. Notre figure est une suite de segments qui sont par définition la dérivé.
 
@@ -68,7 +68,7 @@ Dans notre cas, nous n'avons pas besoin de calculer la dérivé. Notre figure es
 
 Maintenant que nous avons le vecteur normal de notre plan il ne nous reste plus qu'à calculer deux vecteurs du plan orthogonaux entre eux.
 Pour cela nous allons utiliser le dot product et le cross product.
-Pour le premier vecteur il suffit de trouver un vecteur qui crée un dot product entre le vecteur normal et celui ci.
+Pour le premier vecteur il suffit de trouver un vecteur qui crée un dot product entre le vecteur normal et celui-ci.
 
 
 $$\overrightarrow{\boldsymbol{N}}=\begin{pmatrix} x \\\ y \\\ z \end{pmatrix}$$
@@ -88,7 +88,7 @@ C'est à dire que la norme de chaque vecteur soit égale à 1.
 Pour cela nous devons diviser toutes les composantes des vecteurs par leurs normes
 $$Malheureusement\ \ nous\ \ avons\ \ besoin\ \ de\ \ calculer\ \ \frac{1}{\sqrt{\|\|\overrightarrow{\boldsymbol{V}\|\|}}}$$
 Cette expression est utilisé un **trés trés** grand nombre de fois, mais elle est trés coûteuse
-en ressources. Pour cela nous avons utilisé un hack qui permet de calculer 1/sqrt(x) de façon **trés** rapide
+en ressources. Pour cela nous avons utilisé une amélioration qui permet de calculer 1/sqrt(x) de façon **trés** rapide
 avec une faible marge d'erreur.
 
 [**Video explicative sur youtube**](https://www.youtube.com/watch?v=p8u_k2LIZyo)
@@ -110,7 +110,7 @@ Maintenant que nos outils sont prêts nous allons pouvoir commencer la modélisa
 
 #### Le Corps {#corp}
 
-Nous sommes parti sur un dragon en spirale. Nous avons donc commencé par faire une spirale en lignes pour ensuite utiliser les maths vues plus haut pour créer un cylindre qui suit la ligne.
+Nous sommes parti sur un dragon en spirale. Nous avons donc commencés par faire une spirale en lignes pour ensuite utiliser les maths vues plus haut pour créer un cylindre qui suit la ligne.
 
 ##### La spirale
 
@@ -128,7 +128,7 @@ Effectivement à cause du changement de base entre chaque cylindre apparait un v
 Nous avons deux façons de résoudre ce problème
 ##### Solution 1
 
-Nous pouvons reboucher l'ecart entre deux sections en créant un autre cylindre.
+Nous pouvons reboucher l'écart entre deux sections en créant un autre cylindre.
 
 ##### Solution 2
 
@@ -376,3 +376,9 @@ Les animations de caméra sont celles demandées par le sujet, c'est a dire:
 * rotation autour de l'objet
 * zoom avant
 * zoom arrière
+
+### Lumières {#lumiere}
+
+Notre choix c'est porté sur une lumière ambiante au centre de la scène ainsi qu'un spot sur le visage du dragon.
+Pour ce faire, nous avons commencé par déclarer les trois composantes d'une lumière pour pouvoir les créer, c'est à dire: ambient, diffuse et specular.
+La lumière ambiante et le spot possédent une position et il y a encore une composante pour le spot pour sa direction.
