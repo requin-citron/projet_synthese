@@ -46,23 +46,23 @@ Trois structures dans le code sont intéressantes
 2. [vector](structvector.html)
 3. [matrix](structmatrix.html)
 
-les structures de point et vector sont identiques. Cela permet de bien différencier dans les fonctions qui fait quoi.
+Les structures de point et vector sont identiques. Cela permet de bien différencier dans les fonctions qui fait quoi.
 Le code permet de faire des changements de base de façon transparente.
 
 #### Problèmatique
 
 Dans le cas où on dessine une courbe de bezier ou autre, si l'on veut dessiner un patern, il ne suivra pas le schéma car il sera dans le plan par défaut.
 
-Il faut donc utiliser le vecteur tangent pour dessiner le patern sur le plan décrit par celui ci.
+Il faut donc utiliser le vecteur tangent pour dessiner le patern sur le plan décrit par celui-ci.
 
 #### résolution
 
 ##### Calcul de la tangente
 
 Avec OpenGL, si nous voulons utiliser des formules parametriques, nous avons besoin de les discrétiser.
-Par exemple pour un cercle nous sommes obligé de le transformer en plusieurs segments. Avec beaucoup de segments nous formons un cercle.
+Par exemple pour un cercle nous sommes obligés de le transformer en plusieurs segments. Avec beaucoup de segments nous formons un cercle.
 
-Dans notre cas, nous n'avons pas besoin de calculer la dérivé. Notre figure est une suite de segments qui sont par définition la dérivé.
+Dans notre cas, nous n'avons pas besoin de calculer la dérivée. Notre figure est une suite de segments qui sont par définition la dérivée.
 
 ##### Calcul de la base
 
@@ -87,7 +87,7 @@ C'est à dire que la norme de chaque vecteur soit égale à 1.
 
 Pour cela nous devons diviser toutes les composantes des vecteurs par leurs normes
 $$Malheureusement\ \ nous\ \ avons\ \ besoin\ \ de\ \ calculer\ \ \frac{1}{\sqrt{\|\|\overrightarrow{\boldsymbol{V}\|\|}}}$$
-Cette expression est utilisé un **trés trés** grand nombre de fois, mais elle est trés coûteuse
+Cette expression est utilisée un **trés trés** grand nombre de fois, mais elle est aussi trés coûteuse
 en ressources. Pour cela nous avons utilisé une amélioration qui permet de calculer 1/sqrt(x) de façon **trés** rapide
 avec une faible marge d'erreur.
 
@@ -110,17 +110,17 @@ Maintenant que nos outils sont prêts nous allons pouvoir commencer la modélisa
 
 #### Le Corps {#corp}
 
-Nous sommes parti sur un dragon en spirale. Nous avons donc commencés par faire une spirale en lignes pour ensuite utiliser les maths vues plus haut pour créer un cylindre qui suit la ligne.
+Nous sommes parti sur un dragon en spirale. Nous avons donc commencé par faire une spirale en ligne pour ensuite utiliser les maths vues plus haut pour créer un cylindre qui suit la ligne.
 
 ##### La spirale
 
-Pour faire un cercle il suffit de décomposer le cercle en petits segments. Puis il ne reste plus qu'à incrémenter la hauteur à chaque itération et faire plusieurs cercles pour obtenir une spirale.
+Pour faire un cercle il suffit d'en décomposer un en petits segments. Puis il ne reste plus qu'à incrémenter la hauteur à chaque itération et faire plusieurs cercles pour obtenir une spirale.
 
 `Toutes les constantes pour jouer avec la spirale sont dans spring.h`
 
 ![spirale1](../images/spirale1.png) ![spirale2](../images/spirale2.png)
 
-Il ne reste plus qu'a remplacer la ligne par un cylindre pour obtenir **un corps imparfait**.
+Ensuite, on peut remplacer la ligne par un cylindre pour obtenir **un corps imparfait**.
 Effectivement à cause du changement de base entre chaque cylindre apparait un vide.
 
 ![probleme1](../images/probleme1.png)
@@ -136,18 +136,18 @@ Nous pouvons également relier le nouveau cylindre a l'ancien directement.
 
 ##### Solution retenue
 
-Nous avons utilisé les deux solutions. la première permet de donner un aspect avec des cassures (utiliser pour le corps) et la deuxième permet de donner un aspect uniforme.
+Nous avons utilisé les deux solutions. La première permet de donner un aspect avec des cassures (utiliser pour le corps) et la deuxième permet de donner un aspect uniforme.
 
 ![spirale3](../images/spirale3.png)       ![head1](../images/head1.png)
 
-En jouant avec les paramétres, il est possible d'obtenir des resultats sympas
+En jouant avec les paramètres, il est possible d'obtenir des résultats convenables
 
 ![spirale4](../images/spirale4.png)
 
 ##### Texture
 
-Pour la peau de dragon nous utiliserons une image trouvée sur google image.
-il suffit aprés de l'enrouler autour du cylindre. Pour ça on découpe la texture en largeur en autant de morceaux que d'iteration pour faire le cylindre.Il suffit de coller chaque morceau à chaque face du cylindre.
+Pour la peau de dragon nous utiliserons une image trouvée sur google.
+Il suffit aprés de l'enrouler autour du cylindre. Pour ça on découpe la texture en largeur en autant de morceaux que d'iteration pour faire le cylindre. Il suffit de coller chaque morceau à chaque face du cylindre.
 
 ![dragon](../images/dragon.jpg)       ![spirale5](../images/spirale5.png)
 
@@ -178,7 +178,7 @@ On peut faire un cône facilement en augmentant la hauteur et en diminuant le ra
 
 ![chepito](../images/chapito.png)
 
-Maintenant nous voulons une sphére. pour cela nous allons utiliser Pythagore.<br/>
+Maintenant nous voulons une sphère. Pour cela nous allons utiliser Pythagore.<br/>
 Nous allons utiliser cette propriétée pour obtenir la hauteur en fonction du rayon.
 $$Avec\ \ R\ \ le\ \ Rayon$$
 $$sin(\alpha)^2 + cos(\alpha)^2 = 1$$
@@ -198,12 +198,12 @@ Tout le reste sera en blanc.
 
 Nous voulions partir sur un design type corail ou chandelier.<br/>
 Pour cela nous avons utilisé un empilement de pavés droits là encore codé par nos soins.<br/>
-Nous sommes parti sur un pavé droit horizontal et deux verticaux
+Nous sommes partis sur un pavé droit horizontal et deux verticaux
 
 ![pavee](../images/corne1.png)
 
-Nous avons opté pour un algorithme récursif qui nous permet de générer un empilement de ce partern.<br/>
-L'algorithme va s'executer N fois et à chaque recursion va dessiner le même patern en plus petit au bout des pavés verticaux.
+Nous avons opté pour un algorithme récursif qui nous permet de générer un empilement de ce patern.<br/>
+L'algorithme va s'executer N fois et à chaque récursion va dessiner le même patern en plus petit au bout des pavés verticaux.
 
 ![corne2](../images/corne2.png)
 
@@ -227,7 +227,7 @@ C'était un petit peu trop complexe pour nous et nous avons légerement triché.
 
 ![geogebra](../images/geogebra.png)
 
-Nous avons maintenant notre équation paramétre !
+Nous avons maintenant notre équation paramètre !
 
 $$t \in [0;2\pi]$$
 $$X\ \ = \ \ 1.43 - 1.39\cdot cos(t)\ \ +\ \ 0.21\cdot sin(t)$$
@@ -256,18 +256,18 @@ Pour rappel nous avons:
 ##### Tête + Yeux + Cornes
 
 Dans le premier assemblage nous fusionnons les yeux avec la tête et les cornes avec la tête.
-La tete ayant comme axe de symetrie l'axe X nous allons nous en servir pour placer juste un oeil et une corne de façon propre. la symétrie fera le reste.<br/>
-Nous avons utilisé notre courbe de Bézier ainsi que notre fonction de calcul de rayon en fonction de t (Bézier) pour placer l'oeil. en effet, nous connaissons la position de la courbe de Bézier dans l'espace ainsi que son rayon a cet endroit. Nous n'avons alors plus qu'à translater l'oeil aux coordonées données par la courbe de Bézier en additionant le rayon ainsi qu'un décalage (constante) pour le décaler un peu sur le coté.<br/>
+La tête ayant comme axe de symetrie l'axe X nous allons nous en servir pour placer juste un oeil et une corne de façon propre. la symétrie fera le reste.<br/>
+Nous avons utilisé notre courbe de Bézier ainsi que notre fonction de calcul de rayon en fonction de t (Bézier) pour placer l'oeil. En effet, nous connaissons la position de la courbe de Bézier dans l'espace ainsi que son rayon a cet endroit. Nous n'avons alors plus qu'à translater l'oeil aux coordonées données par la courbe de Bézier en additionant le rayon ainsi qu'un décalage (constante) pour le décaler un peu sur le coté.<br/>
 Il suffit de faire la même chose avec juste un décalage négatif pour mettre l'oeil de l'autre coté.<br/>
 L'intérêt de positioner l'oeil en fonction de la courbe de Bézier est que lors de l'animation de la tête les yeux suivent parfaitement le mouvement.
 
-Ou utilise le meme procédé pour les cornes avec un décalage supérieur sur la courbe de Bézier pour qu'elles soient plus loin que les yeux. De la même manière, les cornes suivent parfaitement le mouvement de la tête.
+Ou utilise le même procédé pour les cornes avec un décalage supérieur sur la courbe de Bézier pour qu'elles soient plus loin que les yeux. De la même manière, les cornes suivent parfaitement le mouvement de la tête.
 
 ![head3](../images/head3.png)
 
 ##### Tête + Corps
-Il faut maintenant racorder le corps à la tête. C'est la partie la plus subtile car les deux extrémités ne sont pas parfaitement droites.<br/>
-nous aurions pu faire un cylindre droit qui bouche cet espace mais nous ne trouvions ça pas propre. Nous avons donc réutilisé ce que nous avions fait pour le corps et la tête.<br/>
+Il faut maintenant raccorder le corps à la tête. C'est la partie la plus subtile car les deux extrémités ne sont pas parfaitement droites.<br/>
+Nous aurions pu faire un cylindre droit qui bouche cet espace mais nous ne trouvions ça pas propre. Nous avons donc réutilisé ce que nous avions fait pour le corps et la tête.<br/>
 Nous avons récupéré le dernier point ainsi que sa matrice de base du corps et de la tête.<br/>
 Il ne nous reste plus qu'à relier les deux morceaux.
 
@@ -296,7 +296,7 @@ Pour la caméra nous pouvons nous rapprocher, nous éloigner et tourner autour d
 #### Mouvement Tête {#mouvement_tete}
 
 Notre tête est basée sur une courbe de Bézier. Il suffit de modifier les coordonées de ces points pour faire bouger la tête.<br/>
-Nous avons donc utilisé une variable globale allant de 0 a 100 controlée par le clavier qui permet de progressivement changer les points de la courbe. la tête étant basée dessus, la tête bouge !
+Nous avons donc utilisé une variable globale allant de 0 a 100 controlée par le clavier qui permet de progressivement changer les points de la courbe. La tête étant basée dessus, la tête bouge !
 
 #### Feu {#feu}
 
@@ -305,20 +305,20 @@ Pour modéliser le feu, nous sommes parti sur l'idée d'utiliser un prisme avec 
 
 ![fire1](../images/fire1.png)
 
-Ils suffit ensuite de créer énormément de prismes de petite tailles(comme des particules).<br/>
+Il suffit ensuite de créer énormément de prismes de petite tailles(comme des particules).<br/>
 Puis de les placer de façon aléatoire dans un cylindre avec des angles aléatoires. Le prisme, avec un angle aléatoire, donne une impression de particules et le placement aléatoire donne une impression de progression.<br/>
 Le déplacement des particules est une illusion mais du fait de la nature de l'oeil humain l'impression de jet de feu fonctionne.
 
 ![fire2](../images/fire2.png)
 
 Il suffit de donner le rayon de la pointe du nez pour que le rayon du feu soit de bonne taille
-et de le translater aux bon endroit (ici on utilise le même principe que pour les yeux et les cornes).
+et de le translater aux bons endroits (ici on utilise le même principe que pour les yeux et les cornes).
 
 #### Laser {#laser}
 
 Le laser est juste un cylindre bleu mis au même endoit que le feu.<br/>
-Nous trouvions notre laser ennuyant comparé a notre feu pour cela nous avons rajouté des particules.<br/>
-Pour cela nous avons desinné des cercles bleus autour du laser puis nous avons rendu leur rayon et leur décallage du début du laser aléatoire.<br/>
+Nous trouvions notre laser ennuyeux comparé à notre feu pour cela nous avons rajouté des particules.<br/>
+Pour cela nous avons dessinné des cercles bleus autour du laser puis nous avons rendu leur rayon et leur décallage du début du laser aléatoire.<br/>
 ce qui signifit que tous les segments qui composent un cercle sont décallés donnant une impression de particules.
 
 ![laser](../images/laser.png)
@@ -372,13 +372,13 @@ $$La\ \ Fréquence\ \ =\ \ \frac{1}{La\ \ période}\ \ =\ \ \frac{2\pi}{T}$$
 
 #### Camera {#camera}
 
-Les animations de caméra sont celles demandées par le sujet, c'est a dire:
+Les animations de caméra sont celles demandées par le sujet, c'est à dire:
 * rotation autour de l'objet
 * zoom avant
 * zoom arrière
 
 ### Lumières {#lumiere}
 
-Notre choix c'est porté sur une lumière ambiante au centre de la scène ainsi qu'un spot sur le visage du dragon.
-Pour ce faire, nous avons commencé par déclarer les trois composantes d'une lumière pour pouvoir les créer, c'est à dire: ambient, diffuse et specular.
+Notre choix s'est porté sur une lumière ambiante au centre de la scène ainsi qu'un spot sur le visage du dragon.
+Pour se faire, nous avons commencé par déclarer les trois composantes d'une lumière pour pouvoir les créer, c'est à dire: ambient, diffuse et specular.
 La lumière ambiante et le spot possédent une position et il y a encore une composante pour le spot pour sa direction.
