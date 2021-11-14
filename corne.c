@@ -88,9 +88,10 @@ void draw_corne_as_chevalo(float x,float y, size_t deep, float size_midle){
   permet de dessiner une corne avec des valeurs hardcoder de la fonction recursive
 */
 void draw_corne(size_t nb){
-  unsigned char ***texture1 = get_texture1();
+  unsigned char texture[256][256][3];
+  loadJpegImage("./corne.jpg",texture);
   glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-         GL_RGB,GL_UNSIGNED_BYTE,texture1);
+         GL_RGB,GL_UNSIGNED_BYTE,texture);
   glEnable(GL_TEXTURE_2D);
   //float deep=3;
   float deep=3;

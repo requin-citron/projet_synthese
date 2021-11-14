@@ -22,7 +22,8 @@ void dragon(){
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
   //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
 	//       GL_RGB,GL_UNSIGNED_BYTE,image);
-  unsigned char ***texture = get_texture();
+  unsigned char texture[256][256][3];
+  loadJpegImage("./dragon.jpg",texture);
   glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
          GL_RGB,GL_UNSIGNED_BYTE,texture);
   glEnable(GL_TEXTURE_2D);
@@ -61,7 +62,7 @@ void dragon(){
   glPushMatrix();
     glTranslatef(0.75+offset,0.4,0.6);
     glRotatef(180,0,1,0);
-    head(&p2_back, &m2);
+    head(&p2_back, &m2, texture);
   glPopMatrix();
   p2_back.x *= -1;
   p2_back.z *= -1;
@@ -159,7 +160,8 @@ void affiche_test(){
   /* Parametrage du placage de textures */
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-  unsigned char ***texture = get_texture();
+  unsigned char texture[256][256][3];
+  loadJpegImage("./dragon.jpg",texture);
   glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
          GL_RGB,GL_UNSIGNED_BYTE,texture);
   glEnable(GL_TEXTURE_2D);

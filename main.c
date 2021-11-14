@@ -52,8 +52,6 @@ float get_angle_ailes(){return angle_ailes;}
 
 int main(int argc,char **argv){
   srand(time(NULL));
-  loadJpegImage("./dragon.jpg", 0);
-  loadJpegImage("./corne.jpg", 1);
   /* initialisation de glut et creation
      de la fenetre */
   glutInit(&argc,argv);
