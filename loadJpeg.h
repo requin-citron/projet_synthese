@@ -19,7 +19,7 @@
 #include <jerror.h>
 
 
-void loadJpegImage(char *, unsigned char [][256][3]);
+void loadJpegImage(char *, int);
 
 unsigned char ***get_texture();
 unsigned char ***get_texture1();
