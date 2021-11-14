@@ -47,7 +47,7 @@ void dragon(){
   // glEnable(GL_LIGHT0);
   glEnable(GL_DEPTH_TEST);
 
-  sun();
+  //sun();
 
   point p1,p2,p3,p4;
   point p1_back;
@@ -103,19 +103,27 @@ void dragon(){
   //calcule pos
   bezier(0.03,&x_b, &y_b);
   //lumière
-  GLfloat ambient[] = { 1.0, 1.0, .0, .0 };
-  GLfloat diffuse[] = { 1.0, 1.0, .0, .0 };
-  GLfloat specular[] = { 1.0, 1.0, .0, .0 };
+  GLfloat ambient[] = { 1.0, 1.0, 1.0, 1.0 };
+  GLfloat diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+  GLfloat specular[] = { 1.0, 1.0, 1.0, 1.0 };
   GLfloat posSpot[] = { 1, 0.4+y_b, 0.6, 1.0 };
   GLfloat dirSpot[] = { 1.0, 0.0, 0.0, 1.0 };
   GLfloat posLight[] = { 1.0, 0.0, 0.0, 0.0 };
 
-  glEnable(GL_LIGHTING);
-  glEnable(GL_LIGHT0);
   glLightfv(GL_LIGHT0, GL_POSITION, posLight);
   glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
   glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
   glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+  glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
+  glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
+  glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
+  glLightfv(GL_LIGHT1, GL_POSITION, posSpot);
+  glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 10.0);
+  glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 2.0);
+  glLightfv(GL_LIGHT1,GL_SPOT_DIRECTION, dirSpot);
+
+  glEnable(GL_LIGHTING);
+  glEnable(GL_LIGHT0);
 
   if(get_animation2()>140){
     glPushMatrix();
@@ -129,13 +137,6 @@ void dragon(){
       //glEnable(GL_LIGHTING);
       glDisable(GL_LIGHT0);
       glEnable(GL_LIGHT1);
-      glLightfv(GL_LIGHT1, GL_AMBIENT, ambient);
-      glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
-      glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
-      glLightfv(GL_LIGHT1, GL_POSITION, posSpot);
-      glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 10.0);
-      glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 2.0);
-      glLightfv(GL_LIGHT1,GL_SPOT_DIRECTION, dirSpot);
   }else{
     //glDisable(GL_LIGHTING);
     glDisable(GL_LIGHT1);
