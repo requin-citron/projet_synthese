@@ -33,6 +33,9 @@ Set up du projet
 6. Générer la doc (Optional)
   `make doc`
 
+> <span style="color:red"> Attention vous avez besoin de doxygen 1.9.2 pour générer la doc</span>
+
+
 <!-- USAGE EXAMPLES -->
 ## Utilisation
 
@@ -63,7 +66,7 @@ affiche un dragon avec des animations
 - [x] Création Animation Feu
 - [x] Création Animation Laser
 - [x] Création Animation Corne
-- [-] Création Ails
-- [-] Création Animation Ails
-- [-] Création Lumières
-- [-] Possiblement ajout de lumière dans le feu et le laser
+- [x] Création Ails
+- [x] Création Animation Ails
+- [x] Création Lumières
+- [x] Possiblement ajout de lumière dans le feu et le laser

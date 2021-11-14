@@ -32,6 +32,7 @@
     <li><a href="#lumiere">Lumières</a></li>
   </ol>
 
+> <span style="color:red"> Attention nous utilisons mathjax </span><br/>Ce compte rendu utilise mathjax pour représenter des vecteurs ou des matrices il faut donc une connexion internet pour que votre navigateur puisse récupérer les scripts js permetant le bonne affichage du site.
 
   | Touche  | Action          |
   | :--------------- |:---------------:|
