@@ -1,5 +1,7 @@
 #include "loadJpeg.h"
 
+//! variable globale pour init les textures
+static int id = 0;
 //! variable globale de la texture du dragon
 static unsigned char texture[256][256][3];
 //! variable global de la texture des cornes
@@ -12,7 +14,7 @@ static unsigned char texture1[256][256][3];
   initialise la variable globale texture
   avec la texture de la peau de dragon
 */
-void loadJpegImage(char *fichier, unsigned char texture[256][256][3]){
+void loadJpegImage(char *fichier){
   unsigned char image[256*256*3];
   struct jpeg_decompress_struct cinfo;
   struct jpeg_error_mgr jerr;
@@ -56,11 +58,20 @@ void loadJpegImage(char *fichier, unsigned char texture[256][256][3]){
   jpeg_finish_decompress(&cinfo);
   jpeg_destroy_decompress(&cinfo);
   fclose(file);
+  if (id++==0)
   for (int i=0;i<256;i++){
     for (int j=0;j<256;j++) {
       texture[i][j][0]=image[i*256*3+j*3];
       texture[i][j][1]=image[i*256*3+j*3+1];
       texture[i][j][2]=image[i*256*3+j*3+2];
+   }
+  }
+  else
+  for (int i=0;i<256;i++){
+    for (int j=0;j<256;j++) {
+      texture1[i][j][0]=image[i*256*3+j*3];
+      texture1[i][j][1]=image[i*256*3+j*3+1];
+      texture1[i][j][2]=image[i*256*3+j*3+2];
    }
   }
 }

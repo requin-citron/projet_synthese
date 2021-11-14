@@ -17,7 +17,7 @@
 #include <jpeglib.h>
 #include <jerror.h>
 
-void loadJpegImage(char *, unsigned char[256][256][3]);
+void loadJpegImage(char *);
 unsigned char ***get_texture();
 unsigned char ***get_texture1();
 
