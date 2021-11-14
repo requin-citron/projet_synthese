@@ -1,9 +1,3 @@
-/********************************************************/
-/*                     cube.cpp                                                 */
-/********************************************************/
-/*                Affiche a l'ecran un cube en 3D                      */
-/********************************************************/
-
 /* inclusion des fichiers d'en-tete freeglut */
 #include "main.h"
 #include "spring.h"
@@ -52,6 +46,9 @@ float get_angle_ailes(){return angle_ailes;}
 
 int main(int argc,char **argv){
   srand(time(NULL));
+  //importation des textures
+  loadJpegImage("dragon.jpg",get_texture());
+  loadJpegImage("corne.jpg",get_texture1());
   /* initialisation de glut et creation
      de la fenetre */
   glutInit(&argc,argv);

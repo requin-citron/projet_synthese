@@ -26,7 +26,7 @@
 //!vitesse d'increment de l'angle des cornes
 #define CORNE_RAPIDE 2
 
-void head(point *, matrix *, unsigned char[256][256][3]);
+void head(point *, matrix *);
 void bezier(float , float *, float *);
 
 #endif

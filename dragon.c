@@ -22,10 +22,8 @@ void dragon(){
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
   //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
 	//       GL_RGB,GL_UNSIGNED_BYTE,image);
-  unsigned char texture[256][256][3];
-  loadJpegImage("./dragon.jpg",texture);
   glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-         GL_RGB,GL_UNSIGNED_BYTE,texture);
+         GL_RGB,GL_UNSIGNED_BYTE,get_texture());
   glEnable(GL_TEXTURE_2D);
 
 
@@ -62,7 +60,7 @@ void dragon(){
   glPushMatrix();
     glTranslatef(0.75+offset,0.4,0.6);
     glRotatef(180,0,1,0);
-    head(&p2_back, &m2, texture);
+    head(&p2_back, &m2);
   glPopMatrix();
   p2_back.x *= -1;
   p2_back.z *= -1;
@@ -72,7 +70,7 @@ void dragon(){
   p2_back.y += 0.4;
   p2_back.z += 0.6;
   glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-         GL_RGB,GL_UNSIGNED_BYTE,texture);
+         GL_RGB,GL_UNSIGNED_BYTE,get_texture());
   //patch pb de rotation pour la matrice changement de base
   //et surtout on regenere y apres l'inversion de Z
   //car j'ai passé 1h en mode WTF ca marche po
@@ -160,10 +158,8 @@ void affiche_test(){
   /* Parametrage du placage de textures */
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-  unsigned char texture[256][256][3];
-  loadJpegImage("./dragon.jpg",texture);
   glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-         GL_RGB,GL_UNSIGNED_BYTE,texture);
+         GL_RGB,GL_UNSIGNED_BYTE,get_texture());
   glEnable(GL_TEXTURE_2D);
   vector cam;
   cam.x = 0;
@@ -186,6 +182,9 @@ void affiche_test(){
 
   //draw_fire(800, (0.03 * 30.0)*HEAD_RAYON-0.04);
   //draw_laser(0.2);
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
+         GL_RGB,GL_UNSIGNED_BYTE,get_texture1());
+  glEnable(GL_TEXTURE_2D);
   draw_corne(5);
   //draw_ailes();
   //point p2_back;

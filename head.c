@@ -58,7 +58,6 @@ static float calcule_rayon(float *x){
 /*!
   \param[out] p_back pointeur sur le dernier point
   \param[out] m pointeur sur la base du dernier point
-  \param[out] texture texture de la tete
 
   cree la tete du dragon et le relie a l'ancien point
   avec un cylindre
@@ -67,17 +66,7 @@ static float calcule_rayon(float *x){
   grace a la courbe de bezier avec une rotation pour qu'il regarde
   devant
 */
-void head(point *p_back, matrix *m, unsigned char texture[256][256][3]){
-  /* Parametrage du placage de textures */
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-  //glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-  //       GL_RGB,GL_UNSIGNED_BYTE,image);
-  glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
-         GL_RGB,GL_UNSIGNED_BYTE,texture);
-  glEnable(GL_TEXTURE_2D);
-
-
+void head(point *p_back, matrix *m){
   //texture init
   float t;
   float angle_back, angle1;

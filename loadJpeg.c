@@ -1,5 +1,10 @@
 #include "loadJpeg.h"
 
+//! variable globale de la texture du dragon
+static unsigned char texture[256][256][3];
+//! variable global de la texture des cornes
+static unsigned char texture1[256][256][3];
+
 //!fonction d'ouverture de la texture
 /*!
   \param[in] fichier nom du fichier
@@ -58,4 +63,13 @@ void loadJpegImage(char *fichier, unsigned char texture[256][256][3]){
       texture[i][j][2]=image[i*256*3+j*3+2];
    }
   }
+}
+
+//! fonction renvoyant la texture du dragon
+unsigned char ***get_texture(){
+  return (unsigned char ***)texture;
+}
+//! fonction renvoyant la texture de la corne
+unsigned char ***get_texture1(){
+  return (unsigned char ***)texture1;
 }
