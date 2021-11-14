@@ -49,6 +49,8 @@ affiche un dragon avec des animations
 | K  | Rotation a Gauche          |
 | O  | Rotation en Haut           |
 | L  | Rotation en Bas          |
+| T  | Baisser la tête          |
+| G  | Monter la tête          |
 
 <!-- ROADMAP -->
 ## Roadmap
