@@ -1,9 +1,9 @@
 #include "laser.h"
 
-//! crée un cylindre
+//! cree un cylindre
 /*!
   \param rayon rayon du cylindre
-  crée un cylindre bleu de rayon du parametre
+  cree un cylindre bleu de rayon du parametre
   la longeur du cylindre dépend de animation2
 */
 void draw_laser(float rayon){
@@ -24,7 +24,7 @@ void draw_laser(float rayon){
       glVertex3f(size, rayon*sin(angle), rayon*cos(angle));
       glVertex3f(size, rayon*sin(angle_back), rayon*cos(angle_back));
     glEnd();
-    //rebouchage extremité
+    //rebouchage extremite
     glBegin(GL_POLYGON);
       glVertex3f(size, rayon*sin(angle), rayon*cos(angle));
       glVertex3f(size, 0, 0);

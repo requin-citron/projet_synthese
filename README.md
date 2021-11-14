@@ -53,7 +53,7 @@ affiche un dragon avec des animations
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Création du Corp
+- [x] Création du Corps
 - [x] Création de la Tête
 - [x] Création des Yeux
 - [x] Création Cornes

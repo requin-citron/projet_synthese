@@ -1,9 +1,9 @@
 #include "spring.h"
 
 
-//!fonction de test pour le corp
+//!fonction de test pour le corps
 /*!
-  permet de bien sélectioner les paramétre des header avant de les tester avec tout le body
+  permet de bien selectioner les parametres des header avant de les tester avec tout le corps
 */
 void show_spring(){
   /* effacement de l'image avec la couleur de fond */
@@ -71,7 +71,7 @@ void show_spring(){
 
 
 
-    //Repère
+    //Repere
     //axe x en rouge
     glBegin(GL_LINES);
         glColor3f(1.0,0.0,0.0);
@@ -97,12 +97,12 @@ void show_spring(){
   glutSwapBuffers();
 }
 
-//! affiche le corp
+//! affiche le corps
 /*!
   \param[out] p_back pointeur du point d'extremité du corp
   \param[out] m pointeur de la matrice de changement de base du corp
 
-  affiche le corp et renvois le dernier point avec sa matrice
+  affiche le corps et renvoie le dernier point avec sa matrice
 */
 void show_body(point *p_back, matrix *m){
 
@@ -203,7 +203,7 @@ void show_body(point *p_back, matrix *m){
     }
   }
 
-    //Repère
+    //Repere
     //axe x en rouge
     glBegin(GL_LINES);
         glColor3f(1.0,0.0,0.0);

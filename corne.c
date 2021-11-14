@@ -51,8 +51,8 @@ static void draw_cube(float x, float y, float z){
 /*!
   \param x[in] centre en x
   \param y[in] centre en y
-  \param deep[in] nb de parternes empilé
-  \param size_midle[in] taille de la brique initiale horizontal
+  \param deep[in] nb de parternes empilés
+  \param size_midle[in] taille de la brique initiale horizontale
 
 */
 void draw_corne_as_chevalo(float x,float y, size_t deep, float size_midle){
@@ -85,7 +85,7 @@ void draw_corne_as_chevalo(float x,float y, size_t deep, float size_midle){
 //!dessine une corne avec nb iteraction
 /*!
   \param nb[in] nombre d'iterations
-  permet de dessioner une corne avec des valeurs hardcoder de la fonction recursive
+  permet de dessiner une corne avec des valeurs hardcoder de la fonction recursive
 */
 void draw_corne(size_t nb){
   unsigned char ***texture1 = get_texture1();

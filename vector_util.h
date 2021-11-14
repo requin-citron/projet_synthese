@@ -7,8 +7,8 @@
 //structure de point
 //! structure point
 /*!
-  structure de point ayant trois composantes x y et z
-  les trois composante sont des float
+  structure de points ayant trois composantes x y et z
+  les trois composantes sont des float
 */
 typedef struct{
   float x;
@@ -19,7 +19,7 @@ typedef struct{
 //structure vector
 //! structure  vecteur
 /*!
-  structure de vecteur qui prend trois composantes x y et z
+  structure de vecteurs qui prend trois composantes x y et z
   les trois composantes sont des float
 */
 typedef struct{
@@ -31,8 +31,8 @@ typedef struct{
 //structure matrice
 //!structure de matrice
 /*!
-  la mtrice  a un seule membre qui est un tableau de 3 vecteur
-  donc la matrice est représenté avec ses trois vecteur **colonnes**
+  la matrice  a un seul membre qui est un tableau de 3 vecteurs
+  donc la matrice est représentee avec ses trois vecteurs **colonnes**
 */
 typedef struct{
   vector v[3];

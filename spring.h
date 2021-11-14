@@ -17,21 +17,21 @@
 #include "loadJpeg.h"
 #include "ailes.h"
 
-//! hauteur du corp
+//! hauteur du corps
 #define HAUTEUR 1.
-//! nombre de revolution du corp
+//! nombre de revolution du corps
 #define SPINE_NB 4
-//si il manque des polygon il faut incrementé la constante
-// associer de 1 le pb viens des arondie fais pas les division en c
+//si il manque des polygon il faut incrementer la constante
+// associer de 1 le pb viens des arrondis ne fait pas les divisions en c
 //! nombre de segment du cercle
 #define CIRCULAR_RESOLUTION 32.
-//! rayon du corp
+//! rayon du corps
 #define RAYON 0.6
-//! rayon du tube qui suis la spirale
+//! rayon du tube qui suit la spirale
 #define RAYON_CYLINDER 0.1
 //! nombre de segments du cercle qui permet de gérer le tube
 #define PRECISION_CYLINDER 30.
-//!increment du rayon du corp jusqu'a RAYON_CYLINDER
+//!increment du rayon du corps jusqu'a RAYON_CYLINDER
 /*!
   increment du rayon du corp jusqu'a RAYON_CYLINDER
   qui permet de gérer l'affinement du corp

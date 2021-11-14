@@ -1,14 +1,14 @@
 #include "vector_util.h"
 
 
-//what the fuck fucking fuck
+
 //! 1/sqrt(x)
 /*!
 	\param[in] number x
 
 	on utilise une astuce pour augmenter le traitement de 1/sqrt(x)
-	qui est trés long a calculer normalement ce **hack** viens de quake
-	qui utilisé ca pour normaliser ses vecteur ce que nous allons faire ici
+	qui est tres long a calculer normalement ce **hack** vient de quake
+	qui utilise ca pour normaliser ses vecteurs ce que nous allons faire ici
 	aussi. L'algo utilise une astuce provenant de la norme des floatant IEE754
 	et de la facilité a calculer les log en binaire
 */
@@ -26,12 +26,12 @@ float Q_rsqrt( float number ){
 //	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
 	return (float)y;
 }
-//!fonction de normalisation des vecteur
+//!fonction de normalisation des vecteurs
 /*!
 	\param[out] v pointeur sur un vecteur
 	on multiplie chaque composantes par 1/|v|
 	on utilise donc Q_rsqrt pour amiliorer la vitesse car
-	cette fonction est appeller **énormement**
+	cette fonction est appellee **énormement**
 */
 void normalize(vector* v){
   float norme = pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2);
@@ -43,12 +43,12 @@ void normalize(vector* v){
 
 //! fonction qui calcule le produit vectoriel
 /*!
-	\return vecteur normal aux deux vecteur en parametre
+	\return vecteur normal aux deux vecteurs en parametre
 	\param[in] v1 premier pointeur de vecteur
 	\param[in] v2 deuxieme pointeur de vecteur
-	la fonction calcule le produit vectoriel qui est trés utile
-	car si v1 et v2 sont perpendiculaire le resulta du produit scalaire
-	est un vecteur orthogonal aux deux vecteur ce qui est **watibien**
+	la fonction calcule le produit vectoriel qui est tres utile
+	car si v1 et v2 sont perpendiculaire le resultat du produit scalaire
+	est un vecteur orthogonal aux deux vecteurs ce qui est **watibien**
 */
 vector produit_vectoriel(vector *v1, vector *v2){
   vector ret;
@@ -63,7 +63,7 @@ vector produit_vectoriel(vector *v1, vector *v2){
 	\return vecteur mis a l'echelle
 	\param[in] v1 pointeur sur un vecteur
 	\param s coefficient multiplicateur
-	on multiplie chaque composantes du vecteur par
+	on multiplie chaque composante du vecteur par
 	le coefficient.
 */
 vector scale(vector *v1, float s){
@@ -73,20 +73,20 @@ vector scale(vector *v1, float s){
     ret.z = v1->z*s;
   return ret;
 }
-//!produit scalaire de deux vecteur
+//!produit scalaire de deux vecteurs
 /*!
 	\return resultat du produit scalaire
 	\param v1 pointeur sur le premier vecteur
 	\param v2 pointeur sur le deuxieme vecteur
-	renvois le produit sclaire quand il est égale a 0 les deux vecteur
-	sont perpendiculaire ce qui est **tres utile**
+	renvoie le produit sclaire quand il est égal a 0 les deux vecteur
+	sont perpendiculaires ce qui est **tres utile**
 */
 float produit_scalaire(vector *v1, vector *v2){
   return v1->x*v2->x + v1->y*v2->y + v1->z*v2->z;
 }
 
-//on crée une matisse de changement de base
-// pour faire avoir une base orthogonal en p1
+//on cree une matrice de changement de base
+// pour faire avoir une base orthogonale en p1
 //!crée une base a partir de deux points
 /*!
 	\return matrice représentant la base
@@ -102,7 +102,7 @@ float produit_scalaire(vector *v1, vector *v2){
 	on prend les valeurs absolue de v2. Qui régle un problème d'inversion
 	de base dans le cas d'une courbe de bezier
 	pour avoir le troisème vecteur on utilise le produit vectoriel
-	on utilise ensuite Q_rsqrt pour normaliser les trois vecteur de la base
+	on utilise ensuite Q_rsqrt pour normaliser les trois vecteurs de la base
 */
 matrix create_base(point p1, point p2){
   p2.x-=p1.x;
@@ -118,7 +118,7 @@ matrix create_base(point p1, point p2){
   vector vector_plan1;
 		//aproxymation
 		//matematiquement fausse mais assez proche pour
-		//etre utiliser et optimiser notre programme
+		//etre utilisee et optimisee dans notre programme
     vector_plan1.x = fabsf(1./vector_normal.x);
     vector_plan1.y = fabsf(-1./vector_normal.y);
     vector_plan1.z = 0;
@@ -136,13 +136,13 @@ matrix create_base(point p1, point p2){
   normalize(&ret.v[2]);
   return ret;
 }
-//! somme deux vecteur
+//! somme de deux vecteur
 /*!
-	\return somme des deux vecteur
+	\return somme des deux vecteurs
 	\param[in] v1 premier vecteur
 	\param[in] v2 deuxieme vecteur
 	renvois un nouveau vecteur qui est la resultante de
-	la somme deux deux vecteur en parametre
+	la somme de deux vecteurs en parametre
 */
 vector add_vect(vector *v1, vector *v2){
   vector ret;
@@ -152,14 +152,14 @@ vector add_vect(vector *v1, vector *v2){
   return ret;
 }
 
-//! renvois un point aprés un changement de base
+//! renvoie un point apres un changement de base
 /*!
 	\return point
 	\param x composante x
 	\param y composante y
 	\param z composante z
 	\param[in] math matrice de la base
-	on renvois un point aprés changement de base pour x y z
+	on renvoie un point apres changement de base pour x y z
 */
 point change_base(float x, float y, float z, matrix *math){
   point ret;
@@ -171,7 +171,7 @@ point change_base(float x, float y, float z, matrix *math){
 //!initialisation d'une matrice a 0
 /*!
 	\param[out] m matrice qui doit etre mis  a zero
-	chaqu vecteur est mis a 0 ce qui donne une
+	chaque vecteur est mis a 0 ce qui donne une
 	matrice 3x3 a 0
 */
 void matrix_zero(matrix *m){
@@ -183,7 +183,7 @@ void matrix_zero(matrix *m){
 }
 //!fonction de debug
 /*!
-	\param[in] m matrice qui doit etre afficher
+	\param[in] m matrice qui doit etre affichee
 	affiche chaque veteur de la matrice dans la sortie standard
 */
 void matrix_debug(matrix *m){
@@ -194,9 +194,9 @@ void matrix_debug(matrix *m){
 
 //! fais une rotation de Pi sur la matrice de changement de base
 /*!
-	\param[out] m matrice qui doit etre modifier
+	\param[out] m matrice qui doit etre modifiee
 	on inverse toutes les composantes du vecteur z
-	puis on recrée le vecteur y a partir du produit vectoriel
+	puis on recree le vecteur y a partir du produit vectoriel
 	le vecteur x ne bouge pas
 */
 void inverse_z(matrix *m){

@@ -80,7 +80,7 @@ int main(int argc,char **argv){
   glutMainLoop();
   return 0;
 }
-//!fonction appellé quand il ne ce passe rien
+//!fonction appellee quand il ne se passe rien
 void anim(){
   angle_magie = (angle_magie +CORNE_RAPIDE) %360;
   if(switch_laser_fire==true){
@@ -94,7 +94,7 @@ void anim(){
   }else{
     if(animation3>0)animation3-=1;
   }
-  // si les ailes sont déployé elle fonts fap fap
+  // si les ailes sont déployees elle battent
   if(get_animation3() == 200){
     angle_ailes = sin(angle_ailes_base)*90.;
     angle_ailes_base+=0.1;
@@ -104,7 +104,7 @@ void anim(){
 
 //!fonction de gestion du clavier
 /*!
-  gestion des touche pour faire :
+  gestion des touches pour faire :
   modification de la camera
   modification de la position de la tete
   modification du zoom
@@ -228,6 +228,6 @@ void mousemotion(int x,int y){
       glutPostRedisplay(); /* on demande un rafraichissement de l'affichage */
     }
 
-    xold=x; /* sauvegarde des valeurs courante de le position de la souris */
+    xold=x; /* sauvegarde des valeurs courantes de la position de la souris */
     yold=y;
   }

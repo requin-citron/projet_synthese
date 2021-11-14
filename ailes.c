@@ -1,11 +1,11 @@
 #include "ailes.h"
 
-//!fonction de calcule de l'equation parametrique d'une connique
+//!fonction de calcul de l'equation parametrique d'une connique
 /*
   \param[in] in t compris entre 0 et 2*PI
   \param[out] x_t pointeur sur un float pour la coord x
   \param[out] y_t pointeur sur un float pour la coord y
-  dessine une conique a partir de ca representation paramétrique (merci geogebra)
+  dessine une conique a partir de sa representation parametrique 
 !*/
 static void conique(float t, float *x_t, float *y_t){
   *x_t = 1.43 + (-1.39)*cos(t) + 0.21*sin(t);

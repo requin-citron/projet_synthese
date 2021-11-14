@@ -1,12 +1,12 @@
 #include "dragon.h"
 
 
-//! medelisation du dragon
+//! modelisation du dragon
 /*!
-  on crée le corp
-  et la tete on fais une rotation a la tete et une translation
+  on cree le corps
+  et la tete on fait une rotation a la tete et une translation
   on inverse l'axe z de sa matrice de changement de base
-  puis on fais un cylindre qui relis les deux morceau
+  puis on fait un cylindre qui relie les deux morceaux
 */
 void dragon(){
   /* effacement de l'image avec la couleur de fond */
@@ -72,8 +72,8 @@ void dragon(){
   p2_back.z += 0.6;
   glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,256,256,0,
          GL_RGB,GL_UNSIGNED_BYTE,texture);
-  //patch pb de rotation pour la matrice cahngement de base
-  //et surtout on regénére y aprés l'inversion de Z
+  //patch pb de rotation pour la matrice changement de base
+  //et surtout on regenere y apres l'inversion de Z
   //car j'ai passé 1h en mode WTF ca marche po
   //puis j'ai allumé mon cerveau et j'ai compris
   // voila donc aprés avoir modifier un vecteur de la base
@@ -100,7 +100,7 @@ void dragon(){
   //laser
   float x_b;
   float y_b;
-  //calcule pos
+  //calcule pas
   bezier(0.03,&x_b, &y_b);
   //lumière
   GLfloat ambient[] = { 1.0, 1.0, 1.0, 1.0 };

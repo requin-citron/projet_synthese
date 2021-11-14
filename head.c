@@ -1,11 +1,11 @@
 #include "head.h"
 
 
-//! fonction de bezier avec coefficien variable
+//! fonction de bezier avec coefficient variable
 /*!
-  calcule une courbe de bezier en 4 point en sachant que les
-  coefficients peuvent change pour les animation
-  aka la tete ce baisse ou ce lève
+  calcule une courbe de bezier en 4 points en sachant que les
+  coefficients peuvent changer pour les animations
+  aka la tete se baisse ou se lève
   \param t valeur de t entre 0 et 1;
   \param[out] x valeur x retour de la fonction de bezier;
   \param[out] y valeur y retour de la fonction de bezier;
@@ -59,10 +59,10 @@ static float calcule_rayon(float *x){
   \param[out] p_back pointeur sur le dernier point
   \param[out] m pointeur sur la base du dernier point
 
-  crée la tete du dragon et le relie a l'encien point
+  cree la tete du dragon et le relie a l'ancien point
   avec un cylindre
   de plus on met les yeux sur la tete
-  pour que les yeux suive l'annimation on les place
+  pour que les yeux suivent l'animation on les place
   grace a la courbe de bezier avec une rotation pour qu'il regarde
   devant
 */
@@ -114,7 +114,7 @@ void head(point *p_back, matrix *m){
       base_back =base;
     }
     angle_back = 0;
-    // ici on gère le rayon de la tete
+    // ici on gere le rayon de la tete
     rayon = calcule_rayon(&t);
     for(int j=1; j < (HEAD_CIRCULAR_RESOLUTION+1); j++){
       angle1 = (j*2*M_PI)/HEAD_CIRCULAR_RESOLUTION;
@@ -169,7 +169,7 @@ void head(point *p_back, matrix *m){
   glRotatef(20,0,0,1);
   oeil(0.05);
   glPopMatrix();
-  //oeil droite
+  //oeil droit
   glPushMatrix();
   glTranslatef(x_o,y_o+HEAD_RAYON-0.02,-0.12);
   glRotatef(-40,1,0,0);
