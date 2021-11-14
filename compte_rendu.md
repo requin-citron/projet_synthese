@@ -33,6 +33,20 @@
   </ol>
 
 
+  | Touche  | Action          |
+  | :--------------- |:---------------:|
+  | B  |   Active/Désactive les ailes  |
+  | Y  | Active/Désactive Laser/Feu             |
+  | !  | Change le mode de tire Laser/Feu          |
+  | Z  | Zoom avant          |
+  | W  | Zoom arrière          |
+  | M  | Rotation a droite          |
+  | K  | Rotation a Gauche          |
+  | O  | Rotation en Haut           |
+  | L  | Rotation en Bas          |
+  | T  | Baisser la tête          |
+  | G  | Monter la tête          |
+
 
 
 ### Les Maths {#math}
